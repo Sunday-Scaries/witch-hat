@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckqfkj32u0vkk"]
+
+[ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_mytp5"]
+[ext_resource type="Texture2D" uid="uid://byy14er3e0o3s" path="res://sample_assets/Poses/female_idle.png" id="2_x7frg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mojb"]
+size = Vector2(56, 91)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m0x1m"]
+polygon = PackedVector2Array(-97.955, 54, 0, 54, -4.89775, 51, -97.955, 51, -97.955, 53)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mytp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x7frg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 12.5)
+shape = SubResource("RectangleShape2D_8mojb")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(0.204175, 1)
+occluder = SubResource("OccluderPolygon2D_m0x1m")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+position = Vector2(24, 0)
+scale = Vector2(0.204175, 1)
+occluder = SubResource("OccluderPolygon2D_m0x1m")
