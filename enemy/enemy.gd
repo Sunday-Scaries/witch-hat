@@ -40,6 +40,8 @@ func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		queue_free()
 
+func _on_area_entered(_area) -> void:
+	arrow.show()
 
-
-
+func _on_area_exited(_area) -> void:
+	arrow.hide()
