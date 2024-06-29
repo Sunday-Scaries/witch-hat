@@ -10,6 +10,7 @@ func enter() -> void:
 
 func on_input(_event: InputEvent) -> void:
 	if played:
+		Events.tooltip_hide_requested.emit()
 		return
 	
 	transition_requested.emit(self, CardState.State.BASE)

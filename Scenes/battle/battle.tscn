@@ -1,21 +1,31 @@
-[gd_scene load_steps=13 format=3 uid="uid://bi2qe4oobl2sn"]
+[gd_scene load_steps=20 format=3 uid="uid://bi2qe4oobl2sn"]
 
+[ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_6wx8r"]
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_252cl"]
-[ext_resource type="PackedScene" uid="uid://c0sqo6710gp6a" path="res://enemy/enemy.tscn" id="2_1nqiv"]
+[ext_resource type="PackedScene" uid="uid://c0sqo6710gp6a" path="res://Scenes/enemy/enemy.tscn" id="2_1nqiv"]
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_a3ibl"]
-[ext_resource type="PackedScene" uid="uid://dyif0q4lmfci7" path="res://Scenes/card_ui/card_ui.tscn" id="2_cmr73"]
 [ext_resource type="PackedScene" uid="uid://rhy33hdpjmja" path="res://Scenes/player/player.tscn" id="3_18sgq"]
-[ext_resource type="Resource" uid="uid://q8vddcavb8bd" path="res://enemies/crab_enemy/test_enemy.tres" id="3_aq5ya"]
 [ext_resource type="PackedScene" uid="uid://c0ua65cj1rgjd" path="res://Scenes/card_target_selector/card_target_selector.tscn" id="3_c7tls"]
-[ext_resource type="Resource" uid="uid://cxhtbg1b7hpxr" path="res://characters/warrior/cards/warrior_axe_attack.tres" id="4_g1w4q"]
+[ext_resource type="AudioStream" uid="uid://dpdenqqbovwfq" path="res://art/8_bit_iced_village_lofi.mp3" id="3_wqx5c"]
 [ext_resource type="Resource" uid="uid://detjq7mf4v3s" path="res://characters/warrior/warrior.tres" id="4_gb6p2"]
-[ext_resource type="Resource" uid="uid://bsl075v1svhfh" path="res://characters/warrior/cards/warrior_block.tres" id="5_gq4uq"]
+[ext_resource type="Script" path="res://Scenes/enemy/enemy_handler.gd" id="4_ju7fd"]
+[ext_resource type="Resource" uid="uid://5jdlvlg5seqr" path="res://enemies/crab_enemy/crab_enemy.tres" id="5_1vggr"]
+[ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_vd0ve"]
+[ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_bq3rw"]
+[ext_resource type="Resource" uid="uid://dtbitpwwtc730" path="res://enemies/bat/bat_enemy.tres" id="8_mgkvq"]
 [ext_resource type="PackedScene" uid="uid://dr5fk60a0hroc" path="res://Scenes/ui/mana_ui.tscn" id="11_qywkf"]
+[ext_resource type="PackedScene" uid="uid://c5dgxn1xfq33x" path="res://Scenes/ui/tooltip.tscn" id="12_pbv05"]
+[ext_resource type="Theme" uid="uid://crldvrn5qplqv" path="res://main_theme.tres" id="13_5fbnv"]
+[ext_resource type="Script" path="res://Scenes/ui/red_flash.gd" id="15_ijlv0"]
+[ext_resource type="PackedScene" uid="uid://d2t3aqxhtt435" path="res://Scenes/ui/battle_over_panel.tscn" id="17_h3wy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed5pu"]
 size = Vector2(256, 100)
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_6wx8r")
+char_stats = ExtResource("4_gb6p2")
+music = ExtResource("3_wqx5c")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -32,9 +42,20 @@ position = Vector2(128, 50)
 shape = SubResource("RectangleShape2D_ed5pu")
 debug_color = Color(0, 0.6, 0.701961, 0.0588235)
 
-[node name="Enemy" parent="." instance=ExtResource("2_1nqiv")]
-position = Vector2(192, 70)
-stats = ExtResource("3_aq5ya")
+[node name="EnemyHandler" type="Node2D" parent="."]
+script = ExtResource("4_ju7fd")
+
+[node name="BatEnemy" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
+position = Vector2(237, 59)
+stats = ExtResource("8_mgkvq")
+
+[node name="CrabEnemy" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
+position = Vector2(200, 82)
+stats = ExtResource("5_1vggr")
+
+[node name="BatEnemy2" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
+position = Vector2(166, 58)
+stats = ExtResource("8_mgkvq")
 
 [node name="Player" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(49, 74)
@@ -42,7 +63,12 @@ stats = ExtResource("4_gb6p2")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_c7tls")]
 
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("8_bq3rw")
+hand = NodePath("../BattleUI/Hand")
+
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+script = ExtResource("7_vd0ve")
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -59,20 +85,50 @@ size_flags_vertical = 8
 alignment = 1
 script = ExtResource("2_a3ibl")
 
-[node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_cmr73")]
-layout_mode = 2
-card = ExtResource("4_g1w4q")
-char_stats = ExtResource("4_gb6p2")
-
-[node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("2_cmr73")]
-layout_mode = 2
-card = ExtResource("4_g1w4q")
-char_stats = ExtResource("4_gb6p2")
-
-[node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("2_cmr73")]
-layout_mode = 2
-card = ExtResource("5_gq4uq")
-char_stats = ExtResource("4_gb6p2")
-
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_qywkf")]
 char_stats = ExtResource("4_gb6p2")
+
+[node name="Tooltip" parent="BattleUI" instance=ExtResource("12_pbv05")]
+offset_top = 6.0
+offset_bottom = 42.0
+
+[node name="EndTurnButton" type="Button" parent="BattleUI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -19.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("13_5fbnv")
+text = "End Turn"
+
+[node name="RedFlash" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("15_ijlv0")
+
+[node name="ColorRect" type="ColorRect" parent="RedFlash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.443137, 0.443137, 0)
+
+[node name="Timer" type="Timer" parent="RedFlash"]
+wait_time = 0.1
+one_shot = true
+
+[node name="BattleOverLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("17_h3wy4")]
+visible = false
+
+[connection signal="child_order_changed" from="EnemyHandler" to="." method="_on_enemies_child_order_changed"]
