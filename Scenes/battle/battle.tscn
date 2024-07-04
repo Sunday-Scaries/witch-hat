@@ -46,19 +46,31 @@ debug_color = Color(0, 0.6, 0.701961, 0.0588235)
 script = ExtResource("4_ju7fd")
 
 [node name="BatEnemy" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
-position = Vector2(237, 59)
+position = Vector2(157, 59)
 stats = ExtResource("8_mgkvq")
 
 [node name="CrabEnemy" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
-position = Vector2(200, 82)
+position = Vector2(122, 87)
 stats = ExtResource("5_1vggr")
 
 [node name="BatEnemy2" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
-position = Vector2(166, 58)
+position = Vector2(86, 58)
 stats = ExtResource("8_mgkvq")
 
 [node name="Player" parent="." instance=ExtResource("3_18sgq")]
-position = Vector2(49, 74)
+position = Vector2(26, 115)
+stats = ExtResource("4_gb6p2")
+
+[node name="Player2" parent="." instance=ExtResource("3_18sgq")]
+position = Vector2(26, 17)
+stats = ExtResource("4_gb6p2")
+
+[node name="Player3" parent="." instance=ExtResource("3_18sgq")]
+position = Vector2(229, 18)
+stats = ExtResource("4_gb6p2")
+
+[node name="Player4" parent="." instance=ExtResource("3_18sgq")]
+position = Vector2(228, 114)
 stats = ExtResource("4_gb6p2")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_c7tls")]
@@ -86,6 +98,8 @@ alignment = 1
 script = ExtResource("2_a3ibl")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_qywkf")]
+offset_left = 54.0
+offset_right = 72.0
 char_stats = ExtResource("4_gb6p2")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_pbv05")]
@@ -99,9 +113,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -53.0
+offset_left = -93.0
 offset_top = -19.0
-offset_right = -8.0
+offset_right = -48.0
 offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
