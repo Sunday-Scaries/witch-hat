@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("1_mekji")
+character_name = ""
+description = ""
 starting_deck = ExtResource("3_avugu")
 max_mana = 3
 max_health = 35

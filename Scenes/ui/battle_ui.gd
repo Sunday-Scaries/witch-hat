@@ -5,6 +5,7 @@ extends CanvasLayer
 @export var char2_stats: CharacterStats: set = _set_char2_stats
 @export var char3_stats: CharacterStats: set = _set_char3_stats
 @export var char4_stats: CharacterStats: set = _set_char4_stats
+@export var character_stats_list: Array[CharacterStats]: set = _set_character_stats_list
 
 @onready var hand: Hand = $Hand
 @onready var mana_ui: ManaUI = $ManaUI
@@ -34,6 +35,12 @@ func _set_char4_stats(value: CharacterStats) -> void:
 	char4_stats = value
 	# mana_ui.char_stats = char4_stats
 	# hand.char_stats = char4_stats
+
+func _set_character_stats_list(value: Array[CharacterStats]) -> void:
+	character_stats_list = value
+	# TODO fix this to be for multiple chars
+	mana_ui.char_stats = character_stats_list[0]
+	hand.char_stats = character_stats_list[0]
 
 func _on_player_hand_drawn() -> void:
 	end_turn_button.disabled = false

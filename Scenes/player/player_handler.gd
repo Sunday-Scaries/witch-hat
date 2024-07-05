@@ -7,15 +7,10 @@ const HAND_DISCARD_INTERVAL := 0.25
 @export var hand: Hand
 @export var cards_per_turn: int
 
-var character1: CharacterStats
-var character2: CharacterStats
-var character3: CharacterStats
-var character4: CharacterStats
-
 var draw_pile: CardPile
 var discard: CardPile
 
-var characters: Array[CharacterStats] = [character1, character2, character3, character4]
+var characters: Array[CharacterStats] = []
 
 func _ready() -> void:
 	Events.card_played.connect(_on_card_played)
@@ -24,14 +19,15 @@ func _ready() -> void:
 
 func start_battle(char_stats_arr: Array[CharacterStats]) -> void:
 	var draw_pile_arr: Array[CardPile] = []
+	print('char stats', char_stats_arr)
 	for i in char_stats_arr.size():
 		# assign passed in character stats
-		characters[i] = char_stats_arr[i]
+		characters.append(char_stats_arr[i])
 		# add to the global draw pile
 		var char_draw_deck: CardPile = characters[i].deck.duplicate(true)
 		draw_pile_arr.append(char_draw_deck)
 		discard = CardPile.new()
-    
+	
 	for deck in draw_pile_arr:
 		for card in deck.cards:
 			draw_pile.cards.append(card)
