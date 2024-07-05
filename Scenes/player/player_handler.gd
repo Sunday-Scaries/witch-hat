@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func start_battle(char_stats_arr: Array[CharacterStats]) -> void:
 	var draw_pile_arr: Array[CardPile] = []
-	print('char stats', char_stats_arr)
 	for i in char_stats_arr.size():
 		# assign passed in character stats
 		characters.append(char_stats_arr[i])
