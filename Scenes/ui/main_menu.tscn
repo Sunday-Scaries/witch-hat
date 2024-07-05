@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6x5vac7o05r7"]
+[gd_scene load_steps=11 format=3 uid="uid://b6x5vac7o05r7"]
 
 [ext_resource type="Texture2D" uid="uid://dk1b8wufrdw1x" path="res://art/witch.png" id="1_p6mst"]
 [ext_resource type="Script" path="res://Scenes/ui/main_menu.gd" id="1_sbsvd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b43p6lo4fgkcl" path="res://Scenes/run/run_startup.tres" id="2_lfqa5"]
 [ext_resource type="Texture2D" uid="uid://clwojc1qiw7c" path="res://art/ElianFaceset-removebg-preview.png" id="3_1y55s"]
 [ext_resource type="Texture2D" uid="uid://cv1edvg3h4ebm" path="res://art/QuixleyFaceset-removebg-preview.png" id="4_mofvw"]
+[ext_resource type="Texture2D" uid="uid://uatsx5sx1x7d" path="res://art/lionel-portrait.png" id="4_xq3hv"]
 
 [sub_resource type="Gradient" id="Gradient_enhsl"]
 colors = PackedColorArray(0.2, 0.117647, 0.0509804, 1, 0.054902, 0, 0.0588235, 1)
@@ -16,6 +17,7 @@ width = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_l81en"]
 line_spacing = 10.0
+font_size = 26
 shadow_size = 4
 shadow_color = Color(0.733333, 0.545098, 0.517647, 0.34902)
 
@@ -45,14 +47,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -54.0
-offset_right = 80.0
-offset_bottom = -10.0
+offset_left = -133.0
+offset_top = -88.0
+offset_right = 135.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Witch Wants 
-Her Hat Back"
+text = "The Witch Wants 
+Her Hat Back!"
 label_settings = SubResource("LabelSettings_l81en")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,48 +66,50 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = 4.0
-offset_right = 30.0
-offset_bottom = 44.0
+offset_left = -50.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(14, 2.08165e-12)
+custom_minimum_size = Vector2(24, 15)
 layout_mode = 2
 text = "Continue"
 
 [node name="NewRun" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(14, 2.08165e-12)
+custom_minimum_size = Vector2(24, 15)
 layout_mode = 2
 text = "New Run"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(14, 2.08165e-12)
+custom_minimum_size = Vector2(24, 15)
 layout_mode = 2
 text = "Exit"
 
 [node name="Witch" type="Sprite2D" parent="."]
-position = Vector2(48, 98)
-scale = Vector2(0.6, 0.6)
+position = Vector2(149, 210)
+scale = Vector2(1.5, 1.594)
 texture = ExtResource("1_p6mst")
 
+[node name="Lionel" type="Sprite2D" parent="."]
+position = Vector2(475, 184)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xq3hv")
+
 [node name="Timea" type="Sprite2D" parent="."]
-position = Vector2(202, 83)
-scale = Vector2(0.6, 0.6)
+position = Vector2(407, 202)
 texture = ExtResource("2_18rvl")
 
 [node name="Elian" type="Sprite2D" parent="."]
-position = Vector2(227, 103)
-scale = Vector2(0.6, 0.6)
+position = Vector2(487, 252)
 texture = ExtResource("3_1y55s")
 
 [node name="Quixley" type="Sprite2D" parent="."]
-position = Vector2(198, 117)
-scale = Vector2(0.6, 0.6)
+position = Vector2(411, 268)
 texture = ExtResource("4_mofvw")
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]

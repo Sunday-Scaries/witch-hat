@@ -5,12 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://ck1t4hdip6xrl" path="res://art/tile_0119.png" id="2_krsbd"]
 
 [node name="Tooltip" type="PanelContainer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.0
-offset_right = 60.0
-offset_bottom = 36.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -400.0
+offset_bottom = 80.0
 grow_horizontal = 2
 theme = ExtResource("1_ymvvj")
 script = ExtResource("2_44i8y")

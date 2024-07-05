@@ -26,13 +26,6 @@ func _ready() -> void:
 	if not run_startup:
 		return
 	
-	# TODO remove after debugging menu gone
-	battle_button.show()
-	campfire_button.show()
-	map_button.show()
-	rewards_button.show()
-	treasure_button.show()
-	
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
 			_load_characters()
