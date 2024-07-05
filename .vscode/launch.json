@@ -17,7 +17,7 @@
       "address": "127.0.0.1",
       "port": 6007,
       // "scene": "main|current|pinned|<path>",
-      "editor_path": "<path>",
+      // "editor_path": "<path>",
       // engine command line flags
       "profiling": false,
       "single_threaded_scene": false,

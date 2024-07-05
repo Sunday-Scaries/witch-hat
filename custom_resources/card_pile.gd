@@ -3,7 +3,7 @@ extends Resource
 
 signal card_pile_size_changed(cards_amount)
 
-@export var cards: Array[Card] = []
+@export var cards: Array[Resource] = []
 
 func empty() -> bool:
 	return cards.is_empty()
@@ -27,5 +27,5 @@ func clear() -> void:
 func _to_string() -> String:
 	var _card_strings: PackedStringArray = []
 	for i in range(cards.size()):
-		_card_strings.append("%s: %s" % [i+1, cards[i].id])
+		_card_strings.append("%s: %s" % [i + 1, cards[i].id])
 	return "\n".join(_card_strings)

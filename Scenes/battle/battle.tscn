@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bi2qe4oobl2sn"]
+[gd_scene load_steps=21 format=3 uid="uid://bi2qe4oobl2sn"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_6wx8r"]
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_252cl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_vd0ve"]
 [ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_bq3rw"]
 [ext_resource type="Resource" uid="uid://dtbitpwwtc730" path="res://enemies/bat/bat_enemy.tres" id="8_mgkvq"]
+[ext_resource type="Resource" uid="uid://b62cx4x16x14l" path="res://characters/quixley/quixley.tres" id="10_2i5e7"]
 [ext_resource type="PackedScene" uid="uid://dr5fk60a0hroc" path="res://Scenes/ui/mana_ui.tscn" id="11_qywkf"]
 [ext_resource type="PackedScene" uid="uid://c5dgxn1xfq33x" path="res://Scenes/ui/tooltip.tscn" id="12_pbv05"]
 [ext_resource type="Theme" uid="uid://crldvrn5qplqv" path="res://main_theme.tres" id="13_5fbnv"]
@@ -24,7 +25,10 @@ size = Vector2(256, 100)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_6wx8r")
-char_stats = ExtResource("4_gb6p2")
+char1_stats = ExtResource("10_2i5e7")
+char2_stats = ExtResource("4_gb6p2")
+char3_stats = ExtResource("4_gb6p2")
+char4_stats = ExtResource("4_gb6p2")
 music = ExtResource("3_wqx5c")
 metadata/_edit_lock_ = true
 
@@ -59,7 +63,7 @@ stats = ExtResource("8_mgkvq")
 
 [node name="Player" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(26, 115)
-stats = ExtResource("4_gb6p2")
+stats = ExtResource("10_2i5e7")
 
 [node name="Player2" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(26, 17)
@@ -78,6 +82,7 @@ stats = ExtResource("4_gb6p2")
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("8_bq3rw")
 hand = NodePath("../BattleUI/Hand")
+cards_per_turn = 5
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_vd0ve")
