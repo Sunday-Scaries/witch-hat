@@ -26,6 +26,13 @@ func _ready() -> void:
 	if not run_startup:
 		return
 	
+	# TODO remove after debugging menu gone
+	battle_button.show()
+	campfire_button.show()
+	map_button.show()
+	rewards_button.show()
+	treasure_button.show()
+	
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
 			_load_characters()
@@ -60,6 +67,28 @@ func _change_view(scene: PackedScene) -> void:
 	get_tree().paused = false
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
+
+	# Hide or show buttons based on the scene
+	if scene == BATTLE_SCENE:
+		_hide_buttons()
+	else:
+		_show_buttons()
+
+func _hide_buttons() -> void:
+	battle_button.hide()
+	campfire_button.hide()
+	map_button.hide()
+	rewards_button.hide()
+	shop_button.hide()
+	treasure_button.hide()
+
+func _show_buttons() -> void:
+	battle_button.show()
+	campfire_button.show()
+	map_button.show()
+	rewards_button.show()
+	shop_button.show()
+	treasure_button.show()
 
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))

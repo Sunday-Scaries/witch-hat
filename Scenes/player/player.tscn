@@ -12,5 +12,5 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_3rcv5")
 
 [node name="StatsUI" parent="." instance=ExtResource("2_l5hca")]
-offset_top = 7.0
-offset_bottom = 23.0
+offset_top = 15.0
+offset_bottom = 31.0
