@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dk1b8wufrdw1x" path="res://art/witch.png" id="1_p6mst"]
 [ext_resource type="Script" path="res://Scenes/ui/main_menu.gd" id="1_sbsvd"]
-[ext_resource type="Texture2D" uid="uid://bcpkie0cbek7l" path="res://art/TimeaFaceSet_20.png" id="2_18rvl"]
+[ext_resource type="Texture2D" uid="uid://b78t6wiyxic28" path="res://art/timea-portrait.png" id="2_18rvl"]
 [ext_resource type="Resource" uid="uid://b43p6lo4fgkcl" path="res://Scenes/run/run_startup.tres" id="2_lfqa5"]
-[ext_resource type="Texture2D" uid="uid://clwojc1qiw7c" path="res://art/ElianFaceset-removebg-preview.png" id="3_1y55s"]
-[ext_resource type="Texture2D" uid="uid://cv1edvg3h4ebm" path="res://art/QuixleyFaceset-removebg-preview.png" id="4_mofvw"]
+[ext_resource type="Texture2D" uid="uid://bxwqtitj8cqn4" path="res://art/elian-portrait.png" id="3_1y55s"]
+[ext_resource type="Texture2D" uid="uid://bxfyp50shaqnr" path="res://art/quixley-portrait.png" id="4_mofvw"]
 [ext_resource type="Texture2D" uid="uid://uatsx5sx1x7d" path="res://art/lionel-portrait.png" id="4_xq3hv"]
 
 [sub_resource type="Gradient" id="Gradient_enhsl"]
@@ -106,6 +106,7 @@ texture = ExtResource("2_18rvl")
 
 [node name="Elian" type="Sprite2D" parent="."]
 position = Vector2(487, 252)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_1y55s")
 
 [node name="Quixley" type="Sprite2D" parent="."]
