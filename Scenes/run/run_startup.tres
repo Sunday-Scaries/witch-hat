@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RunStartup" load_steps=2 format=3 uid="uid://b43p6lo4fgkcl"]
+
+[ext_resource type="Script" path="res://custom_resources/run_startup.gd" id="1_2lvgi"]
+
+[resource]
+script = ExtResource("1_2lvgi")
+type = 0
+character_list = Array[Resource("res://custom_resources/character_stats.gd")]([])

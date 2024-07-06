@@ -1,6 +1,5 @@
 extends Card
 
-
 # NOTE card.gd has a virtualized method for this and this implements it since
 # it extends from Card
 func apply_effects(targets: Array[Node]) -> void:

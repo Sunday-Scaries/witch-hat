@@ -2,9 +2,9 @@ class_name Enemy
 extends Area2D
 
 const ARROW_OFFSET := 5
-const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
+const WHITE_SPRITE_MATERIAL := preload ("res://art/white_sprite_material.tres")
 
-@export var stats: EnemyStats : set = set_enemy_stats
+@export var stats: EnemyStats: set = set_enemy_stats
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var arrow: Sprite2D = $Arrow
@@ -12,8 +12,7 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var intent_ui: IntentUI = $IntentUI as IntentUI
 
 var enemy_action_picker: EnemyActionPicker
-var current_action: EnemyAction : set = set_current_action
-
+var current_action: EnemyAction: set = set_current_action
 
 func set_current_action(value: EnemyAction) -> void:
 	current_action = value
@@ -40,7 +39,6 @@ func setup_ai() -> void:
 
 func update_stats() -> void:
 	stats_ui.update_stats(stats)
-	
 
 func update_action() -> void:
 	if not enemy_action_picker:
@@ -54,15 +52,14 @@ func update_action() -> void:
 	if new_conditional_action and current_action != new_conditional_action:
 		current_action = new_conditional_action
 
-
 func update_enemy() -> void:
-	if not stats is Stats: 
+	if not stats is Stats:
 		return
-	if not is_inside_tree(): 
+	if not is_inside_tree():
 		await ready
 	
 	sprite_2d.texture = stats.art
-	arrow.position = Vector2.RIGHT * (sprite_2d.get_rect().size.x / 2 + ARROW_OFFSET)
+	arrow.position = Vector2.RIGHT * ((sprite_2d.get_rect().size.x / 2 + ARROW_OFFSET) * sprite_2d.scale)
 	setup_ai()
 	update_stats()
 
@@ -73,7 +70,6 @@ func do_turn() -> void:
 		return
 	
 	current_action.perform_action()
-
 
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:
@@ -88,7 +84,7 @@ func take_damage(damage: int) -> void:
 
 	tween.finished.connect(
 		func():
-			sprite_2d.material = null
+			sprite_2d.material=null
 			
 			if stats.health <= 0:
 				queue_free()

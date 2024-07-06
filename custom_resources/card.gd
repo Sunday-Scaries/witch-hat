@@ -43,7 +43,6 @@ func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 	else:
 		apply_effects(_get_targets(targets))
 
-
 # NOTE: this is pass because it's a virtual method. all cards will have this same method
 # equivalent in python would be base class with class method and children
 # can implement

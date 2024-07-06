@@ -1,27 +1,30 @@
 class_name BattleUI
 extends CanvasLayer
 
-@export var char_stats: CharacterStats : set = _set_char_stats
+@export var character_stats_list: Array[CharacterStats]: set = _set_character_stats_list
 
 @onready var hand: Hand = $Hand
-@onready var mana_ui: ManaUI = $ManaUI
+@onready var mana_ui1: ManaUI = $ManaUI
+@onready var mana_ui2: ManaUI = $ManaUI2
+@onready var mana_ui3: ManaUI = $ManaUI3
+@onready var mana_ui4: ManaUI = $ManaUI4
 @onready var end_turn_button: Button = %EndTurnButton
-
+@onready var mana_ui_list: Array[ManaUI] = [mana_ui1, mana_ui2, mana_ui3, mana_ui4]
 
 func _ready() -> void:
 	Events.player_hand_drawn.connect(_on_player_hand_drawn)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 
+func _set_character_stats_list(value: Array[CharacterStats]) -> void:
+	character_stats_list = value
+	for i in character_stats_list.size():
+		mana_ui_list[i].char_stats = character_stats_list[i]
 
-func _set_char_stats(value: CharacterStats) -> void:
-	char_stats = value
-	mana_ui.char_stats = char_stats
-	hand.char_stats = char_stats	
-
+	# TODO fix the hand setup? 
+	hand.char_stats = character_stats_list[0]
 
 func _on_player_hand_drawn() -> void:
 	end_turn_button.disabled = false
-
 
 func _on_end_turn_button_pressed() -> void:
 	end_turn_button.disabled = true

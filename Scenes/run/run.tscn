@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckqi4obr3cg8m"]
+
+[ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_fxmgj"]
+[ext_resource type="PackedScene" uid="uid://crhxx81e0p4gg" path="res://Scenes/map/map.tscn" id="1_v43fy"]
+[ext_resource type="Resource" uid="uid://b43p6lo4fgkcl" path="res://Scenes/run/run_startup.tres" id="2_vewfb"]
+[ext_resource type="Resource" uid="uid://b62cx4x16x14l" path="res://characters/quixley/quixley.tres" id="3_647ry"]
+[ext_resource type="Resource" uid="uid://dhuoocnlr0kpp" path="res://characters/elian/elian.tres" id="4_2cpjk"]
+[ext_resource type="Resource" uid="uid://lmsww0g60uw" path="res://characters/timea/timea.tres" id="5_2lufv"]
+[ext_resource type="Resource" uid="uid://dfsm85h53fjd" path="res://characters/lionel/lionel.tres" id="6_k3kng"]
+
+[node name="Run" type="Node"]
+script = ExtResource("1_fxmgj")
+run_startup = ExtResource("2_vewfb")
+char1_stats = ExtResource("3_647ry")
+char2_stats = ExtResource("4_2cpjk")
+char3_stats = ExtResource("5_2lufv")
+char4_stats = ExtResource("6_k3kng")
+
+[node name="Map" parent="." instance=ExtResource("1_v43fy")]
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="DebugButtons" type="VBoxContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="MapButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Map"
+
+[node name="BattleButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Battle"
+
+[node name="ShopButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shop"
+
+[node name="RewardsButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rewards"
+
+[node name="TreasureButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Treasure"
+
+[node name="CampfireButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Campfire"

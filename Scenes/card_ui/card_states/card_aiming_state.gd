@@ -1,6 +1,6 @@
 extends CardState
 
-const MOUSE_Y_SNAPBACK_THRESHOLD := 138
+const MOUSE_Y_SNAPBACK_THRESHOLD := 308
 
 func enter() -> void:
 	card_ui.targets.clear()
@@ -11,6 +11,8 @@ func enter() -> void:
 	Events.card_aim_started.emit(card_ui)
 	
 func exit() -> void:
+	# TODO continue debugging this tooltip
+	print('exited card state')
 	Events.card_aim_ended.emit(card_ui)
 	
 func on_input(event: InputEvent) -> void:

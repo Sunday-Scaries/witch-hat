@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bi2qe4oobl2sn"]
+[gd_scene load_steps=22 format=3 uid="uid://bi2qe4oobl2sn"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_6wx8r"]
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_252cl"]
 [ext_resource type="PackedScene" uid="uid://c0sqo6710gp6a" path="res://Scenes/enemy/enemy.tscn" id="2_1nqiv"]
 [ext_resource type="Script" path="res://Scenes/ui/hand.gd" id="2_a3ibl"]
+[ext_resource type="Resource" uid="uid://b43p6lo4fgkcl" path="res://Scenes/run/run_startup.tres" id="2_sv1pq"]
 [ext_resource type="PackedScene" uid="uid://rhy33hdpjmja" path="res://Scenes/player/player.tscn" id="3_18sgq"]
 [ext_resource type="PackedScene" uid="uid://c0ua65cj1rgjd" path="res://Scenes/card_target_selector/card_target_selector.tscn" id="3_c7tls"]
 [ext_resource type="AudioStream" uid="uid://dpdenqqbovwfq" path="res://art/8_bit_iced_village_lofi.mp3" id="3_wqx5c"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_vd0ve"]
 [ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_bq3rw"]
 [ext_resource type="Resource" uid="uid://dtbitpwwtc730" path="res://enemies/bat/bat_enemy.tres" id="8_mgkvq"]
+[ext_resource type="Resource" uid="uid://b62cx4x16x14l" path="res://characters/quixley/quixley.tres" id="10_2i5e7"]
 [ext_resource type="PackedScene" uid="uid://dr5fk60a0hroc" path="res://Scenes/ui/mana_ui.tscn" id="11_qywkf"]
 [ext_resource type="PackedScene" uid="uid://c5dgxn1xfq33x" path="res://Scenes/ui/tooltip.tscn" id="12_pbv05"]
 [ext_resource type="Theme" uid="uid://crldvrn5qplqv" path="res://main_theme.tres" id="13_5fbnv"]
@@ -20,16 +22,17 @@
 [ext_resource type="PackedScene" uid="uid://d2t3aqxhtt435" path="res://Scenes/ui/battle_over_panel.tscn" id="17_h3wy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed5pu"]
-size = Vector2(256, 100)
+size = Vector2(599, 272)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_6wx8r")
-char_stats = ExtResource("4_gb6p2")
+run_startup = ExtResource("2_sv1pq")
 music = ExtResource("3_wqx5c")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.34902, 0.34902, 0.34902, 1)
+scale = Vector2(2.34375, 2.34722)
 texture = ExtResource("1_252cl")
 centered = false
 metadata/_edit_lock_ = true
@@ -38,7 +41,7 @@ metadata/_edit_lock_ = true
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
-position = Vector2(128, 50)
+position = Vector2(299.5, 136)
 shape = SubResource("RectangleShape2D_ed5pu")
 debug_color = Color(0, 0.6, 0.701961, 0.0588235)
 
@@ -46,19 +49,31 @@ debug_color = Color(0, 0.6, 0.701961, 0.0588235)
 script = ExtResource("4_ju7fd")
 
 [node name="BatEnemy" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
-position = Vector2(237, 59)
+position = Vector2(373, 130)
 stats = ExtResource("8_mgkvq")
 
 [node name="CrabEnemy" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
-position = Vector2(200, 82)
+position = Vector2(298, 199)
 stats = ExtResource("5_1vggr")
 
 [node name="BatEnemy2" parent="EnemyHandler" instance=ExtResource("2_1nqiv")]
-position = Vector2(166, 58)
+position = Vector2(222, 130)
 stats = ExtResource("8_mgkvq")
 
 [node name="Player" parent="." instance=ExtResource("3_18sgq")]
-position = Vector2(49, 74)
+position = Vector2(42, 259)
+stats = ExtResource("10_2i5e7")
+
+[node name="Player2" parent="." instance=ExtResource("3_18sgq")]
+position = Vector2(42, 57)
+stats = ExtResource("4_gb6p2")
+
+[node name="Player3" parent="." instance=ExtResource("3_18sgq")]
+position = Vector2(549, 50)
+stats = ExtResource("4_gb6p2")
+
+[node name="Player4" parent="." instance=ExtResource("3_18sgq")]
+position = Vector2(556, 266)
 stats = ExtResource("4_gb6p2")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_c7tls")]
@@ -66,9 +81,11 @@ stats = ExtResource("4_gb6p2")
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("8_bq3rw")
 hand = NodePath("../BattleUI/Hand")
+cards_per_turn = 5
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_vd0ve")
+character_stats_list = null
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -76,21 +93,49 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -30.0
-offset_right = 75.0
+offset_left = -83.0
+offset_top = -41.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 1
 script = ExtResource("2_a3ibl")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_qywkf")]
+offset_left = 70.0
+offset_top = -112.0
+offset_right = 100.0
+offset_bottom = -82.0
+char_stats = ExtResource("4_gb6p2")
+
+[node name="ManaUI2" parent="BattleUI" instance=ExtResource("11_qywkf")]
+offset_left = 69.0
+offset_top = -318.0
+offset_right = 99.0
+offset_bottom = -288.0
+char_stats = ExtResource("4_gb6p2")
+
+[node name="ManaUI3" parent="BattleUI" instance=ExtResource("11_qywkf")]
+offset_left = 502.0
+offset_top = -319.0
+offset_right = 532.0
+offset_bottom = -289.0
+char_stats = ExtResource("4_gb6p2")
+
+[node name="ManaUI4" parent="BattleUI" instance=ExtResource("11_qywkf")]
+offset_left = 502.0
+offset_top = -112.0
+offset_right = 532.0
+offset_bottom = -82.0
 char_stats = ExtResource("4_gb6p2")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_pbv05")]
-offset_top = 6.0
-offset_bottom = 42.0
+offset_left = 208.0
+offset_top = 15.0
+offset_right = -192.0
+offset_bottom = 71.0
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
 unique_name_in_owner = true
@@ -99,10 +144,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -53.0
-offset_top = -19.0
-offset_right = -8.0
-offset_bottom = -5.0
+offset_left = -180.0
+offset_top = -35.0
+offset_right = -112.0
+offset_bottom = -21.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("13_5fbnv")

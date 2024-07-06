@@ -5,38 +5,49 @@ const HAND_DRAW_INTERVAL := 0.25
 const HAND_DISCARD_INTERVAL := 0.25
 
 @export var hand: Hand
+@export var cards_per_turn: int
 
-var character: CharacterStats
+var draw_pile: CardPile
+var discard: CardPile
 
+var characters: Array[CharacterStats] = []
 
 func _ready() -> void:
 	Events.card_played.connect(_on_card_played)
+	draw_pile = CardPile.new()
+	discard = CardPile.new()
 
-
-func start_battle(char_stats: CharacterStats) -> void:
-	character = char_stats
-	character.draw_pile = character.deck.duplicate(true)
-	character.draw_pile.shuffle()
-	character.discard = CardPile.new()
+func start_battle(char_stats_arr: Array[CharacterStats]) -> void:
+	var draw_pile_arr: Array[CardPile] = []
+	for i in char_stats_arr.size():
+		# assign passed in character stats
+		characters.append(char_stats_arr[i])
+		# add to the global draw pile
+		var char_draw_deck: CardPile = characters[i].deck.duplicate(true)
+		draw_pile_arr.append(char_draw_deck)
+		discard = CardPile.new()
+	
+	for deck in draw_pile_arr:
+		for card in deck.cards:
+			draw_pile.cards.append(card)
+	draw_pile.shuffle()
 	start_turn()
 
-
 func start_turn() -> void:
-	character.block = 0
-	character.reset_mana()
-	draw_cards(character.cards_per_turn)
-
+	for i in characters.size():
+		characters[i].block = 0
+		characters[i].reset_mana()
+	
+	draw_cards(cards_per_turn)
 
 func end_turn() -> void:
 	hand.disable_hand()
 	discard_cards()
 
-
 func draw_card() -> void:
 	reshuffle_deck_from_discard()
-	hand.add_card(character.draw_pile.draw_card())
+	hand.add_card(draw_pile.draw_card())
 	reshuffle_deck_from_discard()
-
 
 func draw_cards(amount: int) -> void:
 	var tween := create_tween()
@@ -48,11 +59,10 @@ func draw_cards(amount: int) -> void:
 		func(): Events.player_hand_drawn.emit()
 	)
 
-
 func discard_cards() -> void:
 	var tween := create_tween()
 	for card_ui: CardUI in hand.get_children():
-		tween.tween_callback(character.discard.add_card.bind(card_ui.card))
+		tween.tween_callback(discard.add_card.bind(card_ui.card))
 		tween.tween_callback(hand.discard_card.bind(card_ui))
 		tween.tween_interval(HAND_DISCARD_INTERVAL)
 	
@@ -61,16 +71,14 @@ func discard_cards() -> void:
 			Events.player_hand_discarded.emit()
 	)
 
-
 func reshuffle_deck_from_discard() -> void:
-	if not character.draw_pile.empty():
+	if not draw_pile.empty():
 		return
 
-	while not character.discard.empty():
-		character.draw_pile.add_card(character.discard.draw_card())
+	while not discard.empty():
+		draw_pile.add_card(discard.draw_card())
 
-	character.draw_pile.shuffle()
-
+	draw_pile.shuffle()
 
 func _on_card_played(card: Card) -> void:
-	character.discard.add_card(card)
+	discard.add_card(card)

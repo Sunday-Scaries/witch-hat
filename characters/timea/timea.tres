@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://lmsww0g60uw"]
+
+[ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_nrc4t"]
+[ext_resource type="Texture2D" uid="uid://cojntm2y0tc7b" path="res://art/timea-square.png" id="1_up0xj"]
+[ext_resource type="Texture2D" uid="uid://b78t6wiyxic28" path="res://art/timea-portrait.png" id="2_mjgrk"]
+[ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_q8i0r"]
+
+[resource]
+script = ExtResource("1_nrc4t")
+character_name = "Timea"
+description = "Time witch! TODO"
+portrait = ExtResource("2_mjgrk")
+starting_deck = ExtResource("3_q8i0r")
+max_mana = 4
+max_health = 20
+art = ExtResource("1_up0xj")
