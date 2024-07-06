@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clwojc1qiw7c"
-path="res://.godot/imported/ElianFaceset-removebg-preview.png-557268ac73e8238552eb8c9b585413cc.ctex"
+uid="uid://etvbqvr82wa1"
+path="res://.godot/imported/quixley-square-knocked-out.png-2caec56a81394678eec32a42ba965c65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ElianFaceset-removebg-preview.png"
-dest_files=["res://.godot/imported/ElianFaceset-removebg-preview.png-557268ac73e8238552eb8c9b585413cc.ctex"]
+source_file="res://art/quixley-square-knocked-out.png"
+dest_files=["res://.godot/imported/quixley-square-knocked-out.png-2caec56a81394678eec32a42ba965c65.ctex"]
 
 [params]
 

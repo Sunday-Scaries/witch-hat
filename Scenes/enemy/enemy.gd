@@ -69,6 +69,9 @@ func do_turn() -> void:
 	if not current_action:
 		return
 	
+	if enemy_action_picker.target.stats.health <= 0:
+		current_action = enemy_action_picker.get_action()
+
 	current_action.perform_action()
 
 func take_damage(damage: int) -> void:

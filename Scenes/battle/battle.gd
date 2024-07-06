@@ -39,5 +39,8 @@ func _on_enemy_turn_ended() -> void:
 	player_handler.start_turn()
 	enemy_handler.reset_enemy_actions()
 
-func _on_player_died() -> void:
-	Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
+func _on_player_died(player: Player) -> void:
+	var index := player_list.find(player)
+	player_list.remove_at(index)
+	if len(player_list) == 0:
+		Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)

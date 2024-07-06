@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcpkie0cbek7l"
-path="res://.godot/imported/TimeaFaceSet_20.png-f3ba1de71adf59e60b9ff2efba8117fd.ctex"
+uid="uid://cve0b6sg51rl8"
+path="res://.godot/imported/elian-square-knocked-out.png-e9c7eb8b0b0cb28392e3f6dd28f9654d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/TimeaFaceSet_20.png"
-dest_files=["res://.godot/imported/TimeaFaceSet_20.png-f3ba1de71adf59e60b9ff2efba8117fd.ctex"]
+source_file="res://art/elian-square-knocked-out.png"
+dest_files=["res://.godot/imported/elian-square-knocked-out.png-e9c7eb8b0b0cb28392e3f6dd28f9654d.ctex"]
 
 [params]
 

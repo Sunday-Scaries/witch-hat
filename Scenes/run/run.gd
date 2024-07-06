@@ -1,6 +1,7 @@
 class_name Run
 extends Node
 
+const MAIN_MENU_SCENE := preload ("res://scenes/ui/main_menu.tscn")
 const BATTLE_SCENE := preload ("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE := preload ("res://scenes/battle_reward/battle_reward.tscn")
 const CAMPFIRE_SCENE := preload ("res://scenes/campfire/campfire.tscn")
@@ -25,7 +26,8 @@ const TREASURE_SCENE := preload ("res://scenes/treasure/treasure.tscn")
 func _ready() -> void:
 	if not run_startup:
 		return
-	
+
+	get_tree().paused = false
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
 			_load_characters()
@@ -62,7 +64,7 @@ func _change_view(scene: PackedScene) -> void:
 	current_view.add_child(new_view)
 
 	# Hide or show buttons based on the scene
-	if scene == BATTLE_SCENE:
+	if scene in [BATTLE_SCENE, MAIN_MENU_SCENE]:
 		_hide_buttons()
 	else:
 		_show_buttons()
@@ -90,6 +92,7 @@ func _setup_event_connections() -> void:
 	Events.map_exited.connect(_change_view.bind(_on_map_exited))
 	Events.shop_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.treasure_room_exited.connect(_change_view.bind(MAP_SCENE))
+	Events.game_over.connect(_change_view.bind(MAIN_MENU_SCENE))
 
 	# TODO remove debug buttons once done
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
