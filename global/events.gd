@@ -14,7 +14,7 @@ signal player_hand_drawn
 signal player_hand_discarded
 signal player_turn_ended
 signal player_hit
-signal player_died
+signal player_died(player: Player)
 
 #Enemy related events
 signal enemy_action_completed(enemy: Enemy)
@@ -23,6 +23,7 @@ signal enemy_turn_ended
 #battle related events
 signal battle_over_screen_requested(text: String, type: BattleOverPanel.Type)
 signal battle_won
+signal game_over
 
 # map related events
 signal map_exited
