@@ -19,10 +19,7 @@ func get_action() -> EnemyAction:
 	# TODO this could probably be tweaked as the enemy gets more hurt or other conditions
 	# TODO once summons are a thing, target will be forced to be that
 	var living_targets = targets.filter(func(player: Player): return player.stats.health > 0)
-	print("GET ACTION ", self)
-	print('living targets', living_targets)
 	target = living_targets.pick_random()
-	print(target)
 	
 	var action := get_first_conditional_action()
 	if action:

@@ -13,6 +13,6 @@ description = "Time witch! TODO"
 portrait = ExtResource("2_mjgrk")
 starting_deck = ExtResource("3_q8i0r")
 max_mana = 4
-max_health = 1
+max_health = 20
 art = ExtResource("1_up0xj")
 knocked_out_art = ExtResource("2_bedyr")

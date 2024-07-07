@@ -13,6 +13,6 @@ description = "Well-meaning and a leader amongst her people."
 portrait = ExtResource("2_25c8v")
 starting_deck = ExtResource("3_deu1o")
 max_mana = 4
-max_health = 1
+max_health = 20
 art = ExtResource("1_g1qho")
 knocked_out_art = ExtResource("2_67w0a")

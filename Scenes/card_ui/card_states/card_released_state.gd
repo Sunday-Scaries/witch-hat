@@ -4,7 +4,6 @@ var played: bool
 func enter() -> void:
 	played = false
 	
-	print(card_ui.targets)
 	if not card_ui.targets.is_empty():
 		played = true
 		card_ui.play()

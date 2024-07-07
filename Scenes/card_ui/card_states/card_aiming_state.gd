@@ -12,7 +12,6 @@ func enter() -> void:
 	
 func exit() -> void:
 	# TODO continue debugging this tooltip
-	print('exited card state')
 	Events.card_aim_ended.emit(card_ui)
 	
 func on_input(event: InputEvent) -> void:

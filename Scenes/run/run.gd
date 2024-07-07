@@ -1,11 +1,10 @@
 class_name Run
 extends Node
 
-const MAIN_MENU_SCENE := preload ("res://scenes/ui/main_menu.tscn")
+const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 const BATTLE_SCENE := preload ("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE := preload ("res://scenes/battle_reward/battle_reward.tscn")
 const CAMPFIRE_SCENE := preload ("res://scenes/campfire/campfire.tscn")
-const MAP_SCENE := preload ("res://scenes/map/map.tscn")
 const SHOP_SCENE := preload ("res://scenes/shop/shop.tscn")
 const TREASURE_SCENE := preload ("res://scenes/treasure/treasure.tscn")
 
@@ -16,6 +15,7 @@ const TREASURE_SCENE := preload ("res://scenes/treasure/treasure.tscn")
 @export var char4_stats: CharacterStats
 
 @onready var current_view: Node = $CurrentView
+@onready var map: Map = $Map
 @onready var battle_button: Node = %BattleButton
 @onready var campfire_button: Node = %CampfireButton
 @onready var map_button: Node = %MapButton
@@ -32,6 +32,7 @@ func _ready() -> void:
 		RunStartup.Type.NEW_RUN:
 			_load_characters()
 			_start_run()
+			map.show_map()
 			print("startup ready", run_startup.character_list)
 
 		RunStartup.Type.CONTINUED_RUN:
@@ -62,45 +63,34 @@ func _change_view(scene: PackedScene) -> void:
 	get_tree().paused = false
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
+	map.hide_map()
 
-	# Hide or show buttons based on the scene
-	if scene in [BATTLE_SCENE, MAIN_MENU_SCENE]:
-		_hide_buttons()
-	else:
-		_show_buttons()
-
-func _hide_buttons() -> void:
-	battle_button.hide()
-	campfire_button.hide()
-	map_button.hide()
-	rewards_button.hide()
-	shop_button.hide()
-	treasure_button.hide()
-
-func _show_buttons() -> void:
-	battle_button.show()
-	campfire_button.show()
-	map_button.show()
-	rewards_button.show()
-	shop_button.show()
-	treasure_button.show()
+func _show_map() -> void:
+	if current_view.get_child_count() > 0:
+		current_view.get_child(0).queue_free()
+	
+	map.show_map()
 
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
-	Events.battle_reward_exited.connect(_change_view.bind(MAP_SCENE))
-	Events.campfire_exited.connect(_change_view.bind(MAP_SCENE))
+	Events.battle_reward_exited.connect(_show_map)
+	Events.campfire_exited.connect(_show_map)
 	Events.map_exited.connect(_change_view.bind(_on_map_exited))
-	Events.shop_exited.connect(_change_view.bind(MAP_SCENE))
-	Events.treasure_room_exited.connect(_change_view.bind(MAP_SCENE))
-	Events.game_over.connect(_change_view.bind(MAIN_MENU_SCENE))
+	Events.shop_exited.connect(_show_map)
+	Events.treasure_room_exited.connect(_show_map)
+	Events.game_over.connect(_on_game_over)
 
 	# TODO remove debug buttons once done
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
 	campfire_button.pressed.connect(_change_view.bind(CAMPFIRE_SCENE))
-	map_button.pressed.connect(_change_view.bind(MAP_SCENE))
+	map_button.pressed.connect(_show_map)
 	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
 	treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
 
 func _on_map_exited() -> void:
 	print("TODO: from the MAP, change view based on room type")
+
+func _on_game_over() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)
