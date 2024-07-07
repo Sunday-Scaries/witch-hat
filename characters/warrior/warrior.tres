@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://detjq7mf4v3s"]
 
-[ext_resource type="Texture2D" uid="uid://cjtq7njlysqum" path="res://art/ElianFaceset.png" id="1_juo6w"]
+[ext_resource type="Texture2D" uid="uid://bxwqtitj8cqn4" path="res://art/elian-portrait.png" id="1_juo6w"]
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_mekji"]
 [ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_avugu"]
 
