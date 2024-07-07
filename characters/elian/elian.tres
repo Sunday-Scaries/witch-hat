@@ -13,6 +13,6 @@ description = "Elian is an assassin but has trouble accepting the morality of hi
 portrait = ExtResource("2_2pmmu")
 starting_deck = ExtResource("3_77o8m")
 max_mana = 4
-max_health = 20
+max_health = 1
 art = ExtResource("1_aqtox")
 knocked_out_art = ExtResource("2_sdtik")

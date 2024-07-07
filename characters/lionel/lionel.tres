@@ -13,6 +13,6 @@ description = "Lionel is a TODO"
 portrait = ExtResource("2_7w2bg")
 starting_deck = ExtResource("3_k1b64")
 max_mana = 4
-max_health = 30
+max_health = 1
 art = ExtResource("1_6mvgs")
 knocked_out_art = ExtResource("2_3yoxg")
