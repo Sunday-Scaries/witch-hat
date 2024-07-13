@@ -1,6 +1,7 @@
 class_name BattleOverPanel
 extends Panel
 
+const MAIN_MENU_SCENE := preload ("res://scenes/ui/main_menu.tscn")
 enum Type {WIN, LOSE}
 
 @onready var label: Label = %Label

@@ -7,7 +7,6 @@ const RUN_SCENE = preload ("res://scenes/run/run.tscn")
 
 func _ready() -> void:
     get_tree().paused = false
-    print('main menu ready called')
 
 func _on_exit_pressed():
     get_tree().quit()

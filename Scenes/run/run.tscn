@@ -54,3 +54,8 @@ text = "Treasure"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Campfire"
+
+[node name="MenuButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menu"
