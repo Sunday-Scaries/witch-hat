@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://dhuoocnlr0kpp"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://dhuoocnlr0kpp"]
 
 [ext_resource type="Texture2D" uid="uid://cjb3lhwswo4dr" path="res://art/elian-square.png" id="1_aqtox"]
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_nca3g"]
 [ext_resource type="Texture2D" uid="uid://bxwqtitj8cqn4" path="res://art/elian-portrait.png" id="2_2pmmu"]
+[ext_resource type="Texture2D" uid="uid://cve0b6sg51rl8" path="res://art/elian-square-knocked-out.png" id="2_sdtik"]
 [ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_77o8m"]
 
 [resource]
@@ -12,5 +13,6 @@ description = "Elian is an assassin but has trouble accepting the morality of hi
 portrait = ExtResource("2_2pmmu")
 starting_deck = ExtResource("3_77o8m")
 max_mana = 4
-max_health = 30
+max_health = 1
 art = ExtResource("1_aqtox")
+knocked_out_art = ExtResource("2_sdtik")

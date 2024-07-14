@@ -1,18 +1,15 @@
 class_name Player
 extends Node2D
 
-const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
+const WHITE_SPRITE_MATERIAL := preload ("res://art/white_sprite_material.tres")
 
-@export var stats: CharacterStats : set = set_character_stats
+@export var stats: CharacterStats: set = set_character_stats
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var stats_ui: StatsUI = $StatsUI
 
-
 func set_character_stats(value: CharacterStats) -> void:
 	stats = value
-	#print( $ )
-	print( stats )
 	# this could be done in a setup function globally but 
 	# this adds it here as a dependency so you can test it in isolation
 	if not stats.stats_changed.is_connected(update_stats):
@@ -45,9 +42,9 @@ func take_damage(damage: int) -> void:
 	
 	tween.finished.connect(
 		func():
-			sprite_2d.material = null
+			sprite_2d.material=null
 			
 			if stats.health <= 0:
-				Events.player_died.emit()
-				queue_free()
+				Events.player_died.emit(self)
+				sprite_2d.texture=stats.knocked_out_art
 	)

@@ -16,6 +16,8 @@ func _ready() -> void:
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 
 func _set_character_stats_list(value: Array[CharacterStats]) -> void:
+	# TODO need to refactor this. Right now the 2nd time you start the battle, it gets 8 instead of 4 items to start
+	# there's probably a much smarter way to do what i'm doing with the 4 players
 	character_stats_list = value
 	for i in character_stats_list.size():
 		mana_ui_list[i].char_stats = character_stats_list[i]

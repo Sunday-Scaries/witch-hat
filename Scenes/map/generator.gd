@@ -23,43 +23,40 @@ var random_room_type_weights = {
 var random_room_type_total_weight := 0
 var map_data: Array[Array]
 
-
-
 func _ready() -> void:
 	generate_map()
 
-
 #Logic for generating map
 func generate_map() -> Array[Array]:
-	map_data = _generate_initial_grid() 
+	map_data = _generate_initial_grid()
 	
-	var i := 0
-	for floor in map_data:
-		print("floor %s: %s" % [i, floor])
-		i += 1
+	# var i := 0
+	# for floor in map_data:
+	# 	print("floor %s: %s" % [i, floor])
+	# 	i += 1
 	
 	#TEMPORARY FIX, WANT TO RETURN GENERATED MAP
-	return[]
+	return []
 
 func _generate_initial_grid() -> Array[Array]:
 	var result: Array[Array] = []
 #Loops through number of floors
 #Standard matrix: i is row, j is column, code below result var repeats until room is filled
 	for i in FLOORS:
-		var adjacent_rooms: Array [Room]= []
+		var adjacent_rooms: Array[Room] = []
 		
 		for j in MAP_WIDTH:
 			var current_room := Room.new()
 			var offset := Vector2(randf(), randf() * PLACEMENT_RANDOMNESS)
 			#In Godot, -Y means going up
-			current_room.position = Vector2(j * X_DIST, i * -Y_DIST) + offset
+			current_room.position = Vector2(j * X_DIST, i * - Y_DIST) + offset
 			current_room.row = i
 			current_room.column = j
 			current_room.next_rooms = []
 			
 			# Boss room must have specific Y
-			if i == FLOORS -1:
-				current_room.position.y = (i + 1) * -Y_DIST
+			if i == FLOORS - 1:
+				current_room.position.y = (i + 1) * - Y_DIST
 			
 			adjacent_rooms.append(current_room)
 		

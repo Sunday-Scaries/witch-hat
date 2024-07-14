@@ -85,7 +85,6 @@ cards_per_turn = 5
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_vd0ve")
-character_stats_list = null
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
