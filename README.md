@@ -1,6 +1,6 @@
 # Witch Wants her got dang hat back!
 
-<https://github.com/Sunday-Scaries/witch-hat/blob/main/art/witch.png>
+![Witch Hat](https://github.com/Sunday-Scaries/witch-hat/blob/main/art/witch.png "A cute witch hat illustration")
 
 Hello, thanks for visiting the WWHHB github page.
 
