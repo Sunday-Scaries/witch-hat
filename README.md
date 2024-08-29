@@ -1,6 +1,6 @@
 # Witch Wants her got dang hat back!
 
-![Witch Hat](https://github.com/Sunday-Scaries/witch-hat/blob/main/art/witch.png "A cute witch hat illustration") Hello, thanks for visiting the WWHHB github page.
+![Witch Hat](https://github.com/Sunday-Scaries/witch-hat/blob/main/art/witch.png "A cute witch hat illustration") Hello, thanks for visiting the WWHHB github page, brought to you by Sunday Scaries.
 
 In The Witch Wants Her Hat Back, players are thrust into the captivating world of "Cardonia", and the world is under siege by a mysterious plague of confusion. Through the eyes of protagonist Quixley and a colorful cast of comrades, players embark on a whirlwind adventure to reunite the eponymous witch with her hat.
 
