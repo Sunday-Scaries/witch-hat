@@ -13,10 +13,8 @@ func add_card(card: Card) -> void:
 	new_card_ui.parent = self
 	new_card_ui.char_stats = char_stats
 
-
 func discard_card(card: CardUI) -> void:
 	card.queue_free()
-
 
 func disable_hand() -> void:
 	for card: CardUI in get_children():

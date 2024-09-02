@@ -4,11 +4,10 @@ extends Control
 signal reparent_requested(which_card_ui: CardUI)
 
 const BASE_STYLEBOX := preload("res://Scenes/card_ui/card_base_stylebox.tres")
-const DRAG_STYLEBOX := preload("res://Scenes/card_ui/card_dragging_stylebox.tres")
 const HOVER_STYLEBOX := preload("res://Scenes/card_ui/card_hover_stylebox.tres")
 
-@export var card: Card : set = _set_card
-@export var char_stats: CharacterStats : set = _set_char_stats
+@export var card: Card: set = _set_card
+@export var char_stats: CharacterStats: set = _set_char_stats
 
 @onready var panel = $Panel
 @onready var cost = $Cost
@@ -20,9 +19,8 @@ const HOVER_STYLEBOX := preload("res://Scenes/card_ui/card_hover_stylebox.tres")
 var original_index := 0
 var parent: Control
 var tween: Tween
-var playable := true : set = _set_playable
+var playable := true: set = _set_playable
 var disabled := false
-
 
 func _ready() -> void:
 	Events.card_aim_started.connect(_on_card_drag_or_aiming_started)
@@ -52,6 +50,8 @@ func _set_card(value: Card) -> void:
 	card = value
 	cost.text = str(card.cost)
 	icon.texture = card.icon
+	# TODO make sure this works
+	panel.set("theme_override_styles/panel", card.theme)
 
 func _on_gui_input(event: InputEvent) -> void:
 	card_state_machine.on_gui_input(event)
@@ -78,11 +78,10 @@ func _set_playable(value: bool) -> void:
 		cost.remove_theme_color_override("font_color")
 		icon.modulate = Color(1, 1, 1, 1)
 
-
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	char_stats.stats_changed.connect(_on_char_stats_changed)
-
+	
 func _on_card_drag_or_aiming_started(used_card: CardUI) -> void:
 	if used_card == self:
 		return
@@ -92,7 +91,6 @@ func _on_card_drag_or_aiming_started(used_card: CardUI) -> void:
 func _on_card_drag_or_aim_ended(_card: CardUI) -> void:
 	disabled = false
 	self.playable = char_stats.can_play_card(card)
-
 
 func _on_char_stats_changed() -> void:
 	self.playable = char_stats.can_play_card(card)

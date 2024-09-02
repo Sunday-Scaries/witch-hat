@@ -9,6 +9,7 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var type: Type
 @export var target: Target
 @export var cost: int
+@export var theme: StyleBoxFlat
 
 @export_group("Card Visuals")
 @export var icon: Texture

@@ -1,18 +1,20 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://lmsww0g60uw"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=7 format=3 uid="uid://lmsww0g60uw"]
 
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_nrc4t"]
 [ext_resource type="Texture2D" uid="uid://cojntm2y0tc7b" path="res://art/timea-square.png" id="1_up0xj"]
 [ext_resource type="Texture2D" uid="uid://bhlunmt1m2rqw" path="res://art/timea-square-knocked-out.png" id="2_bedyr"]
 [ext_resource type="Texture2D" uid="uid://b78t6wiyxic28" path="res://art/timea-portrait.png" id="2_mjgrk"]
-[ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_q8i0r"]
+[ext_resource type="StyleBox" uid="uid://buhsvjmgish6k" path="res://characters/timea/timea_theme.tres" id="2_sry8m"]
+[ext_resource type="Resource" uid="uid://b0gxpu0e5cen3" path="res://characters/timea/timea_starting_deck.tres" id="6_a3vpm"]
 
 [resource]
 script = ExtResource("1_nrc4t")
 character_name = "Timea"
 description = "Time witch! TODO"
 portrait = ExtResource("2_mjgrk")
-starting_deck = ExtResource("3_q8i0r")
+character_theme = ExtResource("2_sry8m")
+starting_deck = ExtResource("6_a3vpm")
 max_mana = 4
-max_health = 1
+max_health = 20
 art = ExtResource("1_up0xj")
 knocked_out_art = ExtResource("2_bedyr")

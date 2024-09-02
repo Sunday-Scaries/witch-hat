@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh6okqmlmxoxi"]
+
+[ext_resource type="Script" path="res://Scenes/ui/card_menu_ui.gd" id="1_7ddoj"]
+[ext_resource type="Theme" uid="uid://crldvrn5qplqv" path="res://main_theme.tres" id="1_j2f6m"]
+[ext_resource type="Resource" uid="uid://cr0y1nkisheml" path="res://characters/warrior/cards/warrior_slash.tres" id="2_hb7en"]
+[ext_resource type="StyleBox" uid="uid://b8gom4rtedyft" path="res://Scenes/card_ui/card_base_stylebox.tres" id="3_l704q"]
+[ext_resource type="Texture2D" uid="uid://bfvi02kojsa00" path="res://art/tile_0103.png" id="4_mph1l"]
+
+[node name="CardMenuUI" type="CenterContainer"]
+custom_minimum_size = Vector2(40, 55)
+offset_right = 40.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
+script = ExtResource("1_7ddoj")
+card = ExtResource("2_hb7en")
+
+[node name="Visuals" type="Control" parent="."]
+custom_minimum_size = Vector2(40, 55)
+layout_mode = 2
+theme = ExtResource("1_j2f6m")
+
+[node name="Panel" type="Panel" parent="Visuals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_l704q")
+
+[node name="Cost" type="Label" parent="Visuals"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Visuals"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -10.0
+offset_right = 8.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_mph1l")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
+[connection signal="mouse_entered" from="Visuals" to="." method="_on_visuals_mouse_entered"]
+[connection signal="mouse_exited" from="Visuals" to="." method="_on_visuals_mouse_exited"]

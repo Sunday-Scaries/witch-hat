@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=3 format=3 uid="uid://des305hovqxvs"]
+
+[ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_7lvk2"]
+[ext_resource type="Resource" uid="uid://li62ketf30xw" path="res://characters/elian/cards/elian_sample_attack.tres" id="1_yr8rb"]
+
+[resource]
+script = ExtResource("1_7lvk2")
+cards = Array[Resource]([ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb")])

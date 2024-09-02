@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://b3531lssghcw1" path="res://art/quixley-square.png" id="1_g1qho"]
 [ext_resource type="Texture2D" uid="uid://bxfyp50shaqnr" path="res://art/quixley-portrait.png" id="2_25c8v"]
 [ext_resource type="Texture2D" uid="uid://etvbqvr82wa1" path="res://art/quixley-square-knocked-out.png" id="2_67w0a"]
-[ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_deu1o"]
+[ext_resource type="Resource" uid="uid://cuh2t2wjw3ktt" path="res://characters/quixley/quixley_starting_deck.tres" id="5_7cngc"]
 
 [resource]
 script = ExtResource("1_0d5cm")
 character_name = "Quixley"
 description = "Well-meaning and a leader amongst her people."
 portrait = ExtResource("2_25c8v")
-starting_deck = ExtResource("3_deu1o")
-max_mana = 4
+starting_deck = ExtResource("5_7cngc")
+max_mana = 20
 max_health = 1
 art = ExtResource("1_g1qho")
 knocked_out_art = ExtResource("2_67w0a")

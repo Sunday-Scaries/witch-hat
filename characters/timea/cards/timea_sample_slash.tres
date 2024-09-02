@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cr0y1nkisheml"]
+
+[ext_resource type="Texture2D" uid="uid://cqcal03735mv8" path="res://art/tile_0118.png" id="1_pxrt5"]
+[ext_resource type="Script" path="res://characters/timea/cards/timea_sample_slash.gd" id="2_n68qo"]
+[ext_resource type="AudioStream" uid="uid://dixklg6g4jnsq" path="res://art/slash.ogg" id="3_avs55"]
+[ext_resource type="StyleBox" uid="uid://buhsvjmgish6k" path="res://characters/timea/timea_theme.tres" id="4_v3sf7"]
+
+[resource]
+script = ExtResource("2_n68qo")
+id = "timea_sample_slash"
+type = 0
+target = 2
+cost = 2
+theme = ExtResource("4_v3sf7")
+icon = ExtResource("1_pxrt5")
+tooltip_text = "[center]Deal [color=\"ff0000\"]4[/color] damage to all enemies[/center]"
+sound = ExtResource("3_avs55")

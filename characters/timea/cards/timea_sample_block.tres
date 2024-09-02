@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bsl075v1svhfh"]
+
+[ext_resource type="Texture2D" uid="uid://oe7v35ii8vrs" path="res://art/tile_0102.png" id="1_8ikvl"]
+[ext_resource type="Script" path="res://characters/timea/cards/timea_sample_block.gd" id="2_ocr21"]
+[ext_resource type="AudioStream" uid="uid://df64e7qat73gs" path="res://art/block.ogg" id="3_memlo"]
+[ext_resource type="StyleBox" uid="uid://buhsvjmgish6k" path="res://characters/timea/timea_theme.tres" id="4_juphk"]
+
+[resource]
+script = ExtResource("2_ocr21")
+id = "timea_sample_block"
+type = 1
+target = 0
+cost = 1
+theme = ExtResource("4_juphk")
+icon = ExtResource("1_8ikvl")
+tooltip_text = "[center]Gain [color=\"0044ff\"]5[/color] block[/center]"
+sound = ExtResource("3_memlo")
