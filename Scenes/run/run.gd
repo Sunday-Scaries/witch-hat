@@ -104,7 +104,6 @@ func _setup_event_connections() -> void:
 	Events.map_exited.connect(_change_view.bind(_on_map_exited))
 	Events.shop_exited.connect(_show_map)
 	Events.treasure_room_exited.connect(_show_map)
-	Events.game_over.connect(_on_game_over)
 
 	# TODO remove debug buttons once done
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
