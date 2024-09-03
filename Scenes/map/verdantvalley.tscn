@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2vqqw4fhhrer"]
+
+[ext_resource type="Script" path="res://Scenes/map/verdantvalley.gd" id="1_ssn58"]
+[ext_resource type="Texture2D" uid="uid://fl0mttty00h1" path="res://art/world_map_assets/VerdantValleysInspo.jpg" id="1_xktbq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 105.0
+offset_top = 46.0
+offset_right = 206.0
+offset_bottom = 129.0
+pivot_offset = Vector2(50, 40)
+script = ExtResource("1_ssn58")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -22.0
+offset_right = 112.0
+offset_bottom = -5.0
+text = "World1"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 406.0
+offset_bottom = 337.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_xktbq")

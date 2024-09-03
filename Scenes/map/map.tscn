@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://crhxx81e0p4gg"]
+[gd_scene load_steps=2 format=3 uid="uid://crhxx81e0p4gg"]
 
 [ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_cqmfs"]
-[ext_resource type="Script" path="res://Scenes/map/generator.gd" id="2_6rrd3"]
 
 [node name="Map" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cqmfs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -18,7 +21,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.568627)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,16 +35,13 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 text = "Map"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 13)
-layout_mode = 2
-text = "Go Back"
-
-[node name="MapGenerator" type="Node2D" parent="."]
-script = ExtResource("2_6rrd3")
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Label"]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 14.0
+text = "Verdant Valleys"
