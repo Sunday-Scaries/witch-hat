@@ -10,6 +10,7 @@ const CARD_MENU_UI_SCENE := preload("res://scenes/ui/card_menu_ui.tscn")
 @onready var card_toolip_popup: CardTooltipPopup = %CardTooltipPopup
 @onready var back_button: Button = %BackButton
 
+
 func _ready() -> void:
 	back_button.pressed.connect(hide)
 
@@ -22,12 +23,14 @@ func _ready() -> void:
 	# card_pile = preload("res://characters/quixley/quixley_starting_deck.tres")
 	show_current_view("Deck")
 
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('ui_cancel'):
+	if event.is_action_pressed("ui_cancel"):
 		if card_toolip_popup.visible:
 			card_toolip_popup.hide_tooltip()
 		else:
 			hide()
+
 
 func show_current_view(new_title: String, randomized: bool = false) -> void:
 	for card: Node in cards.get_children():
@@ -36,6 +39,7 @@ func show_current_view(new_title: String, randomized: bool = false) -> void:
 	card_toolip_popup.hide_tooltip()
 	title.text = new_title
 	_update_view.call_deferred(randomized)
+
 
 func _update_view(randomized: bool) -> void:
 	if not card_pile:
@@ -50,5 +54,5 @@ func _update_view(randomized: bool) -> void:
 		cards.add_child(new_card)
 		new_card.card = card
 		new_card.tooltip_requested.connect(card_toolip_popup.show_tooltip)
-	
+
 	show()

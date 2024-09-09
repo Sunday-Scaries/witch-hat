@@ -9,7 +9,7 @@
 script = ExtResource("2_d88kd")
 id = "elian_sample_attack"
 type = 0
-target = 1
+target = 2
 cost = 1
 theme = ExtResource("3_33wh8")
 icon = ExtResource("1_tqpck")

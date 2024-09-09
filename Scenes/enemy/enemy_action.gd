@@ -1,7 +1,7 @@
 class_name EnemyAction
 extends Node
 
-enum Type {CONDITIONAL, CHANCE_BASED}
+enum Type { CONDITIONAL, CHANCE_BASED }
 
 @export var intent: Intent
 @export var sound: AudioStream

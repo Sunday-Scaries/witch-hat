@@ -1,10 +1,10 @@
 extends Node
 
 
-func play(audio: AudioStream, single=false) -> void:
+func play(audio: AudioStream, single = false) -> void:
 	if not audio:
 		return
-		
+
 	if single:
 		stop()
 
