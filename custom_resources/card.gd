@@ -70,17 +70,6 @@ func apply_effects(_targets: Array[Node]) -> void:
 
 
 # Function to filter the targets based on the card's allowed target type
-func is_valid_target(targted_item: Node) -> bool:
-	match target:
-		Target.SINGLE_CHARACTER:
-			return targted_item is Player
-		Target.SINGLE_ENEMY:
-			return targted_item is Enemy
-
-	return true
-
-
-# Function to filter the targets based on the card's allowed target type
 func _filter_targets_by_type(targets: Array[Node]) -> Array[Node]:
 	var valid_targets: Array[Node] = []
 	for targ in targets:

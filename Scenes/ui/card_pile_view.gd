@@ -20,7 +20,6 @@ func _ready() -> void:
 	card_toolip_popup.hide_tooltip()
 
 	await get_tree().create_timer(3.0).timeout
-	# card_pile = preload("res://characters/quixley/quixley_starting_deck.tres")
 	show_current_view("Deck")
 
 

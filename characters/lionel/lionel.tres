@@ -13,6 +13,6 @@ description = "Lionel is a TODO"
 portrait = ExtResource("2_7w2bg")
 theme = ExtResource("5_hn1l6")
 max_mana = 4
-max_health = 1
+max_health = 40
 art = ExtResource("1_6mvgs")
 knocked_out_art = ExtResource("2_3yoxg")
