@@ -59,5 +59,5 @@ func determine_blend_position(input_vector: Vector2) -> Vector2:
 	return blend_position
 
 
-func _process(delta):
+func _process(_delta):
 	camera.align()

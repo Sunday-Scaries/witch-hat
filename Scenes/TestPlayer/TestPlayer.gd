@@ -4,6 +4,10 @@ extends CharacterBody2D
 #const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
+@export var max_health := 5
+@export var speed := 460.0
+@export var drag_factor := 5.0
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #func _physics_process(delta):
@@ -44,10 +48,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #preload("death_02.wav"),
 #preload("death_03.wav"),
 #]
-
-@export var max_health := 5
-@export var speed := 460.0
-@export var drag_factor := 5.0
 
 #var health := max_health: set = set_health
 

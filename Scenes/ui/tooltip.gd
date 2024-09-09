@@ -3,11 +3,11 @@ extends PanelContainer
 
 @export var fade_seconds := 0.2
 
-@onready var tooltip_icon: TextureRect = %TooltipIcon
-@onready var tooltip_text_label: RichTextLabel = %TooltipText
-
 var tween: Tween
 var is_visible_now := false
+
+@onready var tooltip_icon: TextureRect = %TooltipIcon
+@onready var tooltip_text_label: RichTextLabel = %TooltipText
 
 
 func _ready() -> void:
