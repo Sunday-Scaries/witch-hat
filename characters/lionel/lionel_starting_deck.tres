@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=3 format=3 uid="uid://b8yt8bfodjbrh"]
+
+[ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_04eh0"]
+[ext_resource type="Resource" uid="uid://gy7d8hyt1vvq" path="res://characters/lionel/cards/lionel_sample_attack.tres" id="1_7n172"]
+
+[resource]
+script = ExtResource("1_04eh0")
+cards = Array[Resource]([ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172"), ExtResource("1_7n172")])

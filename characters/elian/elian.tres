@@ -4,15 +4,15 @@
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_nca3g"]
 [ext_resource type="Texture2D" uid="uid://bxwqtitj8cqn4" path="res://art/elian-portrait.png" id="2_2pmmu"]
 [ext_resource type="Texture2D" uid="uid://cve0b6sg51rl8" path="res://art/elian-square-knocked-out.png" id="2_sdtik"]
-[ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_77o8m"]
+[ext_resource type="StyleBox" uid="uid://ps7rvhq56pkj" path="res://characters/elian/elian_theme.tres" id="5_0a6fo"]
 
 [resource]
 script = ExtResource("1_nca3g")
 character_name = "Elian"
 description = "Elian is an assassin but has trouble accepting the morality of his profession."
 portrait = ExtResource("2_2pmmu")
-starting_deck = ExtResource("3_77o8m")
+theme = ExtResource("5_0a6fo")
 max_mana = 4
-max_health = 1
+max_health = 20
 art = ExtResource("1_aqtox")
 knocked_out_art = ExtResource("2_sdtik")

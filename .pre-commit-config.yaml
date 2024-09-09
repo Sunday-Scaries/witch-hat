@@ -1,0 +1,11 @@
+repos:
+  - repo: https://github.com/Scony/godot-gdscript-toolkit
+    rev: "4.3.1"
+    hooks:
+      - id: gdformat
+        name: Format GDScript files
+        args: ["--check"] # This will check for formatting issues
+        files: \.gd$
+      - id: gdlint
+        name: Lint GDScript files
+        files: \.gd$

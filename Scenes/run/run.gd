@@ -1,19 +1,19 @@
 class_name Run
 extends Node
 
-const MAIN_MENU_SCENE := preload ("res://scenes/ui/main_menu.tscn")
+const MAIN_MENU_SCENE := preload("res://scenes/ui/main_menu.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
-const BATTLE_SCENE := preload ("res://scenes/battle/battle.tscn")
-const BATTLE_REWARD_SCENE := preload ("res://scenes/battle_reward/battle_reward.tscn")
-const CAMPFIRE_SCENE := preload ("res://scenes/campfire/campfire.tscn")
-const SHOP_SCENE := preload ("res://scenes/shop/shop.tscn")
-const TREASURE_SCENE := preload ("res://scenes/treasure/treasure.tscn")
+const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
+const BATTLE_REWARD_SCENE := preload("res://scenes/battle_reward/battle_reward.tscn")
+const CAMPFIRE_SCENE := preload("res://scenes/campfire/campfire.tscn")
+const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
+const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 
 @export var run_startup: RunStartup
-@export var char1_stats: CharacterStats
-@export var char2_stats: CharacterStats
-@export var char3_stats: CharacterStats
-@export var char4_stats: CharacterStats
+@export var elian: CharacterStats
+@export var quixley: CharacterStats
+@export var timea: CharacterStats
+@export var lionel: CharacterStats
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Map = $Map
@@ -24,6 +24,7 @@ const TREASURE_SCENE := preload ("res://scenes/treasure/treasure.tscn")
 @onready var shop_button: Node = %ShopButton
 @onready var treasure_button: Node = %TreasureButton
 @onready var menu_button: Node = %MenuButton
+
 
 func _ready() -> void:
 	if not run_startup:
@@ -39,24 +40,29 @@ func _ready() -> void:
 		RunStartup.Type.CONTINUED_RUN:
 			print("TODO continue run load data")
 
+
 func _start_run() -> void:
 	_setup_event_connections()
 	print("TODO procedurally generate map")
 
+
 func _load_characters() -> void:
 	if len(run_startup.character_list) == 0:
-		# TODO maybe i can get rid of the char1_stats variables?
-		var new_stats1: CharacterStats = char1_stats.create_instance()
-		run_startup.character_list.append(new_stats1)
-		
-		var new_stats2: CharacterStats = char2_stats.create_instance()
-		run_startup.character_list.append(new_stats2)
-		
-		var new_stats3: CharacterStats = char3_stats.create_instance()
-		run_startup.character_list.append(new_stats3)
+		elian = preload("res://characters/elian/elian.tres")
+		quixley = preload("res://characters/quixley/quixley.tres")
+		timea = preload("res://characters/timea/timea.tres")
+		lionel = preload("res://characters/lionel/lionel.tres")
 
-		var new_stats4: CharacterStats = char4_stats.create_instance()
-		run_startup.character_list.append(new_stats4)
+		var ElianStartingDeck = preload("res://characters/elian/elian_starting_deck.tres")
+		var QuixleyStartingDeck = preload("res://characters/quixley/quixley_starting_deck.tres")
+		var TimeaStartingDeck = preload("res://characters/timea/timea_starting_deck.tres")
+		var LionelStartingDeck = preload("res://characters/lionel/lionel_starting_deck.tres")
+		run_startup.elian = elian.create_instance(ElianStartingDeck)
+		run_startup.quixley = quixley.create_instance(QuixleyStartingDeck)
+		run_startup.timea = timea.create_instance(TimeaStartingDeck)
+		run_startup.lionel = lionel.create_instance(LionelStartingDeck)
+		run_startup.update_character_list()
+
 
 func _change_view(scene: PackedScene) -> void:
 	if current_view.get_child_count() > 0:
@@ -72,6 +78,7 @@ func _change_view(scene: PackedScene) -> void:
 	else:
 		_show_buttons()
 
+
 func _hide_buttons() -> void:
 	battle_button.hide()
 	campfire_button.hide()
@@ -80,6 +87,7 @@ func _hide_buttons() -> void:
 	shop_button.hide()
 	treasure_button.hide()
 	menu_button.hide()
+
 
 func _show_buttons() -> void:
 	battle_button.show()
@@ -90,12 +98,14 @@ func _show_buttons() -> void:
 	treasure_button.show()
 	menu_button.show()
 
+
 func _show_map() -> void:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
-	
+
 	map.show_map()
 	_show_buttons()
+
 
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
@@ -114,8 +124,10 @@ func _setup_event_connections() -> void:
 	treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
 	menu_button.pressed.connect(_change_view.bind(MAIN_MENU_SCENE))
 
+
 func _on_map_exited() -> void:
 	print("TODO: from the MAP, change view based on room type")
+
 
 func _on_game_over() -> void:
 	get_tree().paused = false

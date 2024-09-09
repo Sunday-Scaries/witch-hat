@@ -4,15 +4,15 @@
 [ext_resource type="Script" path="res://custom_resources/character_stats.gd" id="1_evd68"]
 [ext_resource type="Texture2D" uid="uid://cnwbo6idnhmjd" path="res://art/lionel-square-knocked-out.png" id="2_3yoxg"]
 [ext_resource type="Texture2D" uid="uid://uatsx5sx1x7d" path="res://art/lionel-portrait.png" id="2_7w2bg"]
-[ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_k1b64"]
+[ext_resource type="StyleBox" uid="uid://cceulq8q7c32g" path="res://characters/lionel/lionel_theme.tres" id="5_hn1l6"]
 
 [resource]
 script = ExtResource("1_evd68")
 character_name = "Lionel"
 description = "Lionel is a TODO"
 portrait = ExtResource("2_7w2bg")
-starting_deck = ExtResource("3_k1b64")
+theme = ExtResource("5_hn1l6")
 max_mana = 4
-max_health = 1
+max_health = 40
 art = ExtResource("1_6mvgs")
 knocked_out_art = ExtResource("2_3yoxg")

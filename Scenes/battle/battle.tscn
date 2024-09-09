@@ -60,7 +60,7 @@ stats = ExtResource("5_1vggr")
 position = Vector2(222, 130)
 stats = ExtResource("8_mgkvq")
 
-[node name="Player" parent="." instance=ExtResource("3_18sgq")]
+[node name="Player1" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(42, 259)
 stats = ExtResource("10_2i5e7")
 

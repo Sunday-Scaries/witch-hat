@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cojntm2y0tc7b" path="res://art/timea-square.png" id="1_up0xj"]
 [ext_resource type="Texture2D" uid="uid://bhlunmt1m2rqw" path="res://art/timea-square-knocked-out.png" id="2_bedyr"]
 [ext_resource type="Texture2D" uid="uid://b78t6wiyxic28" path="res://art/timea-portrait.png" id="2_mjgrk"]
-[ext_resource type="Resource" uid="uid://b1u0251nhbcf5" path="res://characters/warrior/warrior_starting_deck.tres" id="3_q8i0r"]
+[ext_resource type="StyleBox" uid="uid://buhsvjmgish6k" path="res://characters/timea/timea_theme.tres" id="5_vtomd"]
 
 [resource]
 script = ExtResource("1_nrc4t")
 character_name = "Timea"
 description = "Time witch! TODO"
 portrait = ExtResource("2_mjgrk")
-starting_deck = ExtResource("3_q8i0r")
+theme = ExtResource("5_vtomd")
 max_mana = 4
 max_health = 1
 art = ExtResource("1_up0xj")
