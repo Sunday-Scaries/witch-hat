@@ -1,6 +1,7 @@
 extends Control
 
 @export var run_startup: RunStartup
+
 @onready var continue_button: Button = %Continue
 
 

@@ -53,14 +53,14 @@ func _load_characters() -> void:
 		timea = preload("res://characters/timea/timea.tres")
 		lionel = preload("res://characters/lionel/lionel.tres")
 
-		var elian_starting_deck = preload("res://characters/elian/elian_starting_deck.tres")
-		var quixley_starting_deck = preload("res://characters/quixley/quixley_starting_deck.tres")
-		var timea_starting_deck = preload("res://characters/timea/timea_starting_deck.tres")
-		var lionel_starting_deck = preload("res://characters/lionel/lionel_starting_deck.tres")
-		run_startup.elian = elian.create_instance(elian_starting_deck)
-		run_startup.quixley = quixley.create_instance(quixley_starting_deck)
-		run_startup.timea = timea.create_instance(timea_starting_deck)
-		run_startup.lionel = lionel.create_instance(lionel_starting_deck)
+		var ElianStartingDeck = preload("res://characters/elian/elian_starting_deck.tres")
+		var QuixleyStartingDeck = preload("res://characters/quixley/quixley_starting_deck.tres")
+		var TimeaStartingDeck = preload("res://characters/timea/timea_starting_deck.tres")
+		var LionelStartingDeck = preload("res://characters/lionel/lionel_starting_deck.tres")
+		run_startup.elian = elian.create_instance(ElianStartingDeck)
+		run_startup.quixley = quixley.create_instance(QuixleyStartingDeck)
+		run_startup.timea = timea.create_instance(TimeaStartingDeck)
+		run_startup.lionel = lionel.create_instance(LionelStartingDeck)
 		run_startup.update_character_list()
 
 
