@@ -7,3 +7,9 @@ In The Witch Wants Her Hat Back, players are thrust into the captivating world o
 This love letter to RPGs, with a dash of deck-building, takes you through hordes of enemies in highly-strategic encounters and beautiful 2D maps while uncovering the true source of Quixley's mysterious new powers. Will Quixley and her family of her newfound friends save the world, or are they doomed to fall at the non-existent hands of a sentient, fashionable, and decidedly evil hat bent on destruction and doubt?
 
 WWHHB is developed using Godot.
+
+# Local development
+
+This repo is set up to use [pre-commit](https://pre-commit.com/) to lint your gd script files before pushing your code to your branch. If you don't see linters runninng when you run `git commit` then you should make sure it's installed. Please run `./scripts/install_dev_tools.sh` to install pre-commit. NOTE this is not tested on windows.
+
+In vscode you can install the [gdtoolkit extension](https://marketplace.visualstudio.com/items?itemName=EddieDover.gdscript-formatter-linter) and set it up as your [formatter](https://code.visualstudio.com/docs/python/formatting) for gd script files.
