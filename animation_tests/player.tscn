@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neslh"]
 size = Vector2(18.5625, 23.5)
 
-[sub_resource type="Animation" id="Animation_vreip"]
+[sub_resource type="Animation" id="Animation_wnria"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_bnllo"]
+[sub_resource type="Animation" id="Animation_vmhlj"]
 resource_name = "idle_down"
 loop_mode = 1
 tracks/0/type = "value"
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_qx2o2"]
+[sub_resource type="Animation" id="Animation_ag84a"]
 resource_name = "idle_left"
 loop_mode = 1
 tracks/0/type = "value"
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "values": [18]
 }
 
-[sub_resource type="Animation" id="Animation_aypar"]
+[sub_resource type="Animation" id="Animation_e2pui"]
 resource_name = "idle_right"
 loop_mode = 1
 tracks/0/type = "value"
@@ -70,7 +70,7 @@ tracks/0/keys = {
 "values": [9]
 }
 
-[sub_resource type="Animation" id="Animation_cfpf3"]
+[sub_resource type="Animation" id="Animation_6sjvd"]
 resource_name = "idle_up"
 length = 0.8
 loop_mode = 1
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [28]
 }
 
-[sub_resource type="Animation" id="Animation_uughb"]
+[sub_resource type="Animation" id="Animation_ij1a2"]
 resource_name = "walk_down"
 length = 0.8
 loop_mode = 1
@@ -104,7 +104,7 @@ tracks/0/keys = {
 "values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 7, 8]
 }
 
-[sub_resource type="Animation" id="Animation_k5fnl"]
+[sub_resource type="Animation" id="Animation_x2j6r"]
 resource_name = "walk_left"
 length = 0.8
 loop_mode = 1
@@ -121,7 +121,7 @@ tracks/0/keys = {
 "values": [18, 19, 20, 21, 22, 23, 24, 25, 26]
 }
 
-[sub_resource type="Animation" id="Animation_eesow"]
+[sub_resource type="Animation" id="Animation_wjvhv"]
 resource_name = "walk_right"
 length = 0.8
 loop_mode = 1
@@ -138,7 +138,7 @@ tracks/0/keys = {
 "values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
-[sub_resource type="Animation" id="Animation_75eia"]
+[sub_resource type="Animation" id="Animation_jj40d"]
 resource_name = "walk_up"
 length = 0.8
 loop_mode = 1
@@ -155,17 +155,17 @@ tracks/0/keys = {
 "values": [27, 28, 29, 30, 31, 32, 33, 34, 35, 35]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnvlg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1llu4"]
 _data = {
-"RESET": SubResource("Animation_vreip"),
-"idle_down": SubResource("Animation_bnllo"),
-"idle_left": SubResource("Animation_qx2o2"),
-"idle_right": SubResource("Animation_aypar"),
-"idle_up": SubResource("Animation_cfpf3"),
-"walk_down": SubResource("Animation_uughb"),
-"walk_left": SubResource("Animation_k5fnl"),
-"walk_right": SubResource("Animation_eesow"),
-"walk_up": SubResource("Animation_75eia")
+"RESET": SubResource("Animation_wnria"),
+"idle_down": SubResource("Animation_vmhlj"),
+"idle_left": SubResource("Animation_ag84a"),
+"idle_right": SubResource("Animation_e2pui"),
+"idle_up": SubResource("Animation_6sjvd"),
+"walk_down": SubResource("Animation_ij1a2"),
+"walk_left": SubResource("Animation_x2j6r"),
+"walk_right": SubResource("Animation_wjvhv"),
+"walk_up": SubResource("Animation_jj40d")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_etlmq"]
@@ -240,7 +240,7 @@ shape = SubResource("RectangleShape2D_neslh")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qnvlg")
+"": SubResource("AnimationLibrary_1llu4")
 }
 tree_root = SubResource("AnimationNodeStateMachine_x7chc")
 advance_expression_base_node = NodePath("../QuixSprite")
@@ -250,5 +250,5 @@ parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qnvlg")
+"": SubResource("AnimationLibrary_1llu4")
 }
