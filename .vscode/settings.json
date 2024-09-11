@@ -1,3 +1,5 @@
 {
-  "godotTools.editorPath.godot4": "/Applications/Godot.app/Contents/MacOS/Godot"
+  "godotTools.editorPath.godot4": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "editor.defaultFormatter": "EddieDover.gdscript-formatter-linter",
+  "editor.formatOnSave": true
 }
