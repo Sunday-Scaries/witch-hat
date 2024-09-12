@@ -86,6 +86,7 @@ func get_random_starting_points_buggy() -> Array[int]:
 			if not y_coordinates.has(starting_point):
 				unique_points += 1
 			y_coordinates.append(starting_point)
+#I literally don't see a stopping point. Interesting.
 	return y_coordinates
 
 func get_random_starting_points_fixed() -> Array[int]:
