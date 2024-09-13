@@ -47,6 +47,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
 
+	print("input fired")
 	room.selected = true
 	animation_player.play("select")
 

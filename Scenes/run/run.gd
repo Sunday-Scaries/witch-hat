@@ -43,7 +43,9 @@ func _ready() -> void:
 
 func _start_run() -> void:
 	_setup_event_connections()
-	print("TODO procedurally generate map")
+
+	map.generate_new_map()
+	map.unlock_floor(0)
 
 
 func _load_characters() -> void:
@@ -104,6 +106,7 @@ func _show_map() -> void:
 		current_view.get_child(0).queue_free()
 
 	map.show_map()
+	map.unlock_next_rooms()
 	_show_buttons()
 
 
@@ -111,7 +114,7 @@ func _setup_event_connections() -> void:
 	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	Events.battle_reward_exited.connect(_show_map)
 	Events.campfire_exited.connect(_show_map)
-	Events.map_exited.connect(_change_view.bind(_on_map_exited))
+	Events.map_exited.connect(_on_map_exited)
 	Events.shop_exited.connect(_show_map)
 	Events.treasure_room_exited.connect(_show_map)
 
@@ -125,8 +128,18 @@ func _setup_event_connections() -> void:
 	menu_button.pressed.connect(_change_view.bind(MAIN_MENU_SCENE))
 
 
-func _on_map_exited() -> void:
-	print("TODO: from the MAP, change view based on room type")
+func _on_map_exited(room: Room) -> void:
+	match room.type:
+		Room.Type.MONSTER:
+			_change_view(BATTLE_SCENE)
+		Room.Type.TREASURE:
+			_change_view(TREASURE_SCENE)
+		Room.Type.CAMPFIRE:
+			_change_view(CAMPFIRE_SCENE)
+		Room.Type.SHOP:
+			_change_view(SHOP_SCENE)
+		Room.Type.BOSS:
+			_change_view(BATTLE_SCENE)
 
 
 func _on_game_over() -> void:

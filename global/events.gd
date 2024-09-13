@@ -26,7 +26,7 @@ signal battle_won
 signal game_over
 
 # map related events
-signal map_exited
+signal map_exited(room: Room)
 
 # shop related events
 signal shop_exited
