@@ -9,10 +9,6 @@ var timer: Timer
 var iteration_count: int = 0
 var max_iterations: int = 500  #How many to avoid infinite loop
 
-@onready fuuu : string = ""
-
-# comment
-
 var fixed_points: Array[int] = []  # Not necessary but AI says good practice
 var fixed_done: bool = false  # Finish line for both functions
 
