@@ -23,10 +23,6 @@ var random_room_type_total_weight := 0
 var map_data: Array[Array]
 
 
-func _ready() -> void:
-	generate_map()
-
-
 #Logic for generating map
 func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
@@ -40,13 +36,6 @@ func generate_map() -> Array[Array]:
 	_setup_boss_room()
 	_setup_random_room_weights()
 	_setup_room_types()
-
-	var i := 0
-	for f in map_data:
-		print("floor %s" % i)
-		var used_rooms = f.filter(func(room: Room): return room.next_rooms.size() > 0)
-		print(used_rooms)
-		i += 1
 
 	return map_data
 
@@ -147,8 +136,10 @@ func _setup_boss_room() -> void:
 
 func _setup_random_room_weights() -> void:
 	random_room_type_weights[Room.Type.MONSTER] = MONSTER_ROOM_WEIGHT
-	random_room_type_weights[Room.Type.CAMPFIRE] = CAMPFIRE_ROOM_WEIGHT
-	random_room_type_weights[Room.Type.SHOP] = SHOP_ROOM_WEIGHT
+	random_room_type_weights[Room.Type.CAMPFIRE] = CAMPFIRE_ROOM_WEIGHT + MONSTER_ROOM_WEIGHT
+	random_room_type_weights[Room.Type.SHOP] = (
+		SHOP_ROOM_WEIGHT + MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT
+	)
 
 	random_room_type_total_weight = random_room_type_weights[Room.Type.SHOP]
 
