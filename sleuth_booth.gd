@@ -12,11 +12,12 @@ var max_iterations: int = 500  #How many to avoid infinite loop
 var fixed_points: Array[int] = []  # Not necessary but AI says good practice
 var fixed_done: bool = false  # Finish line for both functions
 
+
 func _ready():
 	# Create sprites
 	sprite_buggy = create_sprite(Vector2(100, 100), Color.RED)
 	sprite_fixed = create_sprite(Vector2(300, 100), Color.GREEN)
-	
+
 	# Create a timer
 	timer = Timer.new()
 	timer.wait_time = 0.1  # Update every 0.1 seconds
@@ -29,6 +30,7 @@ func _ready():
 	add_label("FixedLabel", Vector2(210, 10), "Fixed Version")
 	add_label("IterationLabel", Vector2(10, 40), "Iterations: 0")
 
+
 func create_sprite(pos: Vector2, color: Color) -> Sprite2D:
 	var sprite = Sprite2D.new()
 	sprite.texture = preload("res://icon.png")  # Use Godot's default icon
@@ -37,12 +39,14 @@ func create_sprite(pos: Vector2, color: Color) -> Sprite2D:
 	add_child(sprite)
 	return sprite
 
+
 func add_label(label_name: String, pos: Vector2, text: String):
 	var label = Label.new()
 	label.name = label_name
 	label.position = pos
 	label.text = text
 	add_child(label)
+
 
 func _on_Timer_timeout():
 	if iteration_count >= max_iterations:
@@ -51,29 +55,30 @@ func _on_Timer_timeout():
 		return
 
 	var points_buggy = get_random_starting_points_buggy()
-	
+
 	if not fixed_done:
 		fixed_points = get_random_starting_points_fixed()
 		if fixed_points.size() >= 2:
 			fixed_done = true
-	
+
 	iteration_count += 1
-	
+
 	# Update sprite positions
 	if points_buggy.size() > 0:
 		sprite_buggy.position.y = points_buggy[0]
 	if fixed_points.size() > 0:
 		sprite_fixed.position.y = fixed_points[0]
-	
+
 	# Update iteration label
 	get_node("IterationLabel").text = "Iterations: " + str(iteration_count)
-	
+
 	# Change sprite colors to visualize updates
 	sprite_buggy.modulate = Color(1, 0, 0, randf())  # Red with random alpha
 	if not fixed_done:
 		sprite_fixed.modulate = Color(0, 0, .75, randf())  # Blue with random alpha
 	else:
 		sprite_fixed.modulate = Color.SKY_BLUE  # Solid green when done
+
 
 func get_random_starting_points_buggy() -> Array[int]:
 	var y_coordinates: Array[int] = []
@@ -88,6 +93,7 @@ func get_random_starting_points_buggy() -> Array[int]:
 			y_coordinates.append(starting_point)
 #I literally don't see a stopping point. Interesting.
 	return y_coordinates
+
 
 func get_random_starting_points_fixed() -> Array[int]:
 	var y_coordinates: Array[int] = []
