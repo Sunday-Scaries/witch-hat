@@ -13,6 +13,6 @@ description = "Time witch! TODO"
 portrait = ExtResource("2_mjgrk")
 theme = ExtResource("5_vtomd")
 max_mana = 4
-max_health = 1
+max_health = 20
 art = ExtResource("1_up0xj")
 knocked_out_art = ExtResource("2_bedyr")
