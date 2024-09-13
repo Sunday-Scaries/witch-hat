@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://wy5p780ehy2" path="res://audio/music/BoFIIIDemoRoom.mp3" id="3_4mh8m"]
 [ext_resource type="Texture2D" uid="uid://doup2218xaqav" path="res://sample_assets/rpg_tilesheet/RPGpack_sheet.png" id="4_35sar"]
 [ext_resource type="Texture2D" uid="uid://d007n5sscvumv" path="res://art/tile_0090.png" id="5_fnkf3"]
+[ext_resource type="Texture2D" uid="uid://isan6btj7dwy" path="res://art/tile_0091.png" id="6_4v4h0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0chxq"]
 size = Vector2(18.5625, 23.5)
@@ -1269,3 +1270,7 @@ layer_0/tile_data = PackedInt32Array(524276, 1245184, 8, 589812, 1245184, 8, 655
 [node name="Tile0090" type="Sprite2D" parent="."]
 position = Vector2(-189, -135)
 texture = ExtResource("5_fnkf3")
+
+[node name="Tile0091" type="Sprite2D" parent="."]
+position = Vector2(-471, -266)
+texture = ExtResource("6_4v4h0")
