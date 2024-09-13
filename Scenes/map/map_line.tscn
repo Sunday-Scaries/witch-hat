@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bryanjxbx11wy"]
+
+[ext_resource type="Texture2D" uid="uid://hulu6vkbf8tp" path="res://art/line.png" id="1_4e50b"]
+
+[node name="MapLine" type="Line2D"]
+texture_repeat = 2
+position = Vector2(0, 2)
+texture = ExtResource("1_4e50b")
+texture_mode = 1
