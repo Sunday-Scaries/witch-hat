@@ -14,7 +14,7 @@ var camera_edge_y: float
 @onready var lines: Node2D = %Lines
 @onready var rooms: Node2D = %Rooms
 @onready var visuals: Node2D = $Visuals
-@onready var camera_2d: Camera2D = $Camera2D
+@onready var camera_2d: Camera2D = $Player/Camera2D
 
 
 func _ready() -> void:
@@ -24,15 +24,15 @@ func _ready() -> void:
 	unlock_floor(0)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("scroll_up"):
-		print("up")
-		camera_2d.position.y -= SCROLL_SPEED
-	elif event.is_action_pressed("scroll_down"):
-		print("down")
-		camera_2d.position.y += SCROLL_SPEED
+# func _input(event: InputEvent) -> void:
+# 	if event.is_action_pressed("scroll_up"):
+# 		print("up")
+# 		camera_2d.position.y -= SCROLL_SPEED
+# 	elif event.is_action_pressed("scroll_down"):
+# 		print("down")
+# 		camera_2d.position.y += SCROLL_SPEED
 
-	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
+# 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
 
 func generate_new_map() -> void:

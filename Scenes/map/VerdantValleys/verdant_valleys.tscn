@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://d32arnspekatr"]
+[gd_scene load_steps=60 format=3 uid="uid://d32arnspekatr"]
 
 [ext_resource type="PackedScene" uid="uid://rmu3sf8th8ti" path="res://animation_tests/player.tscn" id="1_negss"]
 [ext_resource type="Texture2D" uid="uid://mcxvp7fv3poy" path="res://art/world_map_assets/VerdantValleysDraft02.png" id="2_x4mok"]
