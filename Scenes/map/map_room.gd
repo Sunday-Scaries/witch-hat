@@ -47,7 +47,6 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
 
-	print("input fired")
 	room.selected = true
 	animation_player.play("select")
 
@@ -55,3 +54,17 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 # called by the AnimationPlayer when the select animation finishes
 func _on_map_room_selected() -> void:
 	selected.emit(room)
+
+
+func enter_room() -> void:
+	room.selected = true
+	animation_player.play("select")
+
+
+func _on_body_entered(_body: Node2D):
+	if available and not room.selected:
+		Events.room_enter_requested.emit(self)
+
+
+func _on_body_exited(_body: Node2D):
+	Events.room_enter_requested.emit(null)

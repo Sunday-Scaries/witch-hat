@@ -27,6 +27,7 @@ signal game_over
 
 # map related events
 signal map_exited(room: Room)
+signal room_enter_requested(room: MapRoom)
 
 # shop related events
 signal shop_exited
