@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crhxx81e0p4gg"]
+[gd_scene load_steps=11 format=3 uid="uid://crhxx81e0p4gg"]
 
 [ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_cqmfs"]
 [ext_resource type="Script" path="res://Scenes/map/generator.gd" id="2_oiu0k"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cy4nc0tck7wl2" path="res://art/verdant-valley-2.webp" id="3_wv5kl"]
 [ext_resource type="PackedScene" uid="uid://ckqfkj32u0vkk" path="res://Scenes/TestPlayer/Player.tscn" id="4_ap0yl"]
 [ext_resource type="PackedScene" uid="uid://xb1hb41aqwrn" path="res://Scenes/ui/level_select_panel.tscn" id="6_nk7jn"]
-[ext_resource type="Script" path="res://Scenes/ui/level_select_panel.gd" id="7_heq4d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wwul"]
 texture = ExtResource("3_j5ivq")
@@ -24685,4 +24684,3 @@ drag_vertical_offset = -0.1
 
 [node name="LevelSelectPanel" parent="Player/Camera2D/CanvasLayer" instance=ExtResource("6_nk7jn")]
 visible = false
-script = ExtResource("7_heq4d")
