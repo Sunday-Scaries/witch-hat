@@ -66,7 +66,7 @@ func _load_characters() -> void:
 		run_startup.update_character_list()
 
 
-func _change_view(scene: PackedScene) -> void:
+func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
@@ -79,6 +79,8 @@ func _change_view(scene: PackedScene) -> void:
 		_hide_buttons()
 	else:
 		_show_buttons()
+
+	return new_view
 
 
 func _hide_buttons() -> void:
@@ -128,14 +130,27 @@ func _setup_event_connections() -> void:
 	menu_button.pressed.connect(_change_view.bind(MAIN_MENU_SCENE))
 
 
+func _on_battle_room_entered() -> void:
+	_change_view(BATTLE_SCENE)
+	# var battle_scene: Battle = change_view(BATTLE_SCENE) as Battle
+	# TODO find where he does this
+	# battle_scene.
+
+
+func _on_campfire_entered() -> void:
+	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
+	# TODO fix for multiple charcters
+	campfire.char_stats = null
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
-			_change_view(BATTLE_SCENE)
+			_on_battle_room_entered()
 		Room.Type.TREASURE:
 			_change_view(TREASURE_SCENE)
 		Room.Type.CAMPFIRE:
-			_change_view(CAMPFIRE_SCENE)
+			_on_campfire_entered()
 		Room.Type.SHOP:
 			_change_view(SHOP_SCENE)
 		Room.Type.BOSS:

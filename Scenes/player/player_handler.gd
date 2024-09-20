@@ -65,10 +65,10 @@ func draw_cards(amount: int) -> void:
 
 
 func discard_cards() -> void:
-	var tween := create_tween()
 	if len(hand.get_children()) == 0:
 		Events.player_hand_discarded.emit()
 
+	var tween := create_tween()
 	for card_ui: CardUI in hand.get_children():
 		tween.tween_callback(discard.add_card.bind(card_ui.card))
 		tween.tween_callback(hand.discard_card.bind(card_ui))
