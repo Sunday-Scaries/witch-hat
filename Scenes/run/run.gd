@@ -5,7 +5,7 @@ const MAIN_MENU_SCENE := preload("res://scenes/ui/main_menu.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE := preload("res://scenes/battle_reward/battle_reward.tscn")
-const CAMPFIRE_SCENE := preload("res://scenes/campfire/campfire.tscn")
+const RIVERS_OF_REFLECTION_SCENE := preload("res://scenes/campfire/rivers_of_reflection.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 
@@ -115,14 +115,14 @@ func _show_map() -> void:
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	Events.battle_reward_exited.connect(_show_map)
-	Events.campfire_exited.connect(_show_map)
+	Events.rivers_of_reflection_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
 	Events.shop_exited.connect(_show_map)
 	Events.treasure_room_exited.connect(_show_map)
 
 	# TODO remove debug buttons once done
 	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
-	campfire_button.pressed.connect(_change_view.bind(CAMPFIRE_SCENE))
+	campfire_button.pressed.connect(_change_view.bind(RIVERS_OF_REFLECTION_SCENE))
 	map_button.pressed.connect(_show_map)
 	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
@@ -138,7 +138,7 @@ func _on_battle_room_entered() -> void:
 
 
 func _on_campfire_entered() -> void:
-	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
+	var campfire := _change_view(RIVERS_OF_REFLECTION_SCENE) as RiversOfReflection
 	campfire.char_stats_list = run_startup.character_list
 
 
@@ -148,7 +148,7 @@ func _on_map_exited(room: Room) -> void:
 			_on_battle_room_entered()
 		Room.Type.TREASURE:
 			_change_view(TREASURE_SCENE)
-		Room.Type.CAMPFIRE:
+		Room.Type.RIVERS_OF_REFLECTION:
 			_on_campfire_entered()
 		Room.Type.SHOP:
 			_change_view(SHOP_SCENE)

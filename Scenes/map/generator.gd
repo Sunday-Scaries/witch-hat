@@ -12,10 +12,10 @@ const PATHS := 6
 #For a dungeon, "weight" of chance
 const MONSTER_ROOM_WEIGHT := 10.0
 const SHOP_ROOM_WEIGHT := 2.5
-const CAMPFIRE_ROOM_WEIGHT := 4.0
+const RIVERS_OF_REFLECTION_ROOM_WEIGHT := 4.0
 
 var random_room_type_weights = {
-	Room.Type.MONSTER: 0.0, Room.Type.CAMPFIRE: 0.0, Room.Type.SHOP: 0.0
+	Room.Type.MONSTER: 0.0, Room.Type.RIVERS_OF_REFLECTION: 0.0, Room.Type.SHOP: 0.0
 }
 
 #Matrix used for looping through map data to boss fight (14,3 could be the boss)
@@ -136,9 +136,11 @@ func _setup_boss_room() -> void:
 
 func _setup_random_room_weights() -> void:
 	random_room_type_weights[Room.Type.MONSTER] = MONSTER_ROOM_WEIGHT
-	random_room_type_weights[Room.Type.CAMPFIRE] = CAMPFIRE_ROOM_WEIGHT + MONSTER_ROOM_WEIGHT
+	random_room_type_weights[Room.Type.RIVERS_OF_REFLECTION] = (
+		RIVERS_OF_REFLECTION_ROOM_WEIGHT + MONSTER_ROOM_WEIGHT
+	)
 	random_room_type_weights[Room.Type.SHOP] = (
-		SHOP_ROOM_WEIGHT + MONSTER_ROOM_WEIGHT + CAMPFIRE_ROOM_WEIGHT
+		SHOP_ROOM_WEIGHT + MONSTER_ROOM_WEIGHT + RIVERS_OF_REFLECTION_ROOM_WEIGHT
 	)
 
 	random_room_type_total_weight = random_room_type_weights[Room.Type.SHOP]
@@ -152,7 +154,7 @@ func _setup_room_types() -> void:
 	# TODO remove this row after debugging done
 	for room: Room in map_data[1]:
 		if room.next_rooms.size() > 0:
-			room.type = Room.Type.CAMPFIRE
+			room.type = Room.Type.RIVERS_OF_REFLECTION
 
 	# 9th floor is always a treasure
 	for room: Room in map_data[8]:
@@ -162,7 +164,7 @@ func _setup_room_types() -> void:
 	# last floor before the boss is always a campfire
 	for room: Room in map_data[13]:
 		if room.next_rooms.size() > 0:
-			room.type = Room.Type.CAMPFIRE
+			room.type = Room.Type.RIVERS_OF_REFLECTION
 
 	for current_floor in map_data:
 		for room: Room in current_floor:
@@ -182,8 +184,10 @@ func _set_room_randomly(room_to_set: Room) -> void:
 	while campfire_below_4 or consecutive_campfire or consecutive_shop or campfire_on_13:
 		type_candidate = _get_random_room_type_by_weight()
 
-		var is_campfire := type_candidate == Room.Type.CAMPFIRE
-		var has_campfire_parent := _room_has_parent_of_type(room_to_set, Room.Type.CAMPFIRE)
+		var is_campfire := type_candidate == Room.Type.RIVERS_OF_REFLECTION
+		var has_campfire_parent := _room_has_parent_of_type(
+			room_to_set, Room.Type.RIVERS_OF_REFLECTION
+		)
 		var is_shop := type_candidate == Room.Type.SHOP
 		var has_shop_parent := _room_has_parent_of_type(room_to_set, Room.Type.SHOP)
 
