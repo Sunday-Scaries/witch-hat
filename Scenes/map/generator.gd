@@ -149,6 +149,10 @@ func _setup_room_types() -> void:
 	for room: Room in map_data[0]:
 		if room.next_rooms.size() > 0:
 			room.type = Room.Type.MONSTER
+	# TODO remove this row after debugging done
+	for room: Room in map_data[1]:
+		if room.next_rooms.size() > 0:
+			room.type = Room.Type.CAMPFIRE
 
 	# 9th floor is always a treasure
 	for room: Room in map_data[8]:

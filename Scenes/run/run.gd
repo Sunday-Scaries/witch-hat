@@ -139,8 +139,7 @@ func _on_battle_room_entered() -> void:
 
 func _on_campfire_entered() -> void:
 	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
-	# TODO fix for multiple charcters
-	campfire.char_stats = null
+	campfire.char_stats_list = run_startup.character_list
 
 
 func _on_map_exited(room: Room) -> void:

@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpvwuco60cbsu"]
+[gd_scene load_steps=15 format=3 uid="uid://dpvwuco60cbsu"]
 
 [ext_resource type="Script" path="res://Scenes/campfire/campfire.gd" id="1_kq6x0"]
 [ext_resource type="Texture2D" uid="uid://hulu6vkbf8tp" path="res://art/line.png" id="2_glf6j"]
-[ext_resource type="Resource" uid="uid://b62cx4x16x14l" path="res://characters/quixley/quixley.tres" id="2_jvt1o"]
 
 [sub_resource type="Gradient" id="Gradient_vggtc"]
 colors = PackedColorArray(0, 0, 0, 1, 0.258824, 0.145098, 0.133333, 1)
@@ -134,7 +133,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kq6x0")
-char_stats = ExtResource("2_jvt1o")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = 0

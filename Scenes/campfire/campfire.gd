@@ -1,13 +1,17 @@
 class_name Campfire
 extends Control
 
-@export var char_stats: CharacterStats
+@export var char_stats_list: Array[CharacterStats]
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _on_rest_button_pressed() -> void:
-	char_stats.heal(ceili(char_stats.max_health * 0.3))
+	for character in char_stats_list:
+		print(character)
+		print(character.health)
+		character.heal(ceili(character.max_health * 0.3))
+		print(character.health)
 	animation_player.play("fade_out")
 
 
