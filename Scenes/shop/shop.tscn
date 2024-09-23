@@ -1,40 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgthw3ncknr4e"]
+[gd_scene load_steps=3 format=3 uid="uid://cgthw3ncknr4e"]
 
 [ext_resource type="Script" path="res://Scenes/shop/shop.gd" id="1_cw15r"]
+[ext_resource type="Texture2D" uid="uid://byb8ysspjwxr4" path="res://custom_resources/JuniperShop.jpeg" id="2_lmrb6"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_cw15r")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.568627)
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
+anchors_preset = -1
+anchor_left = 0.0716667
+anchor_top = 0.45858
+anchor_right = 0.175
+anchor_bottom = 0.547337
 grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -45,6 +37,16 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 13)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = "Go Back"
+
+[node name="Background Layer" type="CanvasLayer" parent="."]
+
+[node name="JuniperShop" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(371.418, 223)
+scale = Vector2(0.448082, 0.433441)
+texture = ExtResource("2_lmrb6")
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
