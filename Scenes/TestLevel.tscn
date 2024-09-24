@@ -882,6 +882,6 @@ layer_0/tile_data = PackedInt32Array(720918, 65536, 10, 786454, 65536, 11, 32770
 
 [node name="Shadows" type="Polygon2D" parent="."]
 material = SubResource("ShaderMaterial_gibht")
-position = Vector2(-614, -314)
+position = Vector2(-818, -378)
 scale = Vector2(5.13036, 6.0994)
 polygon = PackedVector2Array(512, -46, -92, -42, -94, 284, 510, 286)

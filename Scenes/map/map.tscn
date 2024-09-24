@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crhxx81e0p4gg"]
+[gd_scene load_steps=10 format=3 uid="uid://crhxx81e0p4gg"]
 
 [ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_cqmfs"]
 [ext_resource type="Script" path="res://Scenes/map/generator.gd" id="2_oiu0k"]
@@ -413,6 +413,14 @@ tile_size = Vector2i(90, 77)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_m8xaj")
 
+[sub_resource type="Animation" id="Animation_te8ow"]
+resource_name = "test"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hg2cg"]
+_data = {
+"test": SubResource("Animation_te8ow")
+}
+
 [node name="Map" type="Node2D"]
 script = ExtResource("1_cqmfs")
 
@@ -448,3 +456,8 @@ drag_vertical_offset = -0.1
 
 [node name="LevelSelectPanel" parent="Player/Camera2D/CanvasLayer" instance=ExtResource("6_nk7jn")]
 visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hg2cg")
+}

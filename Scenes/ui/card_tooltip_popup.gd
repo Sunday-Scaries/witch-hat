@@ -13,7 +13,7 @@ func _ready() -> void:
 
 	hide_tooltip()
 	await get_tree().create_timer(3.0).timeout
-	show_tooltip(preload("res://characters/warrior/cards/warrior_slash.tres"))
+	show_tooltip(preload("res://characters/timea/cards/timea_sample_slash.tres"))
 
 
 func show_tooltip(card: Card) -> void:

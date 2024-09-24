@@ -32,8 +32,8 @@ signal room_enter_requested(room: MapRoom)
 # shop related events
 signal shop_exited
 
-# campfire related events
-signal campfire_exited
+# rivers of reflection related events
+signal rivers_of_reflection_exited
 
 # battle reward related events
 signal battle_reward_exited

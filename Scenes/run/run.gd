@@ -5,7 +5,7 @@ const MAIN_MENU_SCENE := preload("res://scenes/ui/main_menu.tscn")
 const MAIN_MENU_PATH := "res://scenes/ui/main_menu.tscn"
 const BATTLE_SCENE := preload("res://scenes/battle/battle.tscn")
 const BATTLE_REWARD_SCENE := preload("res://scenes/battle_reward/battle_reward.tscn")
-const CAMPFIRE_SCENE := preload("res://scenes/campfire/campfire.tscn")
+const RIVERS_OF_REFLECTION_SCENE := preload("res://scenes/campfire/rivers_of_reflection.tscn")
 const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 
@@ -17,13 +17,13 @@ const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 
 @onready var current_view: Node = $CurrentView
 @onready var map: Map = $Map
-@onready var battle_button: Node = %BattleButton
-@onready var campfire_button: Node = %CampfireButton
-@onready var map_button: Node = %MapButton
-@onready var rewards_button: Node = %RewardsButton
-@onready var shop_button: Node = %ShopButton
-@onready var treasure_button: Node = %TreasureButton
-@onready var menu_button: Node = %MenuButton
+# @onready var battle_button: Node = %BattleButton
+# @onready var campfire_button: Node = %CampfireButton
+# @onready var map_button: Node = %MapButton
+# @onready var rewards_button: Node = %RewardsButton
+# @onready var shop_button: Node = %ShopButton
+# @onready var treasure_button: Node = %TreasureButton
+# @onready var menu_button: Node = %MenuButton
 
 
 func _ready() -> void:
@@ -66,7 +66,7 @@ func _load_characters() -> void:
 		run_startup.update_character_list()
 
 
-func _change_view(scene: PackedScene) -> void:
+func _change_view(scene: PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
@@ -74,31 +74,32 @@ func _change_view(scene: PackedScene) -> void:
 	var new_view := scene.instantiate()
 	current_view.add_child(new_view)
 	map.hide_map()
-	# Hide or show buttons based on the scene
-	if scene in [BATTLE_SCENE, MAIN_MENU_SCENE]:
-		_hide_buttons()
-	else:
-		_show_buttons()
+	# # Hide or show buttons based on the scene
+	# if scene in [BATTLE_SCENE, MAIN_MENU_SCENE]:
+	# 	_hide_buttons()
+	# else:
+	# 	_show_buttons()
+
+	return new_view
 
 
-func _hide_buttons() -> void:
-	battle_button.hide()
-	campfire_button.hide()
-	map_button.hide()
-	rewards_button.hide()
-	shop_button.hide()
-	treasure_button.hide()
-	menu_button.hide()
+# func _hide_buttons() -> void:
+# 	battle_button.hide()
+# 	campfire_button.hide()
+# 	map_button.hide()
+# 	rewards_button.hide()
+# 	shop_button.hide()
+# 	treasure_button.hide()
+# 	menu_button.hide()
 
-
-func _show_buttons() -> void:
-	battle_button.show()
-	campfire_button.show()
-	map_button.show()
-	rewards_button.show()
-	shop_button.show()
-	treasure_button.show()
-	menu_button.show()
+# func _show_buttons() -> void:
+# 	battle_button.show()
+# 	campfire_button.show()
+# 	map_button.show()
+# 	rewards_button.show()
+# 	shop_button.show()
+# 	treasure_button.show()
+# 	menu_button.show()
 
 
 func _show_map() -> void:
@@ -107,35 +108,47 @@ func _show_map() -> void:
 
 	map.show_map()
 	map.unlock_next_rooms()
-	_show_buttons()
+	# _show_buttons()
 
 
 func _setup_event_connections() -> void:
 	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
 	Events.battle_reward_exited.connect(_show_map)
-	Events.campfire_exited.connect(_show_map)
+	Events.rivers_of_reflection_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
 	Events.shop_exited.connect(_show_map)
 	Events.treasure_room_exited.connect(_show_map)
 
 	# TODO remove debug buttons once done
-	battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
-	campfire_button.pressed.connect(_change_view.bind(CAMPFIRE_SCENE))
-	map_button.pressed.connect(_show_map)
-	rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
-	shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
-	treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
-	menu_button.pressed.connect(_change_view.bind(MAIN_MENU_SCENE))
+	# battle_button.pressed.connect(_change_view.bind(BATTLE_SCENE))
+	# campfire_button.pressed.connect(_change_view.bind(RIVERS_OF_REFLECTION_SCENE))
+	# map_button.pressed.connect(_show_map)
+	# rewards_button.pressed.connect(_change_view.bind(BATTLE_REWARD_SCENE))
+	# shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
+	# treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
+	# menu_button.pressed.connect(_change_view.bind(MAIN_MENU_SCENE))
+
+
+func _on_battle_room_entered() -> void:
+	_change_view(BATTLE_SCENE)
+	# var battle_scene: Battle = change_view(BATTLE_SCENE) as Battle
+	# TODO find where he does this
+	# battle_scene.
+
+
+func _on_campfire_entered() -> void:
+	var campfire := _change_view(RIVERS_OF_REFLECTION_SCENE) as RiversOfReflection
+	campfire.char_stats_list = run_startup.character_list
 
 
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
-			_change_view(BATTLE_SCENE)
+			_on_battle_room_entered()
 		Room.Type.TREASURE:
 			_change_view(TREASURE_SCENE)
-		Room.Type.CAMPFIRE:
-			_change_view(CAMPFIRE_SCENE)
+		Room.Type.RIVERS_OF_REFLECTION:
+			_on_campfire_entered()
 		Room.Type.SHOP:
 			_change_view(SHOP_SCENE)
 		Room.Type.BOSS:

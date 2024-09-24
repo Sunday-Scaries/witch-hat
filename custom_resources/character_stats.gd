@@ -42,7 +42,9 @@ func create_instance(starting_deck: CardPile) -> Resource:
 	instance.reset_mana()
 	if starting_deck:
 		instance.deck = starting_deck.duplicate()
+		print(instance)
 		# Assign CharacterStats to each card in the deck
+		print(starting_deck)
 		for card in starting_deck.cards:
 			card.set_character_stats(instance)
 	return instance
