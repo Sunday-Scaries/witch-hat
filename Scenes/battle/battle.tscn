@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bi2qe4oobl2sn"]
+[gd_scene load_steps=24 format=3 uid="uid://bi2qe4oobl2sn"]
 
 [ext_resource type="Script" path="res://Scenes/battle/battle.gd" id="1_6wx8r"]
 [ext_resource type="Texture2D" uid="uid://cp4iq5fd6j8be" path="res://art/background.png" id="1_252cl"]
@@ -8,15 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://rhy33hdpjmja" path="res://Scenes/player/player.tscn" id="3_18sgq"]
 [ext_resource type="PackedScene" uid="uid://c0ua65cj1rgjd" path="res://Scenes/card_target_selector/card_target_selector.tscn" id="3_c7tls"]
 [ext_resource type="AudioStream" uid="uid://dpdenqqbovwfq" path="res://art/8_bit_iced_village_lofi.mp3" id="3_wqx5c"]
-[ext_resource type="Resource" uid="uid://detjq7mf4v3s" path="res://characters/warrior/warrior.tres" id="4_gb6p2"]
 [ext_resource type="Script" path="res://Scenes/enemy/enemy_handler.gd" id="4_ju7fd"]
 [ext_resource type="Resource" uid="uid://5jdlvlg5seqr" path="res://enemies/crab_enemy/crab_enemy.tres" id="5_1vggr"]
 [ext_resource type="Script" path="res://Scenes/ui/battle_ui.gd" id="7_vd0ve"]
 [ext_resource type="Script" path="res://Scenes/player/player_handler.gd" id="8_bq3rw"]
 [ext_resource type="Resource" uid="uid://dtbitpwwtc730" path="res://enemies/bat/bat_enemy.tres" id="8_mgkvq"]
 [ext_resource type="Resource" uid="uid://b62cx4x16x14l" path="res://characters/quixley/quixley.tres" id="10_2i5e7"]
+[ext_resource type="Resource" uid="uid://dhuoocnlr0kpp" path="res://characters/elian/elian.tres" id="10_ssxmt"]
 [ext_resource type="PackedScene" uid="uid://dr5fk60a0hroc" path="res://Scenes/ui/mana_ui.tscn" id="11_qywkf"]
+[ext_resource type="Resource" uid="uid://lmsww0g60uw" path="res://characters/timea/timea.tres" id="12_02wmi"]
 [ext_resource type="PackedScene" uid="uid://c5dgxn1xfq33x" path="res://Scenes/ui/tooltip.tscn" id="12_pbv05"]
+[ext_resource type="Resource" uid="uid://dfsm85h53fjd" path="res://characters/lionel/lionel.tres" id="13_2qbsg"]
 [ext_resource type="Theme" uid="uid://crldvrn5qplqv" path="res://main_theme.tres" id="13_5fbnv"]
 [ext_resource type="Script" path="res://Scenes/ui/red_flash.gd" id="15_ijlv0"]
 [ext_resource type="PackedScene" uid="uid://d2t3aqxhtt435" path="res://Scenes/ui/battle_over_panel.tscn" id="17_h3wy4"]
@@ -62,19 +64,19 @@ stats = ExtResource("8_mgkvq")
 
 [node name="Player1" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(42, 259)
-stats = ExtResource("10_2i5e7")
+stats = ExtResource("10_ssxmt")
 
 [node name="Player2" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(42, 57)
-stats = ExtResource("4_gb6p2")
+stats = ExtResource("10_2i5e7")
 
 [node name="Player3" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(549, 50)
-stats = ExtResource("4_gb6p2")
+stats = ExtResource("12_02wmi")
 
 [node name="Player4" parent="." instance=ExtResource("3_18sgq")]
 position = Vector2(556, 266)
-stats = ExtResource("4_gb6p2")
+stats = ExtResource("13_2qbsg")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_c7tls")]
 
@@ -107,28 +109,28 @@ offset_left = 70.0
 offset_top = -112.0
 offset_right = 100.0
 offset_bottom = -82.0
-char_stats = ExtResource("4_gb6p2")
+char_stats = ExtResource("10_ssxmt")
 
 [node name="ManaUI2" parent="BattleUI" instance=ExtResource("11_qywkf")]
 offset_left = 69.0
 offset_top = -318.0
 offset_right = 99.0
 offset_bottom = -288.0
-char_stats = ExtResource("4_gb6p2")
+char_stats = ExtResource("10_2i5e7")
 
 [node name="ManaUI3" parent="BattleUI" instance=ExtResource("11_qywkf")]
 offset_left = 502.0
 offset_top = -319.0
 offset_right = 532.0
 offset_bottom = -289.0
-char_stats = ExtResource("4_gb6p2")
+char_stats = ExtResource("12_02wmi")
 
 [node name="ManaUI4" parent="BattleUI" instance=ExtResource("11_qywkf")]
 offset_left = 502.0
 offset_top = -112.0
 offset_right = 532.0
 offset_bottom = -82.0
-char_stats = ExtResource("4_gb6p2")
+char_stats = ExtResource("13_2qbsg")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("12_pbv05")]
 offset_left = 208.0
