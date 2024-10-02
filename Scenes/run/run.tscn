@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckqi4obr3cg8m"]
+[gd_scene load_steps=5 format=3 uid="uid://ckqi4obr3cg8m"]
 
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_fxmgj"]
 [ext_resource type="PackedScene" uid="uid://crhxx81e0p4gg" path="res://Scenes/map/map.tscn" id="1_v43fy"]
 [ext_resource type="Resource" uid="uid://b43p6lo4fgkcl" path="res://Scenes/run/run_startup.tres" id="2_vewfb"]
+[ext_resource type="PackedScene" uid="uid://bxadmuexqplsw" path="res://Scenes/ui/gold_ui.tscn" id="4_bvr3c"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_fxmgj")
@@ -51,3 +52,6 @@ text = "Campfire"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Menu"
+
+[node name="GoldUI" parent="DebugButtons" instance=ExtResource("4_bvr3c")]
+layout_mode = 2
