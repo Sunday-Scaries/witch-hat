@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgthw3ncknr4e"]
+
+[ext_resource type="Script" path="res://Scenes/shop/shop.gd" id="1_cw15r"]
+[ext_resource type="Texture2D" uid="uid://daklqd3h4kcaw" path="res://art/FrogWitchOpenSource.png" id="2_51my7"]
+[ext_resource type="PackedScene" uid="uid://bo428q8kyskei" path="res://Scenes/shop/shop_card.tscn" id="3_tvjrt"]
+[ext_resource type="PackedScene" uid="uid://dt1okd7j347od" path="res://Scenes/ui/card_tooltip_popup.tscn" id="4_l5qaq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_22un1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cevx"]
+font_size = 46
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_cw15r")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="BackgroundLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.5
+offset_top = -169.5
+offset_right = 299.5
+offset_bottom = 169.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_22un1")
+
+[node name="DecorationLayer" type="CanvasLayer" parent="."]
+
+[node name="Shopkeeper" type="TextureRect" parent="DecorationLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -136.0
+offset_right = 661.0
+offset_bottom = 504.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_51my7")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Title" type="Label" parent="UILayer"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 46.0
+offset_top = -95.0
+offset_right = 186.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shop"
+label_settings = SubResource("LabelSettings_8cevx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="UILayer"]
+custom_minimum_size = Vector2(60, 14)
+offset_left = 56.0
+offset_top = 151.0
+offset_right = 116.0
+offset_bottom = 191.0
+text = "Leave"
+
+[node name="ShopContent" type="VBoxContainer" parent="UILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -13.0
+offset_right = 185.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cards" type="HBoxContainer" parent="UILayer/ShopContent"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ShopCard" parent="UILayer/ShopContent/Cards" instance=ExtResource("3_tvjrt")]
+layout_mode = 2
+
+[node name="ShopCard2" parent="UILayer/ShopContent/Cards" instance=ExtResource("3_tvjrt")]
+layout_mode = 2
+
+[node name="ShopCard3" parent="UILayer/ShopContent/Cards" instance=ExtResource("3_tvjrt")]
+layout_mode = 2
+
+[node name="Relics" type="HBoxContainer" parent="UILayer/ShopContent"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardTooltipPopup" parent="UILayer" instance=ExtResource("4_l5qaq")]
+unique_name_in_owner = true
+visible = false
