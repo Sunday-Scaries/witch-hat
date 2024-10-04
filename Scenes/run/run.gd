@@ -16,6 +16,7 @@ const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 @export var lionel: CharacterStats
 
 @onready var current_view: Node = $CurrentView
+@onready var gold_ui: GoldUI = %GoldUI
 @onready var map: Map = $Map
 # @onready var battle_button: Node = %BattleButton
 # @onready var campfire_button: Node = %CampfireButton

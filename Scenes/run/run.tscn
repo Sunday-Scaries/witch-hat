@@ -54,4 +54,5 @@ layout_mode = 2
 text = "Menu"
 
 [node name="GoldUI" parent="DebugButtons" instance=ExtResource("4_bvr3c")]
+unique_name_in_owner = true
 layout_mode = 2
