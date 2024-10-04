@@ -19,6 +19,9 @@ const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 @onready var current_view: Node = $CurrentView
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var map: Map = $Map
+@onready var deck_button: CardPileOpener = %DeckButton
+@onready var deck_view: CardPileView = %DeckView
+
 # @onready var battle_button: Node = %BattleButton
 # @onready var campfire_button: Node = %CampfireButton
 # @onready var map_button: Node = %MapButton
@@ -45,6 +48,7 @@ func _ready() -> void:
 
 func _start_run() -> void:
 	_setup_event_connections()
+	_setup_top_bar()
 
 	map.generate_new_map()
 	map.unlock_floor(0)
@@ -67,6 +71,13 @@ func _load_characters() -> void:
 		run_startup.timea = timea.create_instance(TimeaStartingDeck)
 		run_startup.lionel = lionel.create_instance(LionelStartingDeck)
 		run_startup.update_character_list()
+
+
+func _setup_top_bar() -> void:
+	# TODO combined deck
+	deck_button.card_pile = run_startup.timea.deck
+	deck_view.card_pile = run_startup.timea.deck
+	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
 
 
 func _change_view(scene: PackedScene) -> Node:

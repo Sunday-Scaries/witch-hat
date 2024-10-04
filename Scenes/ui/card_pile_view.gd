@@ -7,7 +7,7 @@ const CARD_MENU_UI_SCENE := preload("res://scenes/ui/card_menu_ui.tscn")
 
 @onready var title: Label = %Title
 @onready var cards: GridContainer = %Cards
-@onready var card_toolip_popup: CardTooltipPopup = %CardTooltipPopup
+@onready var card_tooltip_popup: CardTooltipPopup = %CardTooltipPopup
 @onready var back_button: Button = %BackButton
 
 
@@ -17,16 +17,13 @@ func _ready() -> void:
 	for card: Node in cards.get_children():
 		card.queue_free()
 
-	card_toolip_popup.hide_tooltip()
-
-	await get_tree().create_timer(3.0).timeout
-	show_current_view("Deck")
+	card_tooltip_popup.hide_tooltip()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		if card_toolip_popup.visible:
-			card_toolip_popup.hide_tooltip()
+		if card_tooltip_popup.visible:
+			card_tooltip_popup.hide_tooltip()
 		else:
 			hide()
 
@@ -35,7 +32,7 @@ func show_current_view(new_title: String, randomized: bool = false) -> void:
 	for card: Node in cards.get_children():
 		card.queue_free()
 
-	card_toolip_popup.hide_tooltip()
+	card_tooltip_popup.hide_tooltip()
 	title.text = new_title
 	_update_view.call_deferred(randomized)
 
@@ -52,6 +49,7 @@ func _update_view(randomized: bool) -> void:
 		var new_card := CARD_MENU_UI_SCENE.instantiate() as CardMenuUI
 		cards.add_child(new_card)
 		new_card.card = card
-		new_card.tooltip_requested.connect(card_toolip_popup.show_tooltip)
+		new_card.char_stats = card.character_stats
+		new_card.tooltip_requested.connect(card_tooltip_popup.show_tooltip)
 
 	show()
