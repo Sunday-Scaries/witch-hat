@@ -1,19 +1,12 @@
-<<<<<<< HEAD
-[gd_scene load_steps=5 format=3 uid="uid://ckqi4obr3cg8m"]
-=======
-[gd_scene load_steps=7 format=3 uid="uid://ckqi4obr3cg8m"]
->>>>>>> 4c87103 (card pile view work from tutorial)
+[gd_scene load_steps=8 format=3 uid="uid://1lu5q346vx7i"]
 
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_fxmgj"]
 [ext_resource type="PackedScene" uid="uid://crhxx81e0p4gg" path="res://Scenes/map/map.tscn" id="1_v43fy"]
 [ext_resource type="Resource" uid="uid://b43p6lo4fgkcl" path="res://Scenes/run/run_startup.tres" id="2_vewfb"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bxadmuexqplsw" path="res://Scenes/ui/gold_ui.tscn" id="4_bvr3c"]
-=======
 [ext_resource type="PackedScene" uid="uid://lisip2klq2d4" path="res://Scenes/ui/card_pile_opener.tscn" id="4_fuakj"]
 [ext_resource type="Texture2D" uid="uid://w4m4muq8txvd" path="res://art/deck.png" id="5_r3y2k"]
 [ext_resource type="PackedScene" uid="uid://d4n3pwffk5pu3" path="res://Scenes/ui/card_pile_view.tscn" id="6_n1xib"]
->>>>>>> 4c87103 (card pile view work from tutorial)
 
 [node name="Run" type="Node"]
 script = ExtResource("1_fxmgj")
@@ -64,11 +57,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Menu"
 
-<<<<<<< HEAD
-[node name="GoldUI" parent="DebugButtons" instance=ExtResource("4_bvr3c")]
-unique_name_in_owner = true
-layout_mode = 2
-=======
 [node name="TopBar" type="CanvasLayer" parent="."]
 layer = 3
 
@@ -84,6 +72,10 @@ custom_minimum_size = Vector2(2.08165e-12, 24)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+
+[node name="GoldUI" parent="TopBar/BarItems" instance=ExtResource("4_bvr3c")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Placeholder" type="Control" parent="TopBar/BarItems"]
 layout_mode = 2
@@ -107,4 +99,3 @@ text = "99"
 [node name="DeckView" parent="TopBar" instance=ExtResource("6_n1xib")]
 unique_name_in_owner = true
 visible = false
->>>>>>> 4c87103 (card pile view work from tutorial)
