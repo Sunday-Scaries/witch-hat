@@ -8,8 +8,6 @@ const HOVER_STYLEBOX := preload("res://scenes/card_ui/card_hover_stylebox.tres")
 
 @export var card: Card:
 	set = set_card
-@export var char_stats: CharacterStats:
-	set = _set_char_stats
 
 @onready var panel: Panel = $Visuals/Panel
 @onready var cost: Label = $Visuals/Cost
@@ -36,9 +34,5 @@ func set_card(value: Card) -> void:
 	card = value
 	cost.text = str(card.cost)
 	icon.texture = card.icon
-	if char_stats:
-		panel.set("theme_override_styles/panel", char_stats.theme)
-
-
-func _set_char_stats(value: CharacterStats) -> void:
-	char_stats = value
+	if card.character_stats:
+		panel.set("theme_override_styles/panel", card.character_stats.theme)

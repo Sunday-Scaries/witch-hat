@@ -49,7 +49,6 @@ func _update_view(randomized: bool) -> void:
 		var new_card := CARD_MENU_UI_SCENE.instantiate() as CardMenuUI
 		cards.add_child(new_card)
 		new_card.card = card
-		new_card.char_stats = card.character_stats
 		new_card.tooltip_requested.connect(card_tooltip_popup.show_tooltip)
 
 	show()
