@@ -4,7 +4,7 @@ extends Node2D
 @export var music: AudioStream
 
 @onready var battle_ui: BattleUI = $BattleUI
-@onready var player_handler: PlayerHandler = $PlayerHandler
+@onready var player_handler: PlayerHandler = %PlayerHandler
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 
 @onready var player_list: Array[Player] = [$Player1, $Player2, $Player3, $Player4]
@@ -25,6 +25,7 @@ func _ready() -> void:
 	Events.player_died.connect(_on_player_died)
 
 	start_battle()
+	battle_ui.initialize_card_pile_ui()
 
 
 func start_battle() -> void:

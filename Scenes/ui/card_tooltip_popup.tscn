@@ -48,6 +48,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 2.08165e-12)
 layout_mode = 2
 mouse_filter = 2
+bbcode_enabled = true
 text = "Card description Card description Card description    Card description Card description"
 fit_content = true
 

@@ -14,17 +14,17 @@ const HOVER_STYLEBOX := preload("res://scenes/card_ui/card_hover_stylebox.tres")
 @onready var icon: TextureRect = $Visuals/Icon
 
 
-func _on_visuals_mouse_entered(event: InputEvent) -> void:
+func _on_visuals_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):
 		tooltip_requested.emit(card)
 
 
-func _on_visuals_mouse_exited():
-	panel.set("theme_override_styles/panel", BASE_STYLEBOX)
+#TODO hover state?
+# func _on_visuals_mouse_entered():
+# 	panel.set("theme_override_styles/panel", HOVER_STYLEBOX)
 
-
-func _on_visuals_gui_input():
-	panel.set("theme_override_styles/panel", HOVER_STYLEBOX)
+# func _on_visuals_mouse_exited():
+# 	panel.set("theme_override_styles/panel", BASE_STYLEBOX)
 
 
 func set_card(value: Card) -> void:
@@ -34,3 +34,5 @@ func set_card(value: Card) -> void:
 	card = value
 	cost.text = str(card.cost)
 	icon.texture = card.icon
+	if card.character_stats:
+		panel.set("theme_override_styles/panel", card.character_stats.theme)
