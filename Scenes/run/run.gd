@@ -14,6 +14,7 @@ const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 @export var quixley: CharacterStats
 @export var timea: CharacterStats
 @export var lionel: CharacterStats
+@export var stats: RunStats
 
 @onready var current_view: Node = $CurrentView
 @onready var gold_ui: GoldUI = %GoldUI
@@ -50,6 +51,7 @@ func _start_run() -> void:
 
 
 func _load_characters() -> void:
+	stats = RunStats.new()
 	if len(run_startup.character_list) == 0:
 		elian = preload("res://characters/elian/elian.tres")
 		quixley = preload("res://characters/quixley/quixley.tres")
