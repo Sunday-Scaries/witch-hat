@@ -74,10 +74,24 @@ func _load_characters() -> void:
 
 
 func _setup_top_bar() -> void:
-	# TODO combined deck
-	deck_button.card_pile = run_startup.timea.deck
-	deck_view.card_pile = run_startup.timea.deck
+	var combined_deck = _combine_decks()
+	deck_button.card_pile = combined_deck
+	deck_view.card_pile = combined_deck
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
+
+
+func _combine_decks() -> CardPile:
+	var combined_deck: CardPile = CardPile.new()
+	var deck_arr: Array[CardPile] = []
+	for character in run_startup.character_list:
+		var char_draw_deck: CardPile = character.deck.duplicate(true)
+		deck_arr.append(char_draw_deck)
+
+	for deck in deck_arr:
+		for card in deck.cards:
+			combined_deck.cards.append(card)
+
+	return combined_deck
 
 
 func _change_view(scene: PackedScene) -> Node:

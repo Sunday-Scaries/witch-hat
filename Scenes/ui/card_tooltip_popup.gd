@@ -14,10 +14,10 @@ func _ready() -> void:
 
 func show_tooltip(card: Card) -> void:
 	var new_card := CARD_MENU_UI_SCENE.instantiate() as CardMenuUI
-	tooltip_card.add_child(new_card)
 	new_card.card = card
 	new_card.tooltip_requested.connect(hide_tooltip.unbind(1))
 	card_description.bbcode_text = card.tooltip_text
+	tooltip_card.add_child(new_card)
 	show()
 
 
