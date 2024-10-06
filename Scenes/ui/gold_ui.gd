@@ -21,5 +21,3 @@ func set_run_stats(new_value: RunStats) -> void:
 
 func _update_gold() -> void:
 	label.text = str(run_stats.gold)
-
-#test

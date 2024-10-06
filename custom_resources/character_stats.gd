@@ -9,6 +9,8 @@ extends Stats
 
 @export_group("Gameplay Data")
 @export var max_mana: int
+@export var draftable_cards: CardPile
+# TODO will likely need to move somewhere else
 
 var mana: int:
 	set = set_mana

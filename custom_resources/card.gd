@@ -1,7 +1,7 @@
 class_name Card
 extends Resource
 
-enum Type { ATTACK, DEFEND, SKILL }
+enum Type { ATTACK, DEFEND, SKILL, POWER }
 enum Rarity { COMMON, UNCOMMON, RARE }
 # TODO rename SELF. it's actually all players and not self
 enum Target { SELF, SINGLE_CHARACTER, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE }
