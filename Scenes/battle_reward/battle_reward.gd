@@ -9,8 +9,9 @@ const CARD_ICON := preload("res://art/rarity.png")
 const CARD_TEXT := "Add New Card"
 
 @export var run_stats: RunStats
-# TODO will maybe need to move?
-@export var character_stats: CharacterStats
+# TODO I think we can do this in a shared resource maybe?
+# This is getting duplicated in a lot of places
+@export var character_stats_list: Array[CharacterStats]
 
 var card_reward_total_weight := 0.0
 var card_rarity_weights := {
@@ -55,7 +56,7 @@ func add_card_reward() -> void:
 
 
 func _show_card_rewards() -> void:
-	if not run_stats or not character_stats:
+	if not run_stats or not character_stats_list:
 		return
 
 	var card_rewards := CARD_REWARDS.instantiate() as CardRewards
@@ -63,7 +64,11 @@ func _show_card_rewards() -> void:
 	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
 
 	var card_reward_array: Array[Card] = []
-	var available_cards: Array[Card] = character_stats.draftable_cards.cards.duplicate(true)
+	var available_cards: Array[Card] = []
+	for character in character_stats_list:
+		var draftable_cards := character.draftable_cards.cards.duplicate(true)
+		for card in draftable_cards:
+			available_cards.append(card)
 
 	for i in run_stats.card_rewards:
 		_setup_card_chances()
@@ -109,10 +114,7 @@ func _get_random_available_card(available_cards: Array[Card], with_rarity: Card.
 
 
 func _on_card_reward_taken(card: Card) -> void:
-	if not character_stats or not card:
+	if not character_stats_list or not card:
 		return
 
-	print("Deck before \n%s\n" % character_stats.deck)
-	# TODO this won't make it to the overarching cards will need to change architecture aroudn this
-	character_stats.deck.add_card(card)
-	print("Deck after \n%s\n" % character_stats.deck)
+	card.character_stats.deck.add_card(card)

@@ -62,14 +62,22 @@ func _load_characters() -> void:
 		timea = preload("res://characters/timea/timea.tres")
 		lionel = preload("res://characters/lionel/lionel.tres")
 
+		# starting decks
 		var ElianStartingDeck = preload("res://characters/elian/elian_starting_deck.tres")
 		var QuixleyStartingDeck = preload("res://characters/quixley/quixley_starting_deck.tres")
 		var TimeaStartingDeck = preload("res://characters/timea/timea_starting_deck.tres")
 		var LionelStartingDeck = preload("res://characters/lionel/lionel_starting_deck.tres")
-		run_startup.elian = elian.create_instance(ElianStartingDeck)
-		run_startup.quixley = quixley.create_instance(QuixleyStartingDeck)
-		run_startup.timea = timea.create_instance(TimeaStartingDeck)
-		run_startup.lionel = lionel.create_instance(LionelStartingDeck)
+
+		# draftable cards throughout the game
+		var ElianDraftableCards = preload("res://characters/elian/elian_draftable_cards.tres")
+		var QuixleyDraftableCards = preload("res://characters/quixley/quixley_draftable_cards.tres")
+		var TimeaDraftableCards = preload("res://characters/timea/timea_draftable_cards.tres")
+		var LionelDraftableCards = preload("res://characters/lionel/lionel_draftable_cards.tres")
+
+		run_startup.elian = elian.create_instance(ElianStartingDeck, ElianDraftableCards)
+		run_startup.quixley = quixley.create_instance(QuixleyStartingDeck, QuixleyDraftableCards)
+		run_startup.timea = timea.create_instance(TimeaStartingDeck, TimeaDraftableCards)
+		run_startup.lionel = lionel.create_instance(LionelStartingDeck, LionelDraftableCards)
 		run_startup.update_character_list()
 
 
@@ -161,8 +169,7 @@ func _setup_event_connections() -> void:
 func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_stats = stats
-	# TODO need to use all char stats
-	reward_scene.character_stats = run_startup.timea
+	reward_scene.character_stats_list = run_startup.character_list
 
 	# TODO TESTING CODE, will be removed later
 	reward_scene.add_gold_reward(77)

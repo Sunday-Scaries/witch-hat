@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_e3xmt")
+character_stats_list = null
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

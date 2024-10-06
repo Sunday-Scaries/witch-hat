@@ -9,12 +9,11 @@ extends Stats
 
 @export_group("Gameplay Data")
 @export var max_mana: int
-@export var draftable_cards: CardPile
-# TODO will likely need to move somewhere else
 
 var mana: int:
 	set = set_mana
 var deck: CardPile
+var draftable_cards: CardPile
 
 
 func set_mana(value: int) -> void:
@@ -37,16 +36,20 @@ func can_play_card(card: Card) -> bool:
 	return mana >= card.cost && health > 0
 
 
-func create_instance(starting_deck: CardPile) -> Resource:
+func create_instance(starting_deck: CardPile, starting_draftable_cards: CardPile) -> Resource:
 	var instance: CharacterStats = self.duplicate()
 	instance.health = max_health
 	instance.block = 0
 	instance.reset_mana()
 	if starting_deck:
 		instance.deck = starting_deck.duplicate()
-		print(instance)
-		# Assign CharacterStats to each card in the deck
-		print(starting_deck)
+		# Assign CharacterStats to each card in the deck for theming
 		for card in starting_deck.cards:
+			card.set_character_stats(instance)
+
+	if starting_draftable_cards:
+		instance.draftable_cards = starting_draftable_cards.duplicate()
+		# Assign CharacterStats to each card in the deck for theming
+		for card in starting_draftable_cards.cards:
 			card.set_character_stats(instance)
 	return instance

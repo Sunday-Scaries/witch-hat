@@ -19,7 +19,11 @@ func draw_card() -> Card:
 
 
 func add_card(card: Card) -> void:
+	print("adding %s card" % card)
+	print(cards)
 	cards.append(card)
+	print("added %s card" % card)
+	print(cards)
 	card_pile_size_changed.emit(cards.size())
 
 
