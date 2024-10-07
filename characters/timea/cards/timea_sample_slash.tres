@@ -8,6 +8,7 @@
 script = ExtResource("2_n68qo")
 id = "timea_sample_slash"
 type = 0
+rarity = 0
 target = 3
 cost = 2
 icon = ExtResource("1_pxrt5")

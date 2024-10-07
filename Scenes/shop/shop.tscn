@@ -1,48 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgthw3ncknr4e"]
+[gd_scene load_steps=4 format=3 uid="uid://cgthw3ncknr4e"]
 
 [ext_resource type="Script" path="res://Scenes/shop/shop.gd" id="1_cw15r"]
-[ext_resource type="Texture2D" uid="uid://dxg7y1wlh86kj" path="res://art/tile_0100.png" id="2_3usb1"]
-[ext_resource type="Texture2D" uid="uid://dmvkjh4lllkf0" path="res://art/JuniperBlink.png" id="3_re0jr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_22un1"]
-
-[sub_resource type="Animation" id="Animation_rgax4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Shopkeeper:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_3usb1")]
-}
-
-[sub_resource type="Animation" id="Animation_p8jmj"]
-resource_name = "blink"
-length = 0.15
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Shopkeeper:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_re0jr"), ExtResource("2_3usb1")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cc5e4"]
-_data = {
-"RESET": SubResource("Animation_rgax4"),
-"blink": SubResource("Animation_p8jmj")
-}
 
 [sub_resource type="LabelSettings" id="LabelSettings_8cevx"]
 font_size = 46
@@ -77,29 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_22un1")
 
-[node name="DecorationLayer" type="CanvasLayer" parent="."]
-
-[node name="Shopkeeper" type="TextureRect" parent="DecorationLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = -99.0
-offset_right = 105.0
-offset_bottom = -19.0
-grow_vertical = 0
-texture = ExtResource("2_3usb1")
-
-[node name="ShopkeeperAnimation" type="AnimationPlayer" parent="DecorationLayer"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_cc5e4")
-}
-
-[node name="BlinkTimer" type="Timer" parent="DecorationLayer"]
-unique_name_in_owner = true
-one_shot = true
-
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -123,10 +60,10 @@ vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="UILayer"]
 custom_minimum_size = Vector2(60, 14)
-offset_left = 33.0
-offset_top = 191.0
-offset_right = 93.0
-offset_bottom = 231.0
+offset_left = 40.0
+offset_top = 187.0
+offset_right = 100.0
+offset_bottom = 227.0
 text = "Leave"
 
 [node name="ShopContent" type="VBoxContainer" parent="UILayer"]
