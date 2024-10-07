@@ -5,7 +5,7 @@ signal card_pile_size_changed(cards_amount)
 
 # NOTE: this can't be Array[Card] because of weird godot errors when adding in editor. may
 # be fixed in later versions
-@export var cards: Array[Resource] = []
+@export var cards: Array[Card] = []
 
 
 func empty() -> bool:

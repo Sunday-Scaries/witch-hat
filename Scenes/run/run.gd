@@ -47,6 +47,7 @@ func _ready() -> void:
 
 
 func _start_run() -> void:
+	stats = RunStats.new()
 	_setup_event_connections()
 	_setup_top_bar()
 
@@ -55,21 +56,28 @@ func _start_run() -> void:
 
 
 func _load_characters() -> void:
-	stats = RunStats.new()
 	if len(run_startup.character_list) == 0:
 		elian = preload("res://characters/elian/elian.tres")
 		quixley = preload("res://characters/quixley/quixley.tres")
 		timea = preload("res://characters/timea/timea.tres")
 		lionel = preload("res://characters/lionel/lionel.tres")
 
+		# starting decks
 		var ElianStartingDeck = preload("res://characters/elian/elian_starting_deck.tres")
 		var QuixleyStartingDeck = preload("res://characters/quixley/quixley_starting_deck.tres")
 		var TimeaStartingDeck = preload("res://characters/timea/timea_starting_deck.tres")
 		var LionelStartingDeck = preload("res://characters/lionel/lionel_starting_deck.tres")
-		run_startup.elian = elian.create_instance(ElianStartingDeck)
-		run_startup.quixley = quixley.create_instance(QuixleyStartingDeck)
-		run_startup.timea = timea.create_instance(TimeaStartingDeck)
-		run_startup.lionel = lionel.create_instance(LionelStartingDeck)
+
+		# draftable cards throughout the game
+		var ElianDraftableCards = preload("res://characters/elian/elian_draftable_cards.tres")
+		var QuixleyDraftableCards = preload("res://characters/quixley/quixley_draftable_cards.tres")
+		var TimeaDraftableCards = preload("res://characters/timea/timea_draftable_cards.tres")
+		var LionelDraftableCards = preload("res://characters/lionel/lionel_draftable_cards.tres")
+
+		run_startup.elian = elian.create_instance(ElianStartingDeck, ElianDraftableCards)
+		run_startup.quixley = quixley.create_instance(QuixleyStartingDeck, QuixleyDraftableCards)
+		run_startup.timea = timea.create_instance(TimeaStartingDeck, TimeaDraftableCards)
+		run_startup.lionel = lionel.create_instance(LionelStartingDeck, LionelDraftableCards)
 		run_startup.update_character_list()
 
 
@@ -81,6 +89,7 @@ func _setup_top_bar() -> void:
 
 
 func _combine_decks() -> CardPile:
+	gold_ui.run_stats = stats
 	var combined_deck: CardPile = CardPile.new()
 	var deck_arr: Array[CardPile] = []
 	for character in run_startup.character_list:
@@ -140,7 +149,7 @@ func _show_map() -> void:
 
 
 func _setup_event_connections() -> void:
-	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
+	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_show_map)
 	Events.rivers_of_reflection_exited.connect(_show_map)
 	Events.map_exited.connect(_on_map_exited)
@@ -155,6 +164,16 @@ func _setup_event_connections() -> void:
 	# shop_button.pressed.connect(_change_view.bind(SHOP_SCENE))
 	# treasure_button.pressed.connect(_change_view.bind(TREASURE_SCENE))
 	# menu_button.pressed.connect(_change_view.bind(MAIN_MENU_SCENE))
+
+
+func _on_battle_won() -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+	reward_scene.run_stats = stats
+	reward_scene.character_stats_list = run_startup.character_list
+
+	# TODO TESTING CODE, will be removed later
+	reward_scene.add_gold_reward(77)
+	reward_scene.add_card_reward()
 
 
 func _on_battle_room_entered() -> void:

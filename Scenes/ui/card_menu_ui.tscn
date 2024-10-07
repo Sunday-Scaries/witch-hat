@@ -15,3 +15,5 @@ card = ExtResource("2_hb7en")
 
 [node name="Visuals" parent="." instance=ExtResource("3_qjpty")]
 layout_mode = 2
+
+[connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]

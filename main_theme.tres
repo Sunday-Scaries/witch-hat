@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://crldvrn5qplqv"]
 
 [ext_resource type="StyleBox" uid="uid://b8gom4rtedyft" path="res://Scenes/card_ui/card_base_stylebox.tres" id="1_5xf2i"]
-[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://art/pixel_rpg.ttf" id="1_pxb5w"]
 [ext_resource type="StyleBox" uid="uid://inf03fbom8vx" path="res://Scenes/card_ui/card_hover_stylebox.tres" id="1_y27qv"]
+[ext_resource type="FontFile" uid="uid://dbaytbnsvpw0t" path="res://art/Orange Kid.otf" id="3_r6ceg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2dd5"]
 bg_color = Color(0.709804, 0.388235, 0.27451, 0.596078)
@@ -23,8 +23,8 @@ border_width_bottom = 1
 border_color = Color(0.631373, 0.588235, 0.290196, 1)
 
 [resource]
-default_font = ExtResource("1_pxb5w")
-default_font_size = 12
+default_font = ExtResource("3_r6ceg")
+default_font_size = 16
 Button/styles/disabled = SubResource("StyleBoxFlat_b2dd5")
 Button/styles/focus = SubResource("StyleBoxEmpty_3e5xm")
 Button/styles/hover = ExtResource("1_y27qv")

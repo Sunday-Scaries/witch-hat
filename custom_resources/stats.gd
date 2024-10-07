@@ -36,7 +36,7 @@ func heal(amount: int) -> void:
 	self.health += amount
 
 
-func create_instance(_starting_deck: CardPile) -> Resource:
+func create_instance(_starting_deck: CardPile, _starting_draftable_cards: CardPile) -> Resource:
 	var instance: Stats = self.duplicate()
 	instance.health = max_health
 	instance.block = 0

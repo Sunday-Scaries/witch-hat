@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=7 format=3 uid="uid://du7mseiwey33"]
+
+[ext_resource type="Resource" uid="uid://cfdqrk22vemtt" path="res://characters/timea/cards/timea_sample_strength.tres" id="1_fm0ma"]
+[ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_mugwf"]
+[ext_resource type="Resource" uid="uid://ilojojcfbrh1" path="res://characters/timea/cards/timea_sample_slam.tres" id="2_3eucb"]
+[ext_resource type="Resource" uid="uid://cxhtbg1b7hpxr" path="res://characters/timea/cards/timea_sample_attack.tres" id="3_y7ntj"]
+[ext_resource type="Resource" uid="uid://cr0y1nkisheml" path="res://characters/timea/cards/timea_sample_slash.tres" id="4_c8hyb"]
+[ext_resource type="Resource" uid="uid://bsl075v1svhfh" path="res://characters/timea/cards/timea_block_self.tres" id="5_ivupp"]
+
+[resource]
+script = ExtResource("1_mugwf")
+cards = Array[Resource("res://custom_resources/card.gd")]([ExtResource("1_fm0ma"), ExtResource("1_fm0ma"), ExtResource("1_fm0ma"), ExtResource("2_3eucb"), ExtResource("2_3eucb"), ExtResource("2_3eucb"), ExtResource("3_y7ntj"), ExtResource("4_c8hyb"), ExtResource("5_ivupp")])
