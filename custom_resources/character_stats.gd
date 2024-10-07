@@ -22,7 +22,7 @@ func set_mana(value: int) -> void:
 
 
 func reset_mana() -> void:
-	self.mana = max_mana
+	mana = max_mana
 
 
 func take_damage(damage: int) -> void:
