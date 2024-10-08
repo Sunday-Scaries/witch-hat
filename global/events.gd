@@ -30,6 +30,8 @@ signal map_exited(room: Room)
 signal room_enter_requested(room: MapRoom)
 
 # shop related events
+# signal shop_relic_bought(relic: Relic, gold_cost: int)
+signal shop_card_bought(card: Card, gold_cost: int)
 signal shop_exited
 
 # rivers of reflection related events
