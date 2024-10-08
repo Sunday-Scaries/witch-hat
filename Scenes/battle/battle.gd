@@ -1,5 +1,7 @@
+class_name Battle
 extends Node2D
 
+@export var battle_stats: BattleStats
 @export var run_startup: RunStartup
 @export var music: AudioStream
 
@@ -24,13 +26,14 @@ func _ready() -> void:
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	Events.player_died.connect(_on_player_died)
 
-	start_battle()
 	battle_ui.initialize_card_pile_ui()
 
 
 func start_battle() -> void:
 	get_tree().paused = false
 	MusicPlayer.play(music, true)
+
+	enemy_handler.setup_enemies(battle_stats)
 	enemy_handler.reset_enemy_actions()
 	player_handler.start_battle(run_startup.character_list)
 
