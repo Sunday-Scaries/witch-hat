@@ -19,12 +19,12 @@ func _on_visuals_gui_input(event: InputEvent) -> void:
 		tooltip_requested.emit(card)
 
 
-#TODO hover state?
-# func _on_visuals_mouse_entered():
-# 	panel.set("theme_override_styles/panel", HOVER_STYLEBOX)
+func _on_visuals_mouse_entered():
+	panel.set("theme_override_styles/panel", HOVER_STYLEBOX)
 
-# func _on_visuals_mouse_exited():
-# 	panel.set("theme_override_styles/panel", BASE_STYLEBOX)
+
+func _on_visuals_mouse_exited():
+	panel.set("theme_override_styles/panel", BASE_STYLEBOX)
 
 
 func set_card(value: Card) -> void:

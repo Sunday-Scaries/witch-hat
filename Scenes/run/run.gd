@@ -188,6 +188,17 @@ func _on_campfire_entered() -> void:
 	campfire.char_stats_list = run_startup.character_list
 
 
+func _on_shop_entered() -> void:
+	var shop_scene = _change_view(SHOP_SCENE) as ShopScene
+
+	if shop_scene:
+		shop_scene.char_stats_list = run_startup.character_list  # Assuming character_list is populated
+		shop_scene.run_stats = stats  # Make sure 'stats' is correctly initialized here
+		shop_scene.populate_shop()
+	else:
+		print("Error: shop_scene is nil and cannot set 'run_stats'")
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
@@ -197,7 +208,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.RIVERS_OF_REFLECTION:
 			_on_campfire_entered()
 		Room.Type.SHOP:
-			_change_view(SHOP_SCENE)
+			_on_shop_entered()
 		Room.Type.BOSS:
 			_change_view(BATTLE_SCENE)
 
