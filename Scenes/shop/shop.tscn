@@ -62,6 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_cw15r")
+char_stats_list = null
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 
