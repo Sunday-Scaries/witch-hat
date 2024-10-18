@@ -1,4 +1,4 @@
-class_name ShopScene
+class_name Shop
 extends Control
 
 const SHOP_CARD = preload("res://Scenes/shop/shop_card.tscn")
@@ -29,6 +29,18 @@ func _ready() -> void:
 	_blink_timer_setup()
 	blink_timer.timeout.connect(_on_blink_timer_timeout)
 
+	print(
+		{
+			"char_stats_list": var_to_str(char_stats_list),
+			"run_stats": var_to_str(run_stats),
+			"shop_keeper_animation": var_to_str(shop_keeper_animation),
+			"card_tooltip_popup": var_to_str(card_tooltip_popup),
+			"cards": var_to_str(cards)
+			# Trying to debug
+		}
+	)
+	populate_shop()
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and card_tooltip_popup.visible:
@@ -47,6 +59,22 @@ func _blink_timer_setup() -> void:
 
 func _generate_shop_cards() -> void:
 	var shop_card_array: Array[Card] = []
+
+	# var p1 = CharacterStats.new()
+	# p1.deck = []
+	# char_stats_list.append( p1 )
+
+	# run_stats = RunStats.new()
+	# run_stats.gold = 10000
+	# var some_card = Card.new()
+	# some_card.id = "c0"
+	# some_card.type = Card.Type.ATTACK
+	# some_card.rarity = Card.Rarity.UNCOMMON
+	# some_card.target = Card.Target.SINGLE_ENEMY
+	# some_card.cost = 50
+	# var shop_card_array: Array[Card] = [some_card]
+	# Throwing in a sample card to immediate
+
 	if char_stats_list.size() > 0:
 		var available_cards := char_stats_list[0].draftable_cards.cards.duplicate(true)
 		available_cards.shuffle()
@@ -89,9 +117,6 @@ func _update_items() -> void:
 
 func _on_shop_card_bought(card: Card, gold_cost: int) -> void:
 	char_stats_list[0].deck.add_card(card)
-	run_stats.gold -= gold_cost
-	_update_items()
-
 	run_stats.gold -= gold_cost
 	_update_items()
 

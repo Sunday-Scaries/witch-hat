@@ -189,7 +189,7 @@ func _on_campfire_entered() -> void:
 
 
 func _on_shop_entered() -> void:
-	var shop_scene = _change_view(SHOP_SCENE) as ShopScene
+	var shop_scene = _change_view(SHOP_SCENE) as Shop
 
 	if shop_scene:
 		shop_scene.char_stats_list = run_startup.character_list  # Assuming character_list is populated
