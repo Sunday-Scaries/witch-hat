@@ -28,7 +28,6 @@ func start_battle(char_stats_arr: Array[CharacterStats]) -> void:
 		# add to the global draw pile
 		var char_draw_deck: CardPile = characters[i].deck.duplicate(true)
 		draw_pile_arr.append(char_draw_deck)
-	discard = CardPile.new()
 
 	for deck in draw_pile_arr:
 		for card in deck.cards:
@@ -90,8 +89,8 @@ func reshuffle_deck_from_discard() -> void:
 
 
 func _on_card_played(card: Card) -> void:
-	# if card.exhausts or card.type == Card.Type.POWER:
-	# 	return
+	if card.exhausts or card.type == Card.Type.POWER:
+		return
 
 	discard.add_card(card)
 
