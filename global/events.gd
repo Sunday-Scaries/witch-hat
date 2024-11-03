@@ -19,6 +19,7 @@ signal player_died(player: Player)
 #Enemy related events
 signal enemy_action_completed(enemy: Enemy)
 signal enemy_turn_ended
+signal enemy_died(enemy: Enemy)
 
 #battle related events
 signal battle_over_screen_requested(text: String, type: BattleOverPanel.Type)

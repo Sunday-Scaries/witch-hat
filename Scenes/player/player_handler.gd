@@ -4,6 +4,7 @@ extends Node
 const HAND_DRAW_INTERVAL := 0.10
 const HAND_DISCARD_INTERVAL := 0.10
 
+@export var player: Player
 @export var hand: Hand
 @export var cards_per_turn: int
 
@@ -27,12 +28,13 @@ func start_battle(char_stats_arr: Array[CharacterStats]) -> void:
 		# add to the global draw pile
 		var char_draw_deck: CardPile = characters[i].deck.duplicate(true)
 		draw_pile_arr.append(char_draw_deck)
-		discard = CardPile.new()
+	discard = CardPile.new()
 
 	for deck in draw_pile_arr:
 		for card in deck.cards:
 			draw_pile.cards.append(card)
 	draw_pile.shuffle()
+	player.status_handler.statuses_applied.connect(_on_statuses_applied)
 	start_turn()
 
 
@@ -40,13 +42,13 @@ func start_turn() -> void:
 	for i in characters.size():
 		characters[i].block = 0
 		characters[i].reset_mana()
-
-	draw_cards(cards_per_turn)
+	# TODO probably need to fix for multiple chars
+	player.status_handler.apply_statuses_by_type(Status.Type.START_OF_TURN)
 
 
 func end_turn() -> void:
 	hand.disable_hand()
-	discard_cards()
+	player.status_handler.apply_statuses_by_type(Status.Type.END_OF_TURN)
 
 
 func draw_card() -> void:
@@ -88,4 +90,15 @@ func reshuffle_deck_from_discard() -> void:
 
 
 func _on_card_played(card: Card) -> void:
+	# if card.exhausts or card.type == Card.Type.POWER:
+	# 	return
+
 	discard.add_card(card)
+
+
+func _on_statuses_applied(type: Status.Type) -> void:
+	match type:
+		Status.Type.START_OF_TURN:
+			draw_cards(cards_per_turn)
+		Status.Type.END_OF_TURN:
+			discard_cards()
