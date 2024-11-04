@@ -1,4 +1,4 @@
-# metah-name: Status
+# meta-name: Status
 # meta-description: Create a Status which can be applied to a target.
 class_name MyAwesomeStatus
 extends Status

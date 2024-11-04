@@ -83,10 +83,9 @@ stats = ExtResource("13_2qbsg")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("3_c7tls")]
 
-[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("player", "hand")]
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 unique_name_in_owner = true
 script = ExtResource("8_bq3rw")
-player = NodePath("../Player1")
 hand = NodePath("../BattleUI/Hand")
 cards_per_turn = 5
 

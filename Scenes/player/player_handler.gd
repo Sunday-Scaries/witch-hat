@@ -4,14 +4,14 @@ extends Node
 const HAND_DRAW_INTERVAL := 0.10
 const HAND_DISCARD_INTERVAL := 0.10
 
-@export var player: Player
 @export var hand: Hand
 @export var cards_per_turn: int
 
 var draw_pile: CardPile
 var discard: CardPile
-
 var characters: Array[CharacterStats] = []
+var players: Array[Player] = []
+var draw_active: bool = false
 
 
 func _ready() -> void:
@@ -20,20 +20,23 @@ func _ready() -> void:
 	discard = CardPile.new()
 
 
-func start_battle(char_stats_arr: Array[CharacterStats]) -> void:
+func start_battle(char_stats_list: Array[CharacterStats], player_list: Array[Player]) -> void:
 	var draw_pile_arr: Array[CardPile] = []
-	for i in char_stats_arr.size():
+	for i in char_stats_list.size():
 		# assign passed in character stats
-		characters.append(char_stats_arr[i])
+		characters.append(char_stats_list[i])
 		# add to the global draw pile
 		var char_draw_deck: CardPile = characters[i].deck.duplicate(true)
 		draw_pile_arr.append(char_draw_deck)
+
+	for i in player_list.size():
+		players.append(player_list[i])
+		players[i].status_handler.statuses_applied.connect(_on_statuses_applied)
 
 	for deck in draw_pile_arr:
 		for card in deck.cards:
 			draw_pile.cards.append(card)
 	draw_pile.shuffle()
-	player.status_handler.statuses_applied.connect(_on_statuses_applied)
 	start_turn()
 
 
@@ -41,13 +44,14 @@ func start_turn() -> void:
 	for i in characters.size():
 		characters[i].block = 0
 		characters[i].reset_mana()
-	# TODO probably need to fix for multiple chars
-	player.status_handler.apply_statuses_by_type(Status.Type.START_OF_TURN)
+	for i in players.size():
+		players[i].status_handler.apply_statuses_by_type(Status.Type.START_OF_TURN)
 
 
 func end_turn() -> void:
 	hand.disable_hand()
-	player.status_handler.apply_statuses_by_type(Status.Type.END_OF_TURN)
+	for i in players.size():
+		players[i].status_handler.apply_statuses_by_type(Status.Type.END_OF_TURN)
 
 
 func draw_card() -> void:
@@ -57,6 +61,7 @@ func draw_card() -> void:
 
 
 func draw_cards(amount: int) -> void:
+	draw_active = true
 	var tween := create_tween()
 	for i in range(amount):
 		tween.tween_callback(draw_card)
@@ -66,6 +71,9 @@ func draw_cards(amount: int) -> void:
 
 
 func discard_cards() -> void:
+	if draw_active == false:
+		return
+
 	if len(hand.get_children()) == 0:
 		Events.player_hand_discarded.emit()
 
@@ -76,6 +84,7 @@ func discard_cards() -> void:
 		tween.tween_interval(HAND_DISCARD_INTERVAL)
 
 	tween.finished.connect(func(): Events.player_hand_discarded.emit())
+	draw_active = false
 
 
 func reshuffle_deck_from_discard() -> void:
@@ -98,6 +107,7 @@ func _on_card_played(card: Card) -> void:
 func _on_statuses_applied(type: Status.Type) -> void:
 	match type:
 		Status.Type.START_OF_TURN:
-			draw_cards(cards_per_turn)
+			if not draw_active:
+				draw_cards(cards_per_turn)
 		Status.Type.END_OF_TURN:
 			discard_cards()

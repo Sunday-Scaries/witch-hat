@@ -1,4 +1,4 @@
-# metah-name: Status
+# meta-name: Status
 class_name MuscleStatus
 extends Status
 
