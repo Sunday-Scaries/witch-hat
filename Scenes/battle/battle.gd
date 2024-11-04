@@ -35,7 +35,7 @@ func start_battle() -> void:
 
 	enemy_handler.setup_enemies(battle_stats)
 	enemy_handler.reset_enemy_actions()
-	player_handler.start_battle(run_startup.character_list)
+	player_handler.start_battle(run_startup.character_list, player_list)
 
 
 func _on_enemies_child_order_changed() -> void:

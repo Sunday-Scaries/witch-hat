@@ -8,6 +8,7 @@
 script = ExtResource("2_noejr")
 id = "elian_block_self"
 type = 1
+rarity = 0
 target = 1
 cost = 2
 icon = ExtResource("1_72yfw")
