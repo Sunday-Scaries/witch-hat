@@ -6,6 +6,7 @@ signal reparent_requested(which_card_ui: CardUI)
 const BASE_STYLEBOX := preload("res://Scenes/card_ui/card_base_stylebox.tres")
 const HOVER_STYLEBOX := preload("res://Scenes/card_ui/card_hover_stylebox.tres")
 
+@export var player_modifiers: ModifierHandler
 @export var card: Card:
 	set = _set_card
 @export var char_stats: CharacterStats:
@@ -47,7 +48,7 @@ func play() -> bool:
 	if not card:
 		return false
 
-	var is_played = card.play(targets, char_stats)
+	var is_played = card.play(targets, char_stats, player_modifiers)
 	if is_played:
 		queue_free()
 		return true

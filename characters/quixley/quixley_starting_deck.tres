@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardPile" load_steps=3 format=3 uid="uid://cuh2t2wjw3ktt"]
 
-[ext_resource type="Resource" uid="uid://udi5n0xm4tso" path="res://characters/quixley/cards/atk_bonk.tres" id="1_ivxi8"]
+[ext_resource type="Resource" uid="uid://udi5n0xm4tso" path="res://characters/quixley/cards/atk_bonk.tres" id="1_4apgc"]
 [ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_r1rwa"]
 
 [resource]
 script = ExtResource("1_r1rwa")
-cards = Array[Resource("res://custom_resources/card.gd")]([ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8"), ExtResource("1_ivxi8")])
+cards = Array[Resource("res://custom_resources/card.gd")]([ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc"), ExtResource("1_4apgc")])
