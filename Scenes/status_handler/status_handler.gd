@@ -81,3 +81,8 @@ func _get_all_statuses() -> Array[Status]:
 func _on_status_applied(status: Status) -> void:
 	if status.can_expire:
 		status.duration -= 1
+
+
+func _on_gui_input(event: InputEvent):
+	if event.is_action_pressed("left_mouse"):
+		Events.status_tooltip_requested.emit(_get_all_statuses())

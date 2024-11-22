@@ -78,6 +78,19 @@ func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 	targets.erase(area)
 
 
+func get_active_enemy_modifiers() -> ModifierHandler:
+	if targets.is_empty() or targets.size() > 1 or not targets[0] is Enemy:
+		return null
+
+	return targets[0].modifier_handler
+
+
+func request_tooltip() -> void:
+	var enemy_modifiers := get_active_enemy_modifiers()
+	var updated_tooltip := card.get_updated_tooltip(player_modifiers, enemy_modifiers)
+	Events.card_tooltip_requested.emit(card.icon, updated_tooltip)
+
+
 func _on_mouse_entered():
 	card_state_machine.on_mouse_entered()
 

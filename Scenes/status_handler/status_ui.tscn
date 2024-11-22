@@ -13,6 +13,7 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_aa6kf")
 status = ExtResource("2_26q52")
 
