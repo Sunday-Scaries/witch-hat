@@ -78,6 +78,16 @@ func apply_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void:
 	pass
 
 
+func get_default_tooltip() -> String:
+	return tooltip_text
+
+
+func get_updated_tooltip(
+	_player_modifiers: ModifierHandler, _enemy_modifiers: ModifierHandler
+) -> String:
+	return tooltip_text
+
+
 # Function to filter the targets based on the card's allowed target type
 func _filter_targets_by_type(targets: Array[Node]) -> Array[Node]:
 	var valid_targets: Array[Node] = []
