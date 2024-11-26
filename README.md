@@ -7,6 +7,7 @@ In The Witch Wants Her Hat Back, players are thrust into the captivating world o
 This love letter to RPGs, with a dash of deck-building, takes you through hordes of enemies in highly-strategic encounters and beautiful 2D maps while uncovering the true source of Quixley's mysterious new powers. Will Quixley and her family of her newfound friends save the world, or are they doomed to fall at the non-existent hands of a sentient, fashionable, and decidedly evil hat bent on destruction and doubt?
 
 WWHHB is developed using Godot.
+(Special thanks to Adam from [GodotGameLab](https://www.youtube.com/@godotgamelab) for guidance on the card engine.)
 
 # Local development
 
