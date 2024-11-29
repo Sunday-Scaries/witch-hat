@@ -3,6 +3,8 @@ extends CanvasLayer
 
 @export var character_stats_list: Array[CharacterStats]:
 	set = _set_character_stats_list
+@export var player_list: Array[Player]:
+	set = _set_player_list
 
 @onready var hand: Hand = $Hand
 @onready var mana_ui1: ManaUI = $ManaUI
@@ -37,6 +39,11 @@ func _set_character_stats_list(value: Array[CharacterStats]) -> void:
 	character_stats_list = value
 	for i in character_stats_list.size():
 		mana_ui_list[i].char_stats = character_stats_list[i]
+
+
+func _set_player_list(value: Array[Player]) -> void:
+	player_list = value
+	hand.player_list = player_list
 
 
 func _on_player_hand_drawn() -> void:

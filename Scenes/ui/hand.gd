@@ -3,7 +3,7 @@ extends HBoxContainer
 
 const CARD_UI_SCENE := preload("res://scenes/card_ui/card_ui.tscn")
 # TODO this will not work with current setup
-@export var player: Player
+@export var player_list: Array[Player]
 
 
 func add_card(card: Card) -> void:
@@ -14,7 +14,9 @@ func add_card(card: Card) -> void:
 	new_card_ui.parent = self
 	new_card_ui.char_stats = card.character_stats
 	new_card_ui.playable = new_card_ui.char_stats.can_play_card(card)
-	new_card_ui.player_modifiers = player.modifier_handler
+	for player in player_list:
+		if player.stats.character_name == card.character_stats.character_name:
+			new_card_ui.player_modifiers = player.modifier_handler
 
 
 func discard_card(card: CardUI) -> void:

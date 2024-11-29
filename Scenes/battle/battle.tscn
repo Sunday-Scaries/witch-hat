@@ -93,7 +93,7 @@ cards_per_turn = 5
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("7_vd0ve")
 
-[node name="Hand" type="HBoxContainer" parent="BattleUI" node_paths=PackedStringArray("player")]
+[node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -108,7 +108,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 1
 script = ExtResource("2_a3ibl")
-player = NodePath("../../Player1")
 
 [node name="ManaUI" parent="BattleUI" instance=ExtResource("11_qywkf")]
 offset_left = 70.0
