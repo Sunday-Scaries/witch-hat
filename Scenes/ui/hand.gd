@@ -2,7 +2,6 @@ class_name Hand
 extends HBoxContainer
 
 const CARD_UI_SCENE := preload("res://scenes/card_ui/card_ui.tscn")
-# TODO this will not work with current setup
 @export var player_list: Array[Player]
 
 
