@@ -31,7 +31,7 @@ func on_mouse_entered() -> void:
 	sb.border_color = color_hover
 	sb.set_border_width_all(2)
 	card_ui.panel.add_theme_stylebox_override("panel", sb)
-	Events.card_tooltip_requested.emit(card_ui.card.icon, card_ui.card.tooltip_text)
+	card_ui.request_tooltip()
 
 
 func on_mouse_exited() -> void:
