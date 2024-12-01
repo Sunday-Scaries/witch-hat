@@ -6,15 +6,19 @@ const CARD_MENU_UI = preload("res://Scenes/ui/card_menu_ui.tscn")
 @export var card: Card:
 	set = set_card
 
-@onready var card_container: CenterContainer = %CardContainer
-@onready var price: HBoxContainer = %Price
-@onready var price_label: Label = %PriceLabel
-@onready var buy_button: Button = %BuyButton
+@onready var card_container: CenterContainer = $CardContainer
+@onready var price: HBoxContainer = $Price
+@onready var price_label: Label = $Price/PriceLabel
+@onready var buy_button: Button = $BuyButton
 @onready var gold_cost := randi_range(100, 300)
-###Determine $ with fixed gold costs to all cards, a range, etc.
 
 @onready var current_card_ui: CardMenuUI
-#If I remove @onready "Definition out of order in None"
+
+
+func _ready() -> void:
+	buy_button.pressed.connect(_on_buy_button_pressed)
+	if not card_container:
+		await get_tree().idle_frame
 
 
 func update(run_stats: RunStats) -> void:
@@ -35,15 +39,15 @@ func set_card(new_card: Card) -> void:
 	if not is_node_ready():
 		await ready
 
-		card = new_card
+	card = new_card
 
-		for card_menu_ui: CardMenuUI in card_container.get_children():
-			card_menu_ui.queue_free()
+	for card_menu_ui: CardMenuUI in card_container.get_children():
+		card_menu_ui.queue_free()
 
-		var new_card_menu_ui := CARD_MENU_UI.instantiate() as CardMenuUI
-		card_container.add_child(new_card_menu_ui)
-		new_card_menu_ui.card = card
-		current_card_ui = new_card_menu_ui
+	var new_card_menu_ui := CARD_MENU_UI.instantiate() as CardMenuUI
+	card_container.add_child(new_card_menu_ui)
+	new_card_menu_ui.card = card
+	current_card_ui = new_card_menu_ui
 
 
 func _on_buy_button_pressed() -> void:

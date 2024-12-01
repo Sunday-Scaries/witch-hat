@@ -88,6 +88,12 @@ func _setup_top_bar() -> void:
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
 
 
+func _refresh_top_bar() -> void:
+	var combined_deck = _combine_decks()
+	deck_button.card_pile = combined_deck
+	deck_view.card_pile = combined_deck
+
+
 func _combine_decks() -> CardPile:
 	gold_ui.run_stats = stats
 	var combined_deck: CardPile = CardPile.new()
@@ -143,6 +149,10 @@ func _show_map() -> void:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
+	# TODO: this should be moved to the RunStats or emitted via an event that the
+	# Run watches for to update the header
+	# righ tnow when i buy a card in the shop, the top bar doesn't update the cards, same for a battle.
+	_refresh_top_bar()
 	map.show_map()
 	map.unlock_next_rooms()
 	# _show_buttons()
@@ -186,6 +196,17 @@ func _on_campfire_entered() -> void:
 	campfire.char_stats_list = run_startup.character_list
 
 
+func _on_shop_entered() -> void:
+	var shop_scene = _change_view(SHOP_SCENE) as Shop
+
+	if shop_scene:
+		shop_scene.char_stats_list = run_startup.character_list  # Assuming character_list is populated
+		shop_scene.run_stats = stats  # Make sure 'stats' is correctly initialized here
+		shop_scene.populate_shop()
+	else:
+		print("Error: shop_scene is nil and cannot set 'run_stats'")
+
+
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
@@ -195,7 +216,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.RIVERS_OF_REFLECTION:
 			_on_campfire_entered()
 		Room.Type.SHOP:
-			_change_view(SHOP_SCENE)
+			_on_shop_entered()
 		Room.Type.BOSS:
 			_on_battle_room_entered(room)
 
