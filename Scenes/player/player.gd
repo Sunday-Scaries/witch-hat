@@ -10,6 +10,11 @@ const WHITE_SPRITE_MATERIAL := preload("res://art/white_sprite_material.tres")
 @onready var arrow: Sprite2D = $Arrow
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var stats_ui: StatsUI = $StatsUI
+@onready var status_handler: StatusHandler = $StatusHandler
+
+
+func _ready() -> void:
+	status_handler.status_owner = self
 
 
 func set_character_stats(value: CharacterStats) -> void:

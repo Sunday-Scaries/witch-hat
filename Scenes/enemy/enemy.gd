@@ -15,6 +15,11 @@ var current_action: EnemyAction:
 @onready var arrow: Sprite2D = $Arrow
 @onready var stats_ui: StatsUI = $StatsUI as StatsUI
 @onready var intent_ui: IntentUI = $IntentUI as IntentUI
+@onready var status_handler: StatusHandler = $StatusHandler
+
+
+func _ready() -> void:
+	status_handler.status_owner = self
 
 
 func set_current_action(value: EnemyAction) -> void:
@@ -104,6 +109,7 @@ func _finish_take_damage() -> void:
 	sprite_2d.material = null
 
 	if stats.health <= 0:
+		Events.enemy_died.emit(self)
 		queue_free()
 
 

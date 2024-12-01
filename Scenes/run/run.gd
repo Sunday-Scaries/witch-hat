@@ -171,16 +171,14 @@ func _on_battle_won() -> void:
 	reward_scene.run_stats = stats
 	reward_scene.character_stats_list = run_startup.character_list
 
-	# TODO TESTING CODE, will be removed later
-	reward_scene.add_gold_reward(77)
+	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
 	reward_scene.add_card_reward()
 
 
-func _on_battle_room_entered() -> void:
-	_change_view(BATTLE_SCENE)
-	# var battle_scene: Battle = change_view(BATTLE_SCENE) as Battle
-	# TODO find where he does this
-	# battle_scene.
+func _on_battle_room_entered(room: Room) -> void:
+	var battle_scene: Battle = _change_view(BATTLE_SCENE) as Battle
+	battle_scene.battle_stats = room.battle_stats
+	battle_scene.start_battle()
 
 
 func _on_campfire_entered() -> void:
@@ -202,7 +200,7 @@ func _on_shop_entered() -> void:
 func _on_map_exited(room: Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
-			_on_battle_room_entered()
+			_on_battle_room_entered(room)
 		Room.Type.TREASURE:
 			_change_view(TREASURE_SCENE)
 		Room.Type.RIVERS_OF_REFLECTION:
@@ -210,7 +208,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.SHOP:
 			_on_shop_entered()
 		Room.Type.BOSS:
-			_change_view(BATTLE_SCENE)
+			_on_battle_room_entered(room)
 
 
 func _on_game_over() -> void:
