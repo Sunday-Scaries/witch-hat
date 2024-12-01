@@ -88,6 +88,12 @@ func _setup_top_bar() -> void:
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))
 
 
+func _refresh_top_bar() -> void:
+	var combined_deck = _combine_decks()
+	deck_button.card_pile = combined_deck
+	deck_view.card_pile = combined_deck
+
+
 func _combine_decks() -> CardPile:
 	gold_ui.run_stats = stats
 	var combined_deck: CardPile = CardPile.new()
@@ -143,6 +149,10 @@ func _show_map() -> void:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
+	# TODO: this should be moved to the RunStats or emitted via an event that the
+	# Run watches for to update the header
+	# righ tnow when i buy a card in the shop, the top bar doesn't update the cards, same for a battle.
+	_refresh_top_bar()
 	map.show_map()
 	map.unlock_next_rooms()
 	# _show_buttons()

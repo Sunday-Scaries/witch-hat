@@ -75,10 +75,14 @@ func _generate_shop_cards() -> void:
 	# var shop_card_array: Array[Card] = [some_card]
 	# Throwing in a sample card to immediate
 
-	if char_stats_list.size() > 0:
-		var available_cards := char_stats_list[0].draftable_cards.cards.duplicate(true)
-		available_cards.shuffle()
-		shop_card_array = available_cards.slice(0, 3)  # Select 3 random cards
+	var available_cards: Array[Card] = []
+	for character in char_stats_list:
+		var char_cards := character.draftable_cards.cards.duplicate(true)
+		for card: Card in char_cards:
+			available_cards.append(card)
+
+	available_cards.shuffle()
+	shop_card_array = available_cards.slice(0, 3)  # Select 3 random cards
 
 	for card: Card in shop_card_array:
 		var new_shop_card := SHOP_CARD.instantiate() as ShopCard
