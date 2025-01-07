@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://crldvrn5qplqv"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://crldvrn5qplqv"]
 
 [ext_resource type="StyleBox" uid="uid://b8gom4rtedyft" path="res://Scenes/card_ui/card_base_stylebox.tres" id="1_5xf2i"]
 [ext_resource type="StyleBox" uid="uid://inf03fbom8vx" path="res://Scenes/card_ui/card_hover_stylebox.tres" id="1_y27qv"]
@@ -22,6 +22,9 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.631373, 0.588235, 0.290196, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qak2"]
+bg_color = Color(1, 1, 1, 1)
+
 [resource]
 default_font = ExtResource("3_r6ceg")
 default_font_size = 16
@@ -32,3 +35,5 @@ Button/styles/normal = ExtResource("1_5xf2i")
 Button/styles/pressed = SubResource("StyleBoxFlat_ra3aq")
 Panel/styles/panel = ExtResource("1_5xf2i")
 PanelContainer/styles/panel = ExtResource("1_5xf2i")
+RichTextLabel/colors/default_color = Color(0.113049, 0.113049, 0.113049, 1)
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_5qak2")
