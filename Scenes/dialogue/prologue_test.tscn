@@ -1,0 +1,183 @@
+[gd_scene load_steps=27 format=3 uid="uid://4padf275tyu1"]
+
+[ext_resource type="Script" path="res://Scenes/dialogue/dialogue.gd" id="1_eaeox"]
+[ext_resource type="Script" path="res://custom_resources/dialogue/dialogue_item.gd" id="2_clvxj"]
+[ext_resource type="Texture2D" uid="uid://r2wqp8aowijw" path="res://art/taylor-profile.png" id="3_my4wg"]
+[ext_resource type="Script" path="res://custom_resources/dialogue/dialogue_choice.gd" id="4_q83ot"]
+[ext_resource type="Texture2D" uid="uid://canv7jl05x2ox" path="res://art/tutorials/dialogue/emotion_regular.png" id="5_0af3g"]
+[ext_resource type="Texture2D" uid="uid://bxfyp50shaqnr" path="res://art/quixley-portrait.png" id="6_i5wib"]
+[ext_resource type="Texture2D" uid="uid://c046pjyo2jq2h" path="res://art/tutorials/dialogue/emotion_happy.png" id="6_y2yvx"]
+[ext_resource type="Texture2D" uid="uid://blf2pvhyd7ton" path="res://art/tutorials/dialogue/emotion_sad.png" id="7_t35f3"]
+[ext_resource type="Shader" path="res://Scenes/dialogue/sliding_background.gdshader" id="8_xby0d"]
+[ext_resource type="Texture2D" uid="uid://dmslpsi03el70" path="res://art/tutorials/dialogue/bubble_pattern.png" id="9_pvjpb"]
+[ext_resource type="AudioStream" uid="uid://buy4skkg7ckbc" path="res://art/tutorials/dialogue/talking_synth.ogg" id="10_t4qc5"]
+
+[sub_resource type="Resource" id="Resource_qi4si"]
+script = ExtResource("4_q83ot")
+text = "Next"
+target_line_idx = 1
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_7mmdh"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_qi4si")])
+expression = ExtResource("5_0af3g")
+character = ExtResource("3_my4wg")
+text = "Well [wave amp=50.0 freq=5.0 connected=1]how-dee-doo[/wave], Councilwoman Q! Off to your first day down at City Hall, huh?"
+
+[sub_resource type="Resource" id="Resource_mprtt"]
+script = ExtResource("4_q83ot")
+text = "Next"
+target_line_idx = 2
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_24xm0"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_mprtt")])
+expression = ExtResource("6_y2yvx")
+character = ExtResource("6_i5wib")
+text = "Good morning, Taylor–that’s right. Running late as a matter of fact. That M.O.M. I ordered from you a while back is a bit quirky with her scheduling. "
+
+[sub_resource type="Resource" id="Resource_4p87f"]
+script = ExtResource("4_q83ot")
+text = "Next"
+target_line_idx = 3
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_m5of7"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_4p87f")])
+expression = ExtResource("7_t35f3")
+character = ExtResource("3_my4wg")
+text = "Well far be it from me to hold up Verdant Valley’s newest elected official, but I’d be remiss if I didn’t give you a couple items for your first week in office–"
+
+[sub_resource type="Resource" id="Resource_n51lf"]
+script = ExtResource("4_q83ot")
+text = "Next"
+target_line_idx = 4
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_5t1o5"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_n51lf")])
+expression = ExtResource("5_0af3g")
+character = ExtResource("6_i5wib")
+text = "Wait, wait, wait–Taylor, you know I can’t accept gifts. "
+
+[sub_resource type="Resource" id="Resource_xlrw0"]
+script = ExtResource("4_q83ot")
+text = "Next"
+target_line_idx = 5
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_5vum2"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_xlrw0")])
+expression = ExtResource("5_0af3g")
+character = ExtResource("3_my4wg")
+text = "I know, I know–I campaigned for you, after all! Between crop failures in the Valley and corruption on the City Council, things seemed kinda hopeless for a while there–I sure am glad you’re stepping up to tackle the important issues."
+
+[sub_resource type="Resource" id="Resource_n6k5v"]
+script = ExtResource("4_q83ot")
+text = "Next"
+target_line_idx = 6
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_a77bt"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_n6k5v")])
+expression = ExtResource("5_0af3g")
+character = ExtResource("6_i5wib")
+text = "With your help! It was good to see you, but I really am gonna be late!"
+
+[sub_resource type="Resource" id="Resource_vmwnr"]
+script = ExtResource("4_q83ot")
+text = "Start shopping"
+target_line_idx = 0
+is_quit = true
+
+[sub_resource type="Resource" id="Resource_vj6ks"]
+script = ExtResource("2_clvxj")
+choices = Array[ExtResource("4_q83ot")]([SubResource("Resource_vmwnr")])
+expression = ExtResource("5_0af3g")
+character = ExtResource("3_my4wg")
+text = "Wait! At least let me make a couple product recommendations for your first day in office. Don’t worry–for you, full price! Ha!"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6x0q"]
+shader = ExtResource("8_xby0d")
+shader_parameter/bg_color = Color(0.980392, 0.94902, 0.72549, 1)
+shader_parameter/pattern_color = Color(0.996078, 0.878431, 0.564706, 1)
+shader_parameter/pattern_size = 256.0
+shader_parameter/pattern_sampler = ExtResource("9_pvjpb")
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eaeox")
+dialogue_items = Array[ExtResource("2_clvxj")]([SubResource("Resource_7mmdh"), SubResource("Resource_24xm0"), SubResource("Resource_m5of7"), SubResource("Resource_5t1o5"), SubResource("Resource_5vum2"), SubResource("Resource_a77bt"), SubResource("Resource_vj6ks")])
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_y6x0q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_i5wib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Expression" type="TextureRect" parent="Body"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0af3g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 84.0
+offset_right = -40.0
+offset_bottom = -26.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+text = "Hello World"
+fit_content = true
+
+[node name="ActionButtonsVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_t4qc5")

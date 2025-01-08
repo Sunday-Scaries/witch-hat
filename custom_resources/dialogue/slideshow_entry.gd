@@ -3,7 +3,7 @@ class_name SlideShowEntry extends Resource
 ## Represents the character's expression for this dialogue bubble
 @export var expression := preload("res://art/tutorials/dialogue/emotion_regular.png")
 ## Represents the character's body for this dialogue bubble
-@export var character := preload("res://art/tutorials/dialogue/sophia.png")
+@export var character := preload("res://art/quixley-portrait.png")
 
 @export_group("Text")
 ## The text of this dialogue bubble

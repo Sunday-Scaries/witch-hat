@@ -8,7 +8,7 @@
 @icon("res://art/tutorials/dialogue/dialogue_choice_icon.svg")
 class_name DialogueChoice extends Resource
 ## The choice button text. Can only use plain text (no BBCode)
-@export var text := ""
+@export_multiline var text := ""
 ## The target item to jump to next. This is the index of the dialogue item the
 ## choice leads to. It is ignored if [member is_quit] is set to [code]true[/code].
 @export_range(0, 20) var target_line_idx := 0
