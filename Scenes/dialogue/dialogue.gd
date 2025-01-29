@@ -66,7 +66,6 @@ func create_buttons(buttons_data: Array[DialogueChoice]) -> void:
 		button.queue_free()
 	for choice in buttons_data:
 		var button := Button.new()
-		# button.size_flags_horizontal = Control.SIZE_SHRINK_END
 		button.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD
 		action_buttons_v_box_container.add_child(button)

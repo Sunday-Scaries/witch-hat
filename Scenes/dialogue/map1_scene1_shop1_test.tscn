@@ -190,6 +190,12 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Button" type="Button" parent="VBoxContainer/ActionButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "IDK why the sizing of the buttons in game is off if this isn't here :( "
+autowrap_mode = 2
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("11_uqaui")
