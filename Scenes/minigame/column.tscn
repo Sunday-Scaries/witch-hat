@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d1swjjxcq8gce"]
+
+[node name="Column" type="VBoxContainer"]
+offset_left = 54.0
+offset_top = 161.0
+offset_right = 114.0
+offset_bottom = 499.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.479834, 0.479834, 0.479834, 1)
