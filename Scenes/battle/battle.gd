@@ -20,7 +20,6 @@ func _ready() -> void:
 	for i in run_startup.character_list.size():
 		player_list[i].stats = run_startup.character_list[i]
 
-	# Safely disconnect the signal first to avoid any existing connection errors
 	if enemy_handler.is_connected(
 		"child_order_changed", Callable(self, "_on_enemies_child_order_changed")
 	):

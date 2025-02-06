@@ -4,6 +4,4 @@
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_evd0e"]
 [ext_resource type="Resource" uid="uid://li62ketf30xw" path="res://characters/elian/cards/elian_sample_attack.tres" id="1_yr8rb"]
 
-[resource]
-script = ExtResource("1_7lvk2")
 cards = Array[ExtResource("1_evd0e")]([ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb"), ExtResource("1_yr8rb")])
