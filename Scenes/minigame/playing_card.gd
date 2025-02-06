@@ -19,11 +19,11 @@ func _process(_delta):
 		elif Input.is_action_just_released("left_mouse"):
 			Dragging.is_dragging = false
 			var tween = get_tree().create_tween()
-			print("bodyref", body_ref.position)
 			if is_inside_droppable:
-				print("is inside droppable")
-				tween.tween_property(self, "position", body_ref.position, 0.2).set_ease(
-					Tween.EASE_OUT
+				(
+					tween
+					. tween_property(self, "global_position", body_ref.global_position, 0.2)
+					. set_ease(Tween.EASE_OUT)
 				)
 			else:
 				tween.tween_property(self, "global_position", initial_position, 0.2).set_ease(
@@ -45,7 +45,6 @@ func _on_area_2d_mouse_exited():
 
 func _on_area_2d_body_entered(body: StaticBody2D):
 	if body.is_in_group("droppable"):
-		print("entered an area 2d")
 		is_inside_droppable = true
 		body.modulate = Color(Color.REBECCA_PURPLE, 1)
 		body_ref = body

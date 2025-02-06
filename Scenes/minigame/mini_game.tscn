@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://rj8jnsg3slpm"]
+[gd_scene load_steps=4 format=3 uid="uid://rj8jnsg3slpm"]
 
 [ext_resource type="Texture2D" uid="uid://bi4h4kcaxwn5o" path="res://art/verdant-valley-generated-map.png" id="1_gq8e0"]
-[ext_resource type="PackedScene" uid="uid://cplafwy0sqt51" path="res://Scenes/minigame/drop_area.tscn" id="2_0q8km"]
 [ext_resource type="PackedScene" uid="uid://d1swjjxcq8gce" path="res://Scenes/minigame/column.tscn" id="2_ou1wt"]
 [ext_resource type="PackedScene" uid="uid://cep0585ysmfjj" path="res://Scenes/minigame/playing_card.tscn" id="3_m31ak"]
 
@@ -13,6 +12,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_gq8e0")
 
 [node name="Column1" parent="." instance=ExtResource("2_ou1wt")]
+offset_left = 46.0
+offset_top = 161.0
+offset_right = 106.0
+offset_bottom = 499.0
 
 [node name="Column2" parent="." instance=ExtResource("2_ou1wt")]
 offset_left = 193.0
@@ -33,16 +36,4 @@ offset_right = 578.0
 offset_bottom = 502.0
 
 [node name="PlayingCard" parent="." instance=ExtResource("3_m31ak")]
-position = Vector2(57, 23)
-
-[node name="DropArea" parent="." instance=ExtResource("2_0q8km")]
-position = Vector2(82, 111)
-
-[node name="DropArea2" parent="." instance=ExtResource("2_0q8km")]
-position = Vector2(226, 113)
-
-[node name="DropArea3" parent="." instance=ExtResource("2_0q8km")]
-position = Vector2(383, 112)
-
-[node name="DropArea4" parent="." instance=ExtResource("2_0q8km")]
-position = Vector2(543, 112)
+position = Vector2(62, 31)

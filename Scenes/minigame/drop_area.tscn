@@ -15,6 +15,7 @@ offset_top = -50.0
 offset_right = 50.0
 offset_bottom = 50.0
 color = Color(0.376028, 0.376028, 0.376028, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wsxdw")
