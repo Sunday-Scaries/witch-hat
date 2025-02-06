@@ -1,0 +1,201 @@
+[gd_scene load_steps=28 format=3 uid="uid://jm8dtopu43yr"]
+
+[ext_resource type="Script" path="res://Scenes/dialogue/dialogue.gd" id="1_6r5ce"]
+[ext_resource type="Script" path="res://custom_resources/dialogue/dialogue_item.gd" id="2_gb7mu"]
+[ext_resource type="Texture2D" uid="uid://mqbre4cm43ru" path="res://art/ms-construe-portrait.png" id="3_5k2e0"]
+[ext_resource type="Script" path="res://custom_resources/dialogue/dialogue_choice.gd" id="4_tlrik"]
+[ext_resource type="Texture2D" uid="uid://canv7jl05x2ox" path="res://art/tutorials/dialogue/emotion_regular.png" id="5_24en7"]
+[ext_resource type="Texture2D" uid="uid://bxfyp50shaqnr" path="res://art/quixley-portrait.png" id="6_4bfsh"]
+[ext_resource type="Texture2D" uid="uid://c046pjyo2jq2h" path="res://art/tutorials/dialogue/emotion_happy.png" id="7_4ri43"]
+[ext_resource type="Shader" path="res://Scenes/dialogue/sliding_background.gdshader" id="9_sojws"]
+[ext_resource type="Texture2D" uid="uid://dmslpsi03el70" path="res://art/tutorials/dialogue/bubble_pattern.png" id="10_3todb"]
+[ext_resource type="AudioStream" uid="uid://buy4skkg7ckbc" path="res://art/tutorials/dialogue/talking_synth.ogg" id="11_uqaui"]
+
+[sub_resource type="Resource" id="Resource_qi4si"]
+script = ExtResource("4_tlrik")
+text = "Jingle your coinpurse merrily: you don’t much care for how this mouse is assuming your socioeconomic stratum."
+target_line_idx = 1
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_h8i2a"]
+script = ExtResource("4_tlrik")
+text = "Pat your pockets and despair: surely all of the bits and bobs on such an elegant display are far beyond your means."
+target_line_idx = 2
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_w832s"]
+script = ExtResource("4_tlrik")
+text = "Grab a particularly expensive-looking vase and mime smashing it: you’ve had a day and you’re finished observing social niceties."
+target_line_idx = 3
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_7mmdh"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_qi4si"), SubResource("Resource_h8i2a"), SubResource("Resource_w832s")])
+expression = ExtResource("5_24en7")
+character = ExtResource("3_5k2e0")
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]*squeak*[/pulse] Best POP that purse open wide because my prices AREN’T cheap, darling! "
+
+[sub_resource type="Resource" id="Resource_drw1t"]
+script = ExtResource("4_tlrik")
+text = "Next"
+target_line_idx = 4
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_24xm0"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_drw1t")])
+expression = ExtResource("7_4ri43")
+character = ExtResource("3_5k2e0")
+text = "Hmmm?! Could’ve sworn I heard some pennies jangling in a cheap bag…"
+
+[sub_resource type="Resource" id="Resource_l6p8g"]
+script = ExtResource("4_tlrik")
+text = "Next"
+target_line_idx = 4
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_1leiw"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_l6p8g")])
+expression = ExtResource("5_24en7")
+character = ExtResource("3_5k2e0")
+text = "Oh ho ho! Just as I suspected. The nose always knows! "
+
+[sub_resource type="Resource" id="Resource_btt2c"]
+script = ExtResource("4_tlrik")
+text = "Next"
+target_line_idx = 4
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_h6ylf"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_btt2c")])
+expression = ExtResource("5_24en7")
+character = ExtResource("3_5k2e0")
+text = "[pulse freq=1.0 color=#ffffff40 ease=-2.0]*squeak*[/pulse] You put that down this instant, Mrs. Butterfingers!"
+
+[sub_resource type="Resource" id="Resource_43xlk"]
+script = ExtResource("4_tlrik")
+text = "Next"
+target_line_idx = 5
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_lto6j"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_43xlk")])
+expression = ExtResource("5_24en7")
+character = ExtResource("3_5k2e0")
+text = "Hmmm…so quiet. So…mysterious! *squeak* Perhaps secretly…fabulously wealthy?! *squeak* I knew it–you’re a quiet client of refined, elegant, EXPENSIVE taste! Yes…! Hm hm hm! You’re free to browse, my dear. “Ms. Construe’s Debut Review” is open to your deep pockets!"
+
+[sub_resource type="Resource" id="Resource_4bdt3"]
+script = ExtResource("4_tlrik")
+text = "Next"
+target_line_idx = 6
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_8n30x"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_4bdt3")])
+expression = ExtResource("5_24en7")
+character = ExtResource("6_4bfsh")
+text = "..."
+
+[sub_resource type="Resource" id="Resource_dianh"]
+script = ExtResource("4_tlrik")
+text = "Start shopping"
+target_line_idx = 0
+is_quit = true
+
+[sub_resource type="Resource" id="Resource_wms7w"]
+script = ExtResource("2_gb7mu")
+choices = Array[ExtResource("4_tlrik")]([SubResource("Resource_dianh")])
+expression = ExtResource("5_24en7")
+character = ExtResource("3_5k2e0")
+text = "But don’t say I didn’t warn you–not even His Shellfishness, the Pope himself could afford my prices…oh ho ho!"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6x0q"]
+shader = ExtResource("9_sojws")
+shader_parameter/bg_color = Color(0.980392, 0.94902, 0.72549, 1)
+shader_parameter/pattern_color = Color(0.996078, 0.878431, 0.564706, 1)
+shader_parameter/pattern_size = 256.0
+shader_parameter/pattern_sampler = ExtResource("10_3todb")
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6r5ce")
+dialogue_items = Array[ExtResource("2_gb7mu")]([SubResource("Resource_7mmdh"), SubResource("Resource_24xm0"), SubResource("Resource_1leiw"), SubResource("Resource_h6ylf"), SubResource("Resource_lto6j"), SubResource("Resource_8n30x"), SubResource("Resource_wms7w")])
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_y6x0q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_4bfsh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Expression" type="TextureRect" parent="Body"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_24en7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = 47.0
+offset_right = -40.0
+offset_bottom = -26.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+text = "Hello World"
+fit_content = true
+
+[node name="ActionButtonsVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/ActionButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "IDK why the sizing of the buttons in game is off if this isn't here :( "
+autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_uqaui")

@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://ddws3fuu5kbq5"]
+
+[ext_resource type="Script" path="res://Scenes/dialogue/dialogue.gd" id="1_kkqvw"]
+[ext_resource type="Shader" path="res://Scenes/dialogue/sliding_background.gdshader" id="1_tltds"]
+[ext_resource type="Texture2D" uid="uid://dmslpsi03el70" path="res://art/tutorials/dialogue/bubble_pattern.png" id="2_5nqcm"]
+[ext_resource type="Script" path="res://custom_resources/dialogue/dialogue_item.gd" id="2_d1aix"]
+[ext_resource type="Texture2D" uid="uid://hboqsav41kbm" path="res://art/tutorials/dialogue/sophia.png" id="3_1w68n"]
+[ext_resource type="Script" path="res://custom_resources/dialogue/dialogue_choice.gd" id="4_f0hcl"]
+[ext_resource type="AudioStream" uid="uid://buy4skkg7ckbc" path="res://art/tutorials/dialogue/talking_synth.ogg" id="4_pw5lo"]
+[ext_resource type="Texture2D" uid="uid://canv7jl05x2ox" path="res://art/tutorials/dialogue/emotion_regular.png" id="5_rwpv0"]
+[ext_resource type="Texture2D" uid="uid://c046pjyo2jq2h" path="res://art/tutorials/dialogue/emotion_happy.png" id="6_p30j2"]
+[ext_resource type="Texture2D" uid="uid://blf2pvhyd7ton" path="res://art/tutorials/dialogue/emotion_sad.png" id="7_80oes"]
+
+[sub_resource type="Resource" id="Resource_c0o16"]
+script = ExtResource("4_f0hcl")
+text = "Sorry I can't read. What did you say?"
+target_line_idx = 0
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_qi4si"]
+script = ExtResource("4_f0hcl")
+text = "Hello!"
+target_line_idx = 1
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_7mmdh"]
+script = ExtResource("2_d1aix")
+choices = Array[ExtResource("4_f0hcl")]([SubResource("Resource_c0o16"), SubResource("Resource_qi4si")])
+expression = ExtResource("5_rwpv0")
+character = ExtResource("3_1w68n")
+text = "Heloooooo"
+
+[sub_resource type="Resource" id="Resource_mprtt"]
+script = ExtResource("4_f0hcl")
+text = "What did you say?"
+target_line_idx = 0
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_fti76"]
+script = ExtResource("4_f0hcl")
+text = "No games!"
+target_line_idx = 2
+is_quit = false
+
+[sub_resource type="Resource" id="Resource_24xm0"]
+script = ExtResource("2_d1aix")
+choices = Array[ExtResource("4_f0hcl")]([SubResource("Resource_mprtt"), SubResource("Resource_fti76")])
+expression = ExtResource("6_p30j2")
+character = ExtResource("3_1w68n")
+text = "Want to play a game?"
+
+[sub_resource type="Resource" id="Resource_4p87f"]
+script = ExtResource("4_f0hcl")
+text = "End"
+target_line_idx = 0
+is_quit = true
+
+[sub_resource type="Resource" id="Resource_m5of7"]
+script = ExtResource("2_d1aix")
+choices = Array[ExtResource("4_f0hcl")]([SubResource("Resource_4p87f")])
+expression = ExtResource("7_80oes")
+character = ExtResource("3_1w68n")
+text = "Goodbye then..."
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6x0q"]
+shader = ExtResource("1_tltds")
+shader_parameter/bg_color = Color(0.980392, 0.94902, 0.72549, 1)
+shader_parameter/pattern_color = Color(0.996078, 0.878431, 0.564706, 1)
+shader_parameter/pattern_size = 256.0
+shader_parameter/pattern_sampler = ExtResource("2_5nqcm")
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kkqvw")
+dialogue_items = Array[ExtResource("2_d1aix")]([SubResource("Resource_7mmdh"), SubResource("Resource_24xm0"), SubResource("Resource_m5of7")])
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_y6x0q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1w68n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Expression" type="TextureRect" parent="Body"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rwpv0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 84.0
+offset_right = -40.0
+offset_bottom = -26.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+text = "Hello World"
+fit_content = true
+
+[node name="ActionButtonsVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_pw5lo")

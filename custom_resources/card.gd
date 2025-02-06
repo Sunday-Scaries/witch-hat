@@ -57,7 +57,7 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 			return []
 
 
-func play(targets: Array[Node], char_stats: CharacterStats) -> bool:
+func play(targets: Array[Node], char_stats: CharacterStats, modifiers: ModifierHandler) -> bool:
 	var valid_targets = _filter_targets_by_type(targets)
 	if len(valid_targets) == 0:
 		return false
@@ -65,17 +65,27 @@ func play(targets: Array[Node], char_stats: CharacterStats) -> bool:
 	char_stats.mana -= cost
 
 	if is_single_targeted():
-		apply_effects(targets)
+		apply_effects(targets, modifiers)
 	else:
-		apply_effects(_get_targets(targets))
+		apply_effects(_get_targets(targets), modifiers)
 	return true
 
 
 # NOTE: this is pass because it's a virtual method. all cards will have this same method
 # equivalent in python would be base class with class method and children
 # can implement
-func apply_effects(_targets: Array[Node]) -> void:
+func apply_effects(_targets: Array[Node], _modifiers: ModifierHandler) -> void:
 	pass
+
+
+func get_default_tooltip() -> String:
+	return tooltip_text
+
+
+func get_updated_tooltip(
+	_player_modifiers: ModifierHandler, _enemy_modifiers: ModifierHandler
+) -> String:
+	return tooltip_text
 
 
 # Function to filter the targets based on the card's allowed target type

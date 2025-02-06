@@ -6,6 +6,7 @@ signal reparent_requested(which_card_ui: CardUI)
 const BASE_STYLEBOX := preload("res://Scenes/card_ui/card_base_stylebox.tres")
 const HOVER_STYLEBOX := preload("res://Scenes/card_ui/card_hover_stylebox.tres")
 
+@export var player_modifiers: ModifierHandler
 @export var card: Card:
 	set = _set_card
 @export var char_stats: CharacterStats:
@@ -47,7 +48,7 @@ func play() -> bool:
 	if not card:
 		return false
 
-	var is_played = card.play(targets, char_stats)
+	var is_played = card.play(targets, char_stats, player_modifiers)
 	if is_played:
 		queue_free()
 		return true
@@ -75,6 +76,19 @@ func _on_drop_point_detector_area_entered(area: Area2D) -> void:
 
 func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 	targets.erase(area)
+
+
+func get_active_enemy_modifiers() -> ModifierHandler:
+	if targets.is_empty() or targets.size() > 1 or not targets[0] is Enemy:
+		return null
+
+	return targets[0].modifier_handler
+
+
+func request_tooltip() -> void:
+	var enemy_modifiers := get_active_enemy_modifiers()
+	var updated_tooltip := card.get_updated_tooltip(player_modifiers, enemy_modifiers)
+	Events.card_tooltip_requested.emit(card.icon, updated_tooltip)
 
 
 func _on_mouse_entered():
