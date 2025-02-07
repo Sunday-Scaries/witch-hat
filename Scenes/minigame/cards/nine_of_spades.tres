@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://vwbvxmqdntsr"]
+
+[ext_resource type="Texture2D" uid="uid://b7irxn73ed08n" path="res://art/minigame/card_clubs_02.png" id="1_wruux"]
+[ext_resource type="Script" path="res://Scenes/minigame/custom_resources/playing_card.gd" id="2_4o8c0"]
+
+[resource]
+script = ExtResource("2_4o8c0")
+name = "9 of Spades"
+suit = 3
+card_value = 8
+icon = ExtResource("1_wruux")
