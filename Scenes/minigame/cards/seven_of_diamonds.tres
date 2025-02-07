@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://b1iujagva61ta"]
 
-[ext_resource type="Texture2D" uid="uid://b7irxn73ed08n" path="res://art/minigame/card_clubs_02.png" id="1_ii47k"]
+[ext_resource type="Texture2D" uid="uid://cn3ch6bjn276f" path="res://art/minigame/card_diamonds_07.png" id="1_tsa06"]
 [ext_resource type="Script" path="res://Scenes/minigame/custom_resources/playing_card.gd" id="2_83h4j"]
 
 [resource]
@@ -8,4 +8,4 @@ script = ExtResource("2_83h4j")
 name = "7 of Diamonds"
 suit = 1
 card_value = 7
-icon = ExtResource("1_ii47k")
+icon = ExtResource("1_tsa06")

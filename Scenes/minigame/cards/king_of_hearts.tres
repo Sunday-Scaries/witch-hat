@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://clk60fve5ibtg"]
 
-[ext_resource type="Texture2D" uid="uid://b7irxn73ed08n" path="res://art/minigame/card_clubs_02.png" id="1_1aapk"]
+[ext_resource type="Texture2D" uid="uid://dpq5j3beyihyv" path="res://art/minigame/card_hearts_K.png" id="1_kogtx"]
 [ext_resource type="Script" path="res://Scenes/minigame/custom_resources/playing_card.gd" id="2_oqrk5"]
 
 [resource]
@@ -8,4 +8,4 @@ script = ExtResource("2_oqrk5")
 name = "King of Hearts"
 suit = 0
 card_value = 13
-icon = ExtResource("1_1aapk")
+icon = ExtResource("1_kogtx")

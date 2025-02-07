@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://blb645c5xnlnk"]
 
-[ext_resource type="Texture2D" uid="uid://b7irxn73ed08n" path="res://art/minigame/card_clubs_02.png" id="1_rkkb0"]
+[ext_resource type="Texture2D" uid="uid://dho225hbvd5aa" path="res://art/minigame/card_hearts_05.png" id="1_us4jp"]
 [ext_resource type="Script" path="res://Scenes/minigame/custom_resources/playing_card.gd" id="2_debdr"]
 
 [resource]
@@ -8,4 +8,4 @@ script = ExtResource("2_debdr")
 name = "5 of Hearts"
 suit = 0
 card_value = 5
-icon = ExtResource("1_rkkb0")
+icon = ExtResource("1_us4jp")
