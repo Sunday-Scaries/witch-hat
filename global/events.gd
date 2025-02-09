@@ -44,3 +44,6 @@ signal battle_reward_exited
 
 # treasure room related events
 signal treasure_room_exited
+
+# minigame events
+signal playing_card_dropped(card: PlayingCard)
