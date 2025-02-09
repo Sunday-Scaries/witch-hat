@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://rj8jnsg3slpm"]
+[gd_scene load_steps=5 format=3 uid="uid://rj8jnsg3slpm"]
 
+[ext_resource type="Script" path="res://Scenes/minigame/mini_game.gd" id="1_8uusw"]
 [ext_resource type="Texture2D" uid="uid://bi4h4kcaxwn5o" path="res://art/verdant-valley-generated-map.png" id="1_gq8e0"]
+[ext_resource type="Resource" uid="uid://dwa6ombgv4jbb" path="res://Scenes/minigame/playing_cards.tres" id="2_ctxfd"]
 [ext_resource type="PackedScene" uid="uid://d1swjjxcq8gce" path="res://Scenes/minigame/column.tscn" id="2_ou1wt"]
-[ext_resource type="PackedScene" uid="uid://cep0585ysmfjj" path="res://Scenes/minigame/droppable_card.tscn" id="3_m31ak"]
 
 [node name="MiniGame" type="Node2D"]
-position = Vector2(-1, 0)
+position = Vector2(3, 7)
+script = ExtResource("1_8uusw")
+card_pile = ExtResource("2_ctxfd")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
@@ -24,15 +27,3 @@ position = Vector2(338, 1)
 
 [node name="Column4" parent="." instance=ExtResource("2_ou1wt")]
 position = Vector2(483, 2)
-
-[node name="DroppableCard" parent="." instance=ExtResource("3_m31ak")]
-position = Vector2(25, 13)
-
-[node name="DroppableCard2" parent="." instance=ExtResource("3_m31ak")]
-position = Vector2(162, 13)
-
-[node name="DroppableCard3" parent="." instance=ExtResource("3_m31ak")]
-position = Vector2(116, 13)
-
-[node name="DroppableCard4" parent="." instance=ExtResource("3_m31ak")]
-position = Vector2(71, 13)

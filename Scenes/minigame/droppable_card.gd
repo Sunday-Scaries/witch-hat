@@ -1,12 +1,17 @@
 class_name DroppableCard
 extends Node2D
 
+@export var card: PlayingCard:
+	set = _set_card
+
 var has_been_dropped = false
 var draggable = false
 var is_inside_droppable = false
 var body_ref
 var offset: Vector2
 var initial_position: Vector2
+
+@onready var card_sprite = $Card
 
 
 func _process(_delta):
@@ -35,6 +40,14 @@ func _process(_delta):
 				tween.tween_property(self, "global_position", initial_position, 0.2).set_ease(
 					Tween.EASE_OUT
 				)
+
+
+func _set_card(value: PlayingCard) -> void:
+	if not is_node_ready():
+		await ready
+
+	card = value
+	card_sprite.texture = card.icon
 
 
 func _on_area_2d_mouse_entered():
