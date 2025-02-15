@@ -31,7 +31,6 @@ func add_card(card: DroppableCard):
 	cards.append(card)
 
 	# Tween the card to its target position.
-	print("tweening")
 	var tween = get_tree().create_tween()
 	tween.tween_property(card, "position", target_position, 0.3).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(on_card_dropped.bind(card))
@@ -54,7 +53,9 @@ func on_card_dropped(card: DroppableCard) -> void:
 # after a card is dropped. This list is updated every card that is dropped
 func update_valid_range(initial_val, dropped_val: int) -> void:
 	var initial_index = valid_range.find(initial_val)
+	# 0
 	var index = valid_range.find(dropped_val)
+	# 11
 	if index < 0 or initial_index < 0:
 		return
 
@@ -63,7 +64,7 @@ func update_valid_range(initial_val, dropped_val: int) -> void:
 		var pre_possible_values = valid_range.slice(0, initial_index + 1)
 		# dropped val to end of the list of possible values (ex. if dropped 5, new possible vals is 6-Ace)
 		var exclusive_start = index + 1
-		var end = len(valid_range) - 1
+		var end = len(valid_range)
 		var post_possible_values = valid_range.slice(exclusive_start, end)
 		# add pre and post together, ruling out stuff in between
 		valid_range = pre_possible_values + post_possible_values
@@ -80,6 +81,7 @@ func validate(dropped_card: DroppableCard) -> ColumnValidity:
 
 	var initial_val = cards[0].card.card_value
 	var dropped_val = dropped_card.card.card_value
+	print("dropped val ", dropped_val)
 
 	if dropped_val == initial_val:
 		print("Column complete!")
