@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://b7tw1gjf6agal"]
+
+[ext_resource type="Texture2D" uid="uid://dhtfvj4oh75km" path="res://art/minigame/card_hearts_02.png" id="1_cuw58"]
+[ext_resource type="Script" path="res://Scenes/minigame/custom_resources/playing_card.gd" id="2_ckpjx"]
+
+[resource]
+script = ExtResource("2_ckpjx")
+name = "2 of Hearts"
+suit = 0
+card_value = 2
+icon = ExtResource("1_cuw58")

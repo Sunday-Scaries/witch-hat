@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayingCard" load_steps=3 format=3 uid="uid://cofq336oth55v"]
+
+[ext_resource type="Texture2D" uid="uid://d07y1ok87nom1" path="res://art/minigame/card_clubs_05.png" id="1_dh7vr"]
+[ext_resource type="Script" path="res://Scenes/minigame/custom_resources/playing_card.gd" id="2_64iqq"]
+
+[resource]
+script = ExtResource("2_64iqq")
+name = "5 of Clubs"
+suit = 2
+card_value = 5
+icon = ExtResource("1_dh7vr")
